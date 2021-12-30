@@ -10,7 +10,7 @@
 
 * 공부에 활용할 자료
 
-  (C# 초보강좌 예제로 배우는 C#)[https://www.inflearn.com/course/c-%EC%B4%88%EB%B3%B4-%EA%B0%95%EC%A2%8C-%EC%98%88%EC%A0%9C%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-c/lecture/2251?tab=curriculum]
+  [C# - 초보강좌 예제로 배우는 C#](https://www.inflearn.com/course/c-%EC%B4%88%EB%B3%B4-%EA%B0%95%EC%A2%8C-%EC%98%88%EC%A0%9C%EB%A1%9C-%EB%B0%B0%EC%9A%B0%EB%8A%94-c/lecture/2251?tab=curriculum)
 
   
 
