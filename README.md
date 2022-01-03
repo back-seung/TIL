@@ -5,3 +5,4 @@ Today I Learned
 ## [C#](https://github.com/back-seung/TIL/blob/master/C%23/C%23_INFO.md)
 * [21/12/30 C# 기초](https://github.com/back-seung/TIL/blob/master/C%23/C%23_1230.md)
 * [22/01/02 C# DB](https://github.com/back-seung/TIL/blob/master/C%23/C%23_0102.md)
+* [22/01/03 C# DB 제출 끝](https://github.com/back-seung/TIL/blob/master/C%23/C%23_0103.md)
