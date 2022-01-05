@@ -109,7 +109,7 @@ public interface Repository_Name extends JpaRepository<Entity Class, PK_Type>
 
 ## CRUD 적용하기
 
-* 적용하기 전, Spring의 웹 계층을 파악해 볼 필요가 있다![SpringWebLayer](C:\Users\seung\OneDrive\바탕 화면\SpringWebLayer.png)
+* 적용하기 전, Spring의 웹 계층을 파악해 볼 필요가 있다![SpringWebLayer](C:\Users\seung\OneDrive\바탕 화면\TIL\SPRING_BOOT\SpringWebLayer.png)
 
 * 도메인에서 비즈니스 로직을 처리해야 하는 이유 ?
 
