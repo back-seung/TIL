@@ -1,4 +1,4 @@
-## 0106 Spring_Boot_CRUD
+## 0107 Spring_Boot_CRUD
 
 * 오늘은 스프링 시큐리티와 OAuth 2.0으로 로그인 기능을 구현한다.
 
