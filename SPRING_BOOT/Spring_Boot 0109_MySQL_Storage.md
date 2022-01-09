@@ -53,7 +53,7 @@ spring.session.store-type=jdbc
 
 > 위 두가지를 설정하여 세션 저장소를 jdbc로 선택하게 되었다.
 >
-> 서버를 재시작하여 h2-console에 접속하면 SPRING_SESSION, SPRING_SESSION_ATTRIBUTES가 생성된 것을 확인할 수 있다.![image-20220109154643195](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220109154643195.png)
+> 서버를 재시작하여 h2-console에 접속하면 SPRING_SESSION, SPRING_SESSION_ATTRIBUTES가 생성된 것을 확인할 수 있다.![image](https://user-images.githubusercontent.com/84169773/148674067-80351ec3-5267-4161-af16-f98dceb76cac.png)
 >
 > 현재는 스프링이 재실행 될 때, H2또한 재실행 되기 때문에 세션이 풀린다. 이후 **AWS로 배포하면 AWS의 RDS를 사용하여 세션이 풀리지 않는다.**
 
@@ -62,7 +62,7 @@ spring.session.store-type=jdbc
 ## 2. 네이버 로그인 구현
 
 1. 네이버 오픈 API 어플리케이션 등록
-   ![naverLogin](C:\Users\seung\Desktop\naverLogin.png)
+   ![naverLogin](https://user-images.githubusercontent.com/84169773/148674098-ca24dd34-26a9-4795-aef8-dfa3be849249.png)
 
 2. `application-oauth.properties` 수정
 
@@ -119,7 +119,7 @@ spring.session.store-type=jdbc
    ```
 
 5. 성공 !
-   ![image-20220109163306500](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220109163306500.png)
+   ![image](https://user-images.githubusercontent.com/84169773/148674190-a7e0dfa7-1f6c-488e-96dc-4bc4316e50f0.png)
 
 
 
