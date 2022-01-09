@@ -1,4 +1,4 @@
-## 0107 Spring_Boot_CRUD
+## 0107 Spring_Boot_Spring Security&OAuth2.0
 
 * 오늘은 스프링 시큐리티와 OAuth 2.0으로 로그인 기능을 구현한다.
 
@@ -216,7 +216,7 @@
    >    public class SecurityConfig extends WebSecurityConfigurerAdapter {
    >    
    >        private final CustomOAuth2UserService customOAuth2UserService;
-   >    
+   >        
    >        @Override
    >        public void configure(HttpSecurity http) throws Exception {
    >            http.csrf().disable().headers().frameOptions().disable() //h2-console 사용하기 위해 해당 옵션 disable
@@ -342,7 +342,7 @@
    >          private String name;
    >          private String email;
    >          private String picture;
-   >      
+   >           
    >          public SessionUser(User user) {
    >              this.name = user.getName();
    >              this.email = user.getEmail();
