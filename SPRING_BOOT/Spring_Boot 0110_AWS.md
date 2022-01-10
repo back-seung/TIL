@@ -60,7 +60,7 @@
 4. 준비한 카드의 정보를 등록한다.
 5. SMS 인증을 한다.
 6. Support 플랜 중 **기본 지원** 플랜을 선택한다.
-7. 등록완료![AWSRegistration](C:\Users\seung\Desktop\AWSRegistration.png)
+7. 등록완료![AWSRegistration](https://user-images.githubusercontent.com/84169773/148743512-740866cf-3715-4d6d-9105-08b5aaf8fb9e.png)
 
 
 
@@ -104,12 +104,12 @@
 * 다음 버튼을 누르면 인스턴스 세부정보 탭이 나오는데 1대의 서버만 사용하니 기본값으로 놔두고 스토리지로 넘어간다.
 
 * 스토리지에서 크기의 기본값은 8GB인데 30GB까지는 프리티어로 지원이 된다. 따라서 30GB로 바꾸어준다.
-  ![StoragePretier](C:\Users\seung\Desktop\TIL\JAVA\StoragePretier.png)
+  ![StoragePretier](https://user-images.githubusercontent.com/84169773/148743546-85b01e66-d0de-4fc2-a615-a6f8de003f49.png)
 
 * 다음은 태그이다. SNS에서의 태그와 동일한 역할을 한다고 생각하면 되는데, 해당 인스턴스를 표현하는 여러 이름으로 사용될 수 있다.
 
 * 그리고 중요한 보안그룹 설정이다.
-  ![securityGroup](C:\Users\seung\Desktop\securityGroup.png)
+  ![securityGroup](https://user-images.githubusercontent.com/84169773/148743567-1a30d6ef-ef9b-4cd6-9359-f989dd491f36.png)
 
   > * 유형이 SSH이고 포트가 22인 경우는 AWS EC2 터미널로 접속할 때이다.
   > *  **pem**키가 없으면 접속이 안되니 전체 오픈(0.0.0.0/0, ::/0)하는 경우가 종종 발견되는데, 실수로 pem키가 노출되는 순간 서버에서 가상화폐가 채굴된다. 
@@ -156,7 +156,7 @@
 6. 경고창이 뜰텐데, Accept를 클릭한다.
 
 7. 다음과 같이 SSH 접속이 성공하였다.
-   ![SSHSuccess](C:\Users\seung\Desktop\SSHSuccess.png)
+   ![SSHSuccess](https://user-images.githubusercontent.com/84169773/148743599-d85ff3dc-05f4-4a2a-a4fd-5828988173f5.png)
 
 > 이제 리눅스 운영서버에서 해야 할 설정을 진행한다.
 
