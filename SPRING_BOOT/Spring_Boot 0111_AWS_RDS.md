@@ -96,7 +96,8 @@
 1. IntelliJ에 플러그인`DB Browser`을 설치한다. (설치전 RDS 정보에서 엔드포인트를 확인하고 복사한다.)
 
    > 왜인진 모르겠으나 `DB Browser` 플러그인으로는 테스트 커넥션을 성공하지 못했다. 그래서 IntelliJ 화면 오른쪽에 있는 `DATA BASE`탭에서 연결을 시도해봤는데 됐다.
-   > ![image-20220111154149025](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220111154149025.png)
+   > ![SchemaInit](https://user-images.githubusercontent.com/84169773/148897017-6f0c06b9-e624-4f65-81b4-bda8586e9c95.png)
+
 
 2. 콘솔을 열어 스키마 중 생성한 RDS 스키마를 사용하기 위해 `use schema_name;`을 입력후 실행한다.
 
@@ -143,7 +144,8 @@
 1. putty 실행 및 `sudo yum install mysql` 입력
 2. `mysql -u seung -p -h seung-springboot2-webservice.cffzgf4jtipz.ap-northeast-2.rds.amazonaws.com`를 입력하고 비밀번호를 입력한다음 성공적으로 접속했다.
 3. `show databases;` 를 입력하니 아래와 같이 `seung_springboot_webservice`가 조회된다.
-   ![image-20220111155820800](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220111155820800.png)
+   ![successDB](https://user-images.githubusercontent.com/84169773/148897042-965ec6ec-eac0-4180-93cc-815cee6d8701.png)
+
 
 
 
