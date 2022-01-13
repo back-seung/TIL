@@ -12,7 +12,7 @@
 * [21/01/09 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 5](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200109_MySQL_Storage.md)
 * [21/01/10 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 6](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200110_AWS.md)
 * [21/01/11 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 7](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200111_AWS_RDS.md)
-* [21/01/11 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 8](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200112_EC2%EC%97%90_%EB%B0%B0%ED%8F%AC.md)
+* [21/01/12 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 8](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200112_EC2%EC%97%90_%EB%B0%B0%ED%8F%AC.md)
 
 ## [C#](https://github.com/back-seung/TIL/blob/master/C%23/C%23_INFO.md)
 * [21/12/30 C# 기초](https://github.com/back-seung/TIL/blob/master/C%23/C%23_1230.md)
