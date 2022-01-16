@@ -16,6 +16,7 @@
 ### RDS 테이블 생성
 
 * JPA가 사용될 Entity테이블과 스프링 세션이 사용될 테이블 2가지 종류를 생성한다.
+
   ![JPA](https://user-images.githubusercontent.com/84169773/149649926-be0b675d-f2b1-42b4-bd28-edfcbb6f8b13.png)
 
 
