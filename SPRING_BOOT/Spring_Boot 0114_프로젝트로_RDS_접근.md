@@ -16,7 +16,8 @@
 ### RDS 테이블 생성
 
 * JPA가 사용될 Entity테이블과 스프링 세션이 사용될 테이블 2가지 종류를 생성한다.
-  ![image-20220116010638957](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220116010638957.png)
+  ![JPA](https://user-images.githubusercontent.com/84169773/149649926-be0b675d-f2b1-42b4-bd28-edfcbb6f8b13.png)
+
 
   > 예제를 따라서 성공적으로 만들었다
 
