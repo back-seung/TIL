@@ -236,11 +236,11 @@
 
 * 여기서 문제가 발생했다. 변경 사항이 적용이 안되는 것..
 * 그러다가 EC2 인스턴스가 일치하지 않는다는 걸 알게됐다ㅜㅜ
-  ![image-20220116172104442](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220116172104442.png)
+  ![image-20220116172104442](C:\Users\seung\Desktop\image-1)
 
 * 현타는 자기 전에 오게 놔두고 일단 해결부터 했다. 결과는 성공,,
-  ![image-20220116172452700](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220116172452700.png)
-  ![image-20220116172522863](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220116172522863.png)
+  ![image-20220116172452700](C:\Users\seung\Desktop\image-2)
+  ![image-20220116172522863](C:\Users\seung\Desktop\image-3)
 
 
 
