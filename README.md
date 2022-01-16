@@ -14,6 +14,8 @@
 * [21/01/11 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 7](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200111_AWS_RDS.md)
 * [21/01/12 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 8](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200112_EC2%EC%97%90_%EB%B0%B0%ED%8F%AC.md)
 * [21/01/14 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 9](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200114_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A1%9C_RDS_%EC%A0%91%EA%B7%BC.md)
+* [21/01/15 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 10](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200115_CodeDeploy%26Nginx.md)
+* [21/01/16 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 11](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200116_%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0.md)
 ## [C#](https://github.com/back-seung/TIL/blob/master/C%23/C%23_INFO.md)
 * [21/12/30 C# 기초](https://github.com/back-seung/TIL/blob/master/C%23/C%23_1230.md)
 * [22/01/02 C# DB](https://github.com/back-seung/TIL/blob/master/C%23/C%23_0102.md)
