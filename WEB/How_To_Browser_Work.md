@@ -37,7 +37,7 @@
 
    
 
-### 구조를 그림으로 표현
+### 브라우저의 컴포넌트
 
 ![image-20220127163407878](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220127163407878.png)
 
@@ -56,30 +56,14 @@
   
 
 * 렌더링 엔진의 Main Flow :
-
-  1. Parsing HTML to contruct the DOM tree (* DOM = Document Object Model)
-
-     > 구조화된 HTML의 태그들을 해석하고 일종의 트리 구조의 형태로 데이터를 다시 가지고 있게 된다.
-
-  2. Render tree construction
-
-     > 외부 CSS 파일과 함께 포함된 스타일 요소를 파싱한다. 
-
-  3. Layout of the render tree
-
-     > DOM 트리를 기준으로 2.의 결과물을 합쳐 렌더 트리를 배치한다.
-
-  4. Painting the render tree
-
-     > 렌더 트리 각 노드에 대해 화면 상에서 배치할 곳을 결정한다.
-
-  5. 
-
-     > UI 백엔드에서 렌더 트리의 각 노드를 그린다.
-
+  ![image-20220128093526010](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220128093526010.png)
   
-
+  > **DOM 을 파싱하고 렌더 트리를 그려  화면에 표시한다.**
   
+  1. HTML을 파싱하여 DOM 트리 형식으로 배치한다. 이때 CSS 파일도 파싱된다.
+  2. 둘이 합쳐져 엘리먼트에 스타일을 부여하는 작업을 하고 렌더트리를 그린다.
+  3. 각각의 DOM 트리별로 어떤 스타일 정보를 가지는지 렌더트리를 다시 객체화 시켜서 key : value 구조로 레이아웃을 결정한다.
+  4. 레이아웃이 결정되면 실제로 페인팅하여 화면에 표시한다.
 
-  
+
 
