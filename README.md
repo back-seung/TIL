@@ -5,7 +5,7 @@
 * [21/12/29 인터페이스](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
 * [22/01/21 백기선 자바 스터디 - 2](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%A3%BC%EC%B0%A8.md)
 * [22/01/24 Collection_HashSet](https://github.com/back-seung/TIL/blob/master/JAVA/HashSet.md)
-* [22/01/28](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%98%88%EC%99%B8.md)
+* [22/01/28 Exception](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%98%88%EC%99%B8.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
