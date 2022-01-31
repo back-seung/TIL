@@ -50,14 +50,13 @@
 * 인터넷 상의 자원의 위치
 
 * 특정 웹 서버의 특정파일에 접근하기 위한 경로 혹은 주소
-  ![image-20220125225431769](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220125225431769.png)
-
+  
    
 
 ## 실제 웹 작동 방식
 
 
-![image-20220125231644366](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220125231644366.png)
+
 
 > 순서 :
 
