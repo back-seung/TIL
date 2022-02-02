@@ -234,6 +234,8 @@ public class VectorExam {
   > * ArrayList는 중간 인덱스의 객체를 제거하면 뒤의 객체는 인덱스가 1씩 앞으로 당겨진다. 그렇기 때문에 빈번한 삽입, 삭제가 일어나는 곳에서는 LinkedList가 좋은 성능을 발휘한다.
 
 * 삭제시 LinkedList 구조
+
+
   ![링크드리스트삭제](https://user-images.githubusercontent.com/84169773/152163682-33c50a6e-b247-41c5-927e-c11104166882.png)
 
 * ArrayList와 성능차이
