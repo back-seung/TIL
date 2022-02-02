@@ -920,7 +920,8 @@ public class TreeMapExample {
 ```
 
 > 결과
-> ![트리맵결과](https://user-images.githubusercontent.com/84169773/152173848-0c11b12d-eae6-4610-ab58-4389dd489909.png)
+	
+![트리맵결과](https://user-images.githubusercontent.com/84169773/152173848-0c11b12d-eae6-4610-ab58-4389dd489909.png)
 
 
 
