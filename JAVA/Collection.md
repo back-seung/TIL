@@ -225,7 +225,7 @@ public class VectorExam {
 >
 > ▶ ArrayList는 내부 배열에 객체를 저장해서 인덱스로 관리하지만, LinkedList는 인접 참조를 링크해서 체인처럼 관리한다.
 
-* 구조![image-20220202163902952](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220202163902952.png)
+* 구조!![링크드리스트](https://user-images.githubusercontent.com/84169773/152163655-29161689-8018-4853-8320-0b991e3fe3e7.png)
 
   > LinkedList에서 특정 인덱스의 객체를 제거하면 앞뒤 링크만 변경되고 나머지 링크는 변경되지 않는다.
   >
@@ -234,7 +234,7 @@ public class VectorExam {
   > * ArrayList는 중간 인덱스의 객체를 제거하면 뒤의 객체는 인덱스가 1씩 앞으로 당겨진다. 그렇기 때문에 빈번한 삽입, 삭제가 일어나는 곳에서는 LinkedList가 좋은 성능을 발휘한다.
 
 * 삭제시 LinkedList 구조
-  ![image-20220202164244574](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220202164244574.png)
+  ![링크드리스트삭제](https://user-images.githubusercontent.com/84169773/152163682-33c50a6e-b247-41c5-927e-c11104166882.png)
 
 * ArrayList와 성능차이
 
@@ -438,7 +438,7 @@ public class HashSetExam2 {
 
 ### 구조
 
-![image-20220202172345391](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220202172345391.png)
+![맵컬렉션](https://user-images.githubusercontent.com/84169773/152163699-d45d84e9-16ee-49a8-bf78-94f4dd471369.png)
 
 ### 종류
 
@@ -700,7 +700,7 @@ String value = properties.getProperty("key");
 
 #### 구조
 
-![image-20220202184506009](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220202184506009.png)
+![트리셋](https://user-images.githubusercontent.com/84169773/152163719-3aa1334e-1fe2-4a1c-aa66-b8c2c2939681.png)
 
 #### 생성 방법
 
