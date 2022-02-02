@@ -795,3 +795,240 @@ NavigableSet<E> ascendingSet= descendingSet.descendingSet();
 
 #### 범위 검색 관련 메서드
 
+| 리턴 타입       | 메서드                                                       | 설명                                                         |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| NavigableSet<E> | headSet(E toElement, boolean inclusive)                      | 주어진 객체보다 낮은 객체들을 NavigableSet으로 리턴, 주어진 객체 포함 여부는 두 번째 매개값에 따라 달라짐 |
+| NavigableSet<E> | tailSet(E fromElement, boolean inclusive)                    | 주어진 객체보다 높은 객체들을 NavigableSet으로 리턴, 주어진 객체 포함 여부는 두 번째 매개값에 따라 달라짐 |
+| NavigableSet<E> | subSet(E fromElement, boolean frominclusive, E toElement, boolean toInclusive) | 시작과 끝으로 주어진 객체 사이의 객체들을 NavigableSet으로 리턴, 시작과 끝 객체의 포함 여부는 두 번째, 네 번째 매개값에 따라 달라짐 |
+
+* subSet Detail
+
+```java
+/*
+시작 객체 < 찾는 객체 < 끝 객체
+시작 객체 <= 찾는 객체 <= 끝 객체
+*/
+
+NavigableSet<E> set = treeSet.subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)
+  																//		시작 객체,			시작 객체의 포함 여부,			끝 객체,			끝 객체의 포함 여부
+```
+
+
+
+#### 범위 검색 예제
+
+```java
+public class TreeSetExample {
+    public static void main(String[] args) {
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        treeSet.add("apple");
+        treeSet.add("forever");
+        treeSet.add("description");
+        treeSet.add("ever");
+        treeSet.add("zoo");
+        treeSet.add("base");
+        treeSet.add("guess");
+        treeSet.add("cherry");
+
+        System.out.println("c~f 사이의 단어 검색");
+        NavigableSet<String> rangeSet = treeSet.subSet("c", true, "f", true);
+
+        for (String s : rangeSet) {
+            System.out.println(s);
+        }
+    }
+}
+```
+
+
+
+### TreeMap
+
+> 이진 트리를 기반으로 한 Map 컬렉션이다. TreeSet과의 차이는 키와 값이 저장된 Map.Entry를 저장한다는 점이다. TreeMap에 객체를 저장하면 자동으로 정렬되는데, 기본적으로 부모 키값과 비교해서 키 값이 낮은 것은 왼쪽 자식 노드에, 키 값이 높은 것은 오른쪽 자식 노드에 Map.Entry 객체를 저장한다.
+
+* 구조
+  ![TreeMap](https://user-images.githubusercontent.com/84169773/152173825-ec816fff-c28d-43a9-865a-547c24bbebb9.png)
+
+* 생성방법
+
+```java
+TreeMap<K, V> treeMap = new TreeMap<K, V>();
+//			키,값											   키,값
+
+TreeMap<String, Integer> treeMap = new TreeMap<String, Integer>();
+```
+
+> Map 인터페이스 타입 변수에 대입해도 되지만 TreeMap 클래스 타입으로 대입한 이유는 특정 객체를 찾거나 범위 검색과 관련된 메소드를 사용하기 위해서이다.
+
+
+
+#### 검색 관련 메서드
+
+| 리턴 타입      | 메서드              | 설명                                                         |
+| -------------- | ------------------- | ------------------------------------------------------------ |
+| Map.Entry<K,V> | firstEntry()        | 제일 낮은 Map.Entry를 리턴                                   |
+| Map.Entry<K,V> | lastEntry()         | 제일 높은 Map.Entry를 리턴                                   |
+| Map.Entry<K,V> | lowerEntry(K key)   | 주어진 키보다 바로 아래 Map.Entry를 리턴                     |
+| Map.Entry<K,V> | higherEntry(K key)  | 주어진 키보다 바로 위 Map.Entry를 리턴                       |
+| Map.Entry<K,V> | floorEntry(K key)   | 주어진 키와 동등한 키가 있으면 해당 Map.Entry를 리턴,<br />없다면 주어진 키 바로 아래의 Map.Entry를 리턴 |
+| Map.Entry<K,V> | ceilingEntry(K key) | 주어진 키와 동등한 키가 있으면 해당 Map.Entry를 리턴,<br />없다면 주어진 키 바로 위의 Map.Entry를 리턴 |
+| Map.Entry<K,V> | pollFirstEntry()    | 제일 낮은 Map.Entry를 꺼내오고 컬렉션에서 제거함             |
+| Map.Entry<K,V> | pollLastEntry()     | 제일 높은 Map.Entry를 꺼내오고 컬렉션에서 제거함             |
+
+
+
+#### 특정 Map.Entry를 찾는 예제
+
+```java
+public class TreeMapExample {
+    public static void main(String[] args) {
+        TreeMap<Integer, String> scores = new TreeMap<>();
+        scores.put(new Integer(87), "홍길동");
+        scores.put(new Integer(98), "이동수");
+        scores.put(new Integer(96), "이순신");
+        scores.put(new Integer(82), "박길순");
+        scores.put(new Integer(75), "김자바");
+        scores.put(new Integer(80), "백루비");
+
+        Map.Entry<Integer, String> entry = null;
+
+        entry = scores.firstEntry();
+        System.out.println("가장 낮은 점수 : " + entry.getKey() + "-" + entry.getValue());
+
+        entry = scores.lastEntry();
+        System.out.println("가장 높은 점수 : " + entry.getKey() + "-" + entry.getValue());
+
+        entry = scores.lowerEntry(new Integer(96));
+        System.out.println("96점 아래 점수 : " + entry.getKey() + "-" + entry.getValue());
+
+        entry = scores.higherEntry(new Integer(97));
+        System.out.println("97점 위 점수 : " + entry.getKey() + "-" + entry.getValue());
+
+        entry = scores.floorEntry(new Integer(96));
+        System.out.println("96점 이거나 바로 아래 점수" + entry.getKey() + "-" + entry.getValue());
+
+        entry = scores.ceilingEntry(new Integer(97));
+        System.out.println("97점 이거나 바로 위 점수" + entry.getKey() + "-" + entry.getValue());
+
+        while (!scores.isEmpty()) {
+            entry = scores.pollFirstEntry();
+            System.out.println(entry.getKey() + "-" + entry.getValue() + "남은 객체 수 : " + scores.size());
+        }
+    }
+}
+```
+
+> 결과
+> ![트리맵결과](https://user-images.githubusercontent.com/84169773/152173848-0c11b12d-eae6-4610-ab58-4389dd489909.png)
+
+
+
+#### 정렬 관련 메서드
+
+| 리턴 타입         | 메서드             | 설명                                                |
+| ----------------- | ------------------ | --------------------------------------------------- |
+| NavigableSet<K>   | descendingKeySet() | 내림차순으로 정렬된 키의 NavigableSet을 리턴        |
+| NavigableMap<K,V> | descendingMap()    | 내림차순으로 정렬된 Map.Entry의 NavigableMap을 리턴 |
+
+
+
+#### 범위 검색 관련 메서드
+
+| 리턴 타입          | 메서드                                                       | 설명                                                         |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| NavigableMap<K, V> | headMap(K toKey, boolean inclusive)                          | 주어진 키보다 낮은 Map.Entry들을 NavigableMap으로 리턴, 주어진 키의 Map.Entry 포함 여부는 두 번째 매개값에 따라 달라짐 |
+| NavigableMap<K, V> | tailMap(K fromKey, boolean inclusive)                        | 주어진 키보다 높은 Map.Entry들을 NavigableMap으로 리턴, 주어진 키의 Map.Entry 포함 여부는 두 번째 매개값에 따라 달라짐 |
+| NavigableMap<K, V> | subMap(K toKey, boolean inclusive, K fromKey, boolean inclusive) | 시작과 끝으로 주어진 키 사이의 Map.Entry들을 NavigableMap 컬렉션으로 변환, 시작과 끝 키의 Map.Entry 포함 여부는 두 번째, 네 번째 매개값에 따라 달라짐 |
+
+
+
+### Comparable과 Comparator
+
+> TreeSet 객체와 TreeMap의 키는 저장과 동시에 자동 오름차순으로 정렬되는데 숫자 타입일 경우에는 **값**으로 정렬하고, 문자열 타입의 경우에는 **유니코드**로 정렬한다.
+>
+> * TreeSet과 TreeMap은 정렬을 위해 `java.lang.Comparable`을 구현한 객체를 요구하는데, Integer,Double,String은 모두 Comparable 인터페이스를 구현하고 있다. 
+> * 사용자 정의 클래스로 Comparable을 구현한다면 자동 정렬이 가능하다. `compareTo()` 메서드가 정의 되어있기 때문에 메서드를 오버라이딩하여 리턴 값을 만들어낸다.
+
+
+
+#### compareTo() 설명 및 예제
+
+* 설명 
+
+| 리턴 타입 | 메서드         | 설명                                                         |
+| --------- | -------------- | ------------------------------------------------------------ |
+| int       | compareTo(T o) | 주어진 객체와 같으면 0을 리턴<br />주어진 객체보다 크면 양수를 리턴<br />주어진 객체보다 작으면 음수를 리턴 |
+
+* 구현 예제
+
+```java
+public class Member implements Comparable<Member> {
+	public int age;
+  ...
+
+@Override
+public int compareTo(Member o) {
+	if(age > o.age) return -1;
+    else if(age == o.age) return 0;
+  else return 1;
+}
+```
+
+
+
+#### Comparable 비구현 객체 정렬방법
+
+> TreeSet의 객체와 TreeMap의 키가 Comparable을 구현하고 있지 않을 경우 ClassCastException이 발생한다.
+>
+> ▶ 생성자의 매개값으로 Comparator를 제공하면 정렬을 할 수 있다.
+
+```java
+TreeSet<E> treeSet = new TreeSet<E>(new AscendingComparator()); // 오름차순
+TreeMap<K,V> treeMap = new TreeMap<K,V>(new DescendingComparator()); // 내림차순
+```
+
+
+
+#### Comparator 메서드
+
+| 리턴 타입 | 메서드              | 설명                                                         |
+| --------- | ------------------- | ------------------------------------------------------------ |
+| int       | compare(T o1, T o2) | o1과 o2가 동등하다면 0을 리턴<br />o1이 o2보다 앞에 오게 하려면 음수를 리턴<br />o1이 o2보다 뒤에 오게 하려면 양수를 리턴 |
+
+
+
+#### 예제
+
+```java
+public class DescendingComparator implements Comparator<Fruit> {
+  ...
+  @Override
+	public int compare(Fruit o1, Fruit o2) {
+  	if(o1.price > o2.price) return 1;
+	  else if(o1.price == o2.price) return 0;
+	  else return -1;
+	}
+}
+```
+
+
+
+## LIFO와 FIFO 컬렉션
+
+> * LIFO (Last In First Out) : 나중에 넣은 객체가 먼저 빠져나가는 구조 - `stack`
+> * FIFO (First In First Out) : 먼저 넣은 객체가 먼저 빠져나가는 구조 - `Queue`
+
+
+
+### Stack
+
+### Queue
+
+
+
+## 동기화된 컬렉션
+
+
+
+## 병렬 처리를 위한 컬렉션
