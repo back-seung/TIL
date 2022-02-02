@@ -676,3 +676,109 @@ String value = properties.getProperty("key");
 ### 이진 트리 구조
 
 > **여러개의 노드가 트리 형태로 연결된 구조,** 루트 노드라고 불리는 하나의 노드에서부터 시작해 각 노드에 최대 2개의 노드를 연결할 수 있는 구조이다. 부모 노드와 자식 노드로 구성되어 있다.
+>
+> * 부모노드보다 값이 작은 노드는 왼쪽에, 값이 큰 노드는 오른쪽에 위치 시킨다.
+
+
+
+### TreeSet
+
+> 이진 트리를 기반으로한 Set 컬렉션, 하나의 노드는 노드값인 value와 왼쪽과 오른쪽 자식 노드를 참조하기 위한 두 개의 변수로 구성
+>
+> * TreeSet에 객체를 저장하면 자동으로 정렬되는데 부모값과 비교해서 낮은 것은 왼쪽 자식 노드에, 높은 것은 오른쪽 자식 노드에 저장한다.
+
+#### 구조
+
+![image-20220202184506009](C:\Users\seung\AppData\Roaming\Typora\typora-user-images\image-20220202184506009.png)
+
+#### 생성 방법
+
+> 저장할 객체 타입을 파라미터로 표기하고 기본 생성자를 호출하면 된다.
+
+```java
+TreeSet<E> treeSet = new TreeSet<E>();
+```
+
+> Set 인터페이스 타입 변수에 대입해도 되지만 TreeSet 클래스 타입으로 대입한 이유는 객체를 찾거나 범위 거색과 관련된 메서드를 사용하기 위해서이다.
+
+
+
+#### 검색 관련 메서드
+
+| 리턴 타입 | 메서드       | 설명                                                         |
+| --------- | ------------ | ------------------------------------------------------------ |
+| E         | first()      | 제일 낮은 객체를 리턴                                        |
+| E         | last()       | 제일 높은 객체를 리턴                                        |
+| E         | lower(E e)   | 주어진 객체보다 바로 아래 객체를 리턴                        |
+| E         | higher(E e)  | 주어진 객체보다 바로 위 객체를 리턴                          |
+| E         | floor(E e)   | 주어진 객체와 동등한 객체가 있으면 리턴, 만약 없다면 주어진 객체의 바로 아래의 객체를 리턴 |
+| E         | ceiling(E e) | 주어진 객체와 동등한 객체가 있으면 리턴, 만약 없다면 주어진 객체의 바로 위의 객체를 리턴 |
+| E         | pollFirst()  | 제일 낮은 객체를 꺼내오고 컬렉션에서 제거함                  |
+| E         | pollLast()   | 제일 높은 객체를 꺼내오고 컬렉션에서 제거함                  |
+
+
+
+#### 점수를 무작위로 저장하고 특정 점수를 찾는 예제
+
+```java
+public class TreeSetExample {
+    public static void main(String[] args) {
+        TreeSet<Integer> scores = new TreeSet<>();
+
+        scores.add(new Integer(85));
+        scores.add(new Integer(97));
+        scores.add(new Integer(90));
+        scores.add(new Integer(53));
+        scores.add(new Integer(64));
+        scores.add(new Integer(59));
+
+        Integer score = null;
+
+        score = scores.first(); // 가장 낮은 점수
+        System.out.println(score);
+
+        score = scores.last();
+        System.out.println(score); // 가장 높은 점수
+
+        score = scores.lower(new Integer(85));
+        System.out.println("85 점 아래 점수 : " + score);
+
+        score = scores.higher(new Integer(85));
+        System.out.println("85 점 위의 점수 : " + score);
+
+        score = scores.floor(new Integer(85));
+        System.out.println("85점 이거나 바로 아래 점수 : " + score);
+
+        score = scores.ceiling(new Integer(85));
+        System.out.println("85점 이거나 바로 위 점수 : " + score);
+
+        while (!scores.isEmpty()) {
+            score = scores.pollFirst();
+            System.out.println(score + "(남은 객체 수 : " + scores.size() + ")");
+        }
+    }
+}
+```
+
+
+
+#### 정렬 관련 메서드
+
+| 리턴 타입       | 메서드               | 설명                                    |
+| --------------- | -------------------- | --------------------------------------- |
+| Iterator<E>     | descendingIterator() | 내림차순으로 정렬된 Iterator를 리턴     |
+| NavigableSet<E> | descendingSet()      | 내림차순으로 정렬된 NavigableSet을 반환 |
+
+* descendingSet() : 
+
+  NavigableSet을 리턴하는데 NavigableSet은 TreeSet과 마찬가지로 first(), last(), lower(), higher(), floor(), ceiling() 메서드를 제공하고, 정렬 순서를 바꾸는 descendingSet() 메서드를 두 번 호출하면 된다.
+
+```java
+NavigableSet<E> descendingSet= treeSet.descendingSet();
+NavigableSet<E> ascendingSet= descendingSet.descendingSet();
+```
+
+
+
+#### 범위 검색 관련 메서드
+
