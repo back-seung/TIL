@@ -1044,14 +1044,123 @@ Stack<E> stack = new Stack<E>();
 
 
 
+#### 활용 예제(동전 빼기)
+
+```java
+public class StackExam {
+
+    public static void main(String[] args) {
+
+        //동전 쌓기
+        Stack<Coin> coins = new Stack<>();
+
+        coins.push(new Coin(10));
+        coins.push(new Coin(100));
+        coins.push(new Coin(500));
+        coins.push(new Coin(50));
+
+        while (!coins.isEmpty()) {
+            Coin coin = coins.pop();
+
+            System.out.println(coin.getCoin() + "원");
+        }
+    }
+}
+```
+
 
 
 ### Queue
+
+> Queue 인터페이스는 FIFO 자료구조에서 사용되는 메서드를 정의하고 있다.
+>
+> * Queue를 구현한 대표적인 클래스는 LinkedList이다. LinkedList는 List를 구현했기 때문에 List 컬렉션이기도 하다.
+
+
+
+#### 주요 메서드
+
+| 리턴 타입 | 메서드     | 설명                                                 |
+| --------- | ---------- | ---------------------------------------------------- |
+| boolean   | offer(E e) | 주어진 객체를 넣는다                                 |
+| E         | peek()     | 객체 하나를 가져온다. 객체를 큐에서 제거하지 않는다. |
+| E         | poll()     | 객체 하나를 가져온다. 객체를 큐에서 제거한다.        |
+
+
+
+#### LinkedList ▶ Queue 변환
+
+```java
+Queue<E> queue = new LinkedList<>();
+```
+
+
+
+#### 활용 예제
+
+```java
+public class QueueExam {
+
+    public static void main(String[] args) {
+        Queue<Message> messages = new LinkedList<>();
+
+        messages.offer(new Message("메일 보내기", "승한"));
+        messages.offer(new Message("문자 보내기", "승훈"));
+        messages.offer(new Message("파일 전송", "승백"));
+
+        while (!messages.isEmpty()) {
+            Message message = messages.poll();
+
+            System.out.println(message.to + "님에게 " + message.command + "(을)를 합니다");
+        }
+    }
+}
+```
 
 
 
 ## 동기화된 컬렉션
 
+> 컬렉션 프레임워크의 대부분의 클래스들은 싱글 스레드 환경에서 사용할 수 있도록 설계 되었다. 그렇기 때문에 여러 스레드가 동시에 컬렉션에 접근한다면 의도하지 않게 요소가 변경될 수 있는 불안전한 상태가 된다.
+>
+> * `Vector`, `Hashtable`은 동기화된 메서드로 구성되어 있기 때문에 멀티 스레드 환경에서 안전하다.
+> * `ArrayList`,`HashSet`,`HashMap`은 동기화된 메서드로 구성되어 있지 않아 안전하지 않다.
+> * 동기화된 메서드를 동기화된 메서드로 래핑하는 Collections의 synchronizedXXX() 메서드를 컬렉션 프레임워크에서는 제공하고 있다.
+
+
+
+| 리턴 타입 | 메서드                        | 설명                        |
+| --------- | ----------------------------- | --------------------------- |
+| List<T>   | syscronizedList(List<T> list) | List를 동기화된 List로 리턴 |
+| Map<K, V> | syscronizedMap(Map<K, V> m)   | Map을 동기화된 Map으로 리턴 |
+| Set<T>    | syscronizedSet(Set<T> s)      | Set을 동기화된 Set으로 리턴 |
+
 
 
 ## 병렬 처리를 위한 컬렉션
+
+> 동기화된 컬렉션은 멀티 스레드 환경에서 하나의 스레드가 요소를 안전하게 처리하도록 도와주지만, 전체 요소를 빠르게 처리하지는 못한다. 하나의 스레드가 요소를 처리할 때 전체에 잠금이 발생하고 다른 스레드는 대기 상태가 된다.
+
+
+
+### 자바에서 멀티 스레드가 컬렉션의 요소를 병렬적으로 처리하게 제공해주는 컬렉션
+
+* `java,util.concurrent` 패키지의 `ConcurrentHashMap`과 `ConcurrentLinkedQueue`이다,.
+
+* `ConcurrentHashMap` - Map 구현 클래스
+
+  : 사용시 스레드에 안전하면서도 멀티 스레드가 요소를 병렬적으로 처리할 수 있다.(부분 잠금을 사용하기 때문)
+
+  ```java
+  Map<K,V> map = new ConcurrentHashMap<K,V>();
+  ```
+
+* `ConcurrentLinkedQueue` - Queue 구현 클래스
+
+  : 락-프리 알고리즘을 구현한 컬렉션, 여러 개의 스레드가 동시에 접근할 경우, 잠금을 사용하지 않고도 최소한 하나의 스레드가 안전하게 요소를 저장하거나 얻도록 해준다.
+
+  ```java
+  Queue<E> queue = new ConcurrentLinkedQueue<E>();
+  ```
+
+  
