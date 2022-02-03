@@ -1,0 +1,1 @@
+package instance;public class TestObjChild extends TestObj {}
