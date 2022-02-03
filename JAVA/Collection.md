@@ -920,7 +920,7 @@ public class TreeMapExample {
 ```
 
 > 결과
-	
+
 ![트리맵결과](https://user-images.githubusercontent.com/84169773/152173848-0c11b12d-eae6-4610-ab58-4389dd489909.png)
 
 
@@ -1023,6 +1023,28 @@ public class DescendingComparator implements Comparator<Fruit> {
 
 
 ### Stack
+
+> Stack 클래스는 LIFO 자료구조를 구현한 클래스이다.
+
+#### 주요 메서드
+
+| 리턴타입 | 메서드       | 설명                                                         |
+| -------- | ------------ | ------------------------------------------------------------ |
+| E        | push(E item) | 주어진 객체를 스택에 넣는다                                  |
+| E        | peek()       | 스택의 맨 위 객체를 가져온다. 객체를 스택에서 제거하지 않는다 |
+| E        | pop()        | 스택의 맨 위 객체를 가져온다. 객체를 스택에서 제거한다.      |
+
+
+
+#### 스택 객체 생성법
+
+```java
+Stack<E> stack = new Stack<E>();
+```
+
+
+
+
 
 ### Queue
 
