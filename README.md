@@ -29,6 +29,9 @@
 * [21/01/15 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 10](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200115_CodeDeploy%26Nginx.md)
 * [21/01/16 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 11](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200116_%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0.md)
 * [21/01/17 ~ 18 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 12](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200117_%EB%81%9D.md)
+
+## OOP
+* [22/02/01 객체지향 5원칙](https://github.com/back-seung/TIL/blob/master/OOP/SOLID.md)
 ## [C#](https://github.com/back-seung/TIL/blob/master/C%23/C%23_INFO.md)
 * [21/12/30 C# 기초](https://github.com/back-seung/TIL/blob/master/C%23/C%23_1230.md)
 * [22/01/02 C# DB](https://github.com/back-seung/TIL/blob/master/C%23/C%23_0102.md)
