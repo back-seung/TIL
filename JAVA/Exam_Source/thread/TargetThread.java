@@ -1,0 +1,1 @@
+package thread;public class TargetThread extends Thread {    public void run() {        for (long i = 0; i < 1_000_000_000; i++) {        }        try {            Thread.sleep(1500);        } catch (InterruptedException e) {            e.printStackTrace();        }        for (long i = 0; i < 1_000_000_000; i++) {        }    }}
