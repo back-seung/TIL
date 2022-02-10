@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/daemonThread/AutoSaveThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daemonThread/DaemonThreadExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/threadGroup/ThreadGroupExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/threadGroup/WorkThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../멀티스레드.md" beforeDir="false" afterPath="$PROJECT_DIR$/../멀티스레드.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="애플리케이션.DaemonThreadExample">
+  <component name="RunManager" selected="애플리케이션.ThreadGroupExample">
     <configuration name="DaemonThreadExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="daemonThread.DaemonThreadExample" />
       <module name="Exam_Source" />
@@ -54,12 +54,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorExam" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Week_4.IteratorExam" />
+    <configuration name="ThreadGroupExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="threadGroup.ThreadGroupExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Week_4.*" />
+          <option name="PATTERN" value="threadGroup.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -108,11 +108,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.ThreadGroupExample" />
         <item itemvalue="애플리케이션.DaemonThreadExample" />
         <item itemvalue="애플리케이션.WaitNotifyExample" />
         <item itemvalue="애플리케이션.ThreadJoinExample" />
         <item itemvalue="애플리케이션.ThreadStateExample" />
-        <item itemvalue="애플리케이션.IteratorExam" />
       </list>
     </recent_temporary>
   </component>
@@ -129,7 +129,7 @@
       <workItem from="1644219009481" duration="1181000" />
       <workItem from="1644394648412" duration="1258000" />
       <workItem from="1644413491714" duration="2234000" />
-      <workItem from="1644452509630" duration="267000" />
+      <workItem from="1644452509630" duration="3281000" />
     </task>
     <servers />
   </component>
