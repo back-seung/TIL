@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/threadpool/NoResultExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/threadpool/ResultByCallableExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/threadpool/ResultByRunnableExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/threadpool/CallbackExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/threadpool/CompletionServiceExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../멀티스레드.md" beforeDir="false" afterPath="$PROJECT_DIR$/../멀티스레드.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +126,7 @@
       <workItem from="1644452509630" duration="5658000" />
       <workItem from="1644565254403" duration="1471000" />
       <workItem from="1644630579958" duration="2703000" />
-      <workItem from="1644655022581" duration="2168000" />
+      <workItem from="1644655022581" duration="5114000" />
     </task>
     <servers />
   </component>
