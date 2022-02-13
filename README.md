@@ -12,7 +12,7 @@
 * [22/01/21 백기선 자바 스터디 - 2](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%A3%BC%EC%B0%A8.md)
 * [22/01/24 Collection_HashSet(22/2/1 Collection 정리 후 삭제)]
 * [22/01/28 Exception](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%98%88%EC%99%B8.md)
-* [22/01/31 MultiThread](https://github.com/back-seung/TIL/blob/master/JAVA/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C.md)
+* [22/01/31 - 22/02/13 MultiThread](https://github.com/back-seung/TIL/blob/master/JAVA/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C.md)
 * [22/02/01 백기선 자바 스터디 - 3](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-3%EC%A3%BC%EC%B0%A8.md)
 * [22/02/02 Collection](https://github.com/back-seung/TIL/blob/master/JAVA/Collection.md)
 * [22/02/07 백기선 자바 스터디 - 4](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-4%EC%A3%BC%EC%B0%A8.md)
