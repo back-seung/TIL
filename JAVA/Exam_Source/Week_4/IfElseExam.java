@@ -1,0 +1,1 @@
+package Week_4;public class IfElseExam {    public static void main(String[] args) {        int a = 0;        int b = 1;        if (a > b) {            System.out.println("A");        } else if (a == b) {            System.out.println("==");        } else {            System.out.println("B");        }    }}
