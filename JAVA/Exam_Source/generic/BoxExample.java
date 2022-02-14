@@ -1,0 +1,1 @@
+package generic;public class BoxExample {    public static void main(String[] args) {        Box<String> box = new Box<>();        box.setT("Hello");        String str = box.getT();        Box<Integer> box2 = new Box<>();        box2.setT(100);        int value = box2.getT();    }}
