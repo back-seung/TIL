@@ -16,6 +16,7 @@
 * [22/02/01 백기선 자바 스터디 - 3](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-3%EC%A3%BC%EC%B0%A8.md)
 * [22/02/02 Collection](https://github.com/back-seung/TIL/blob/master/JAVA/Collection.md)
 * [22/02/07 백기선 자바 스터디 - 4](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-4%EC%A3%BC%EC%B0%A8.md)
+* [22/02/13 Generic](https://github.com/back-seung/TIL/blob/master/JAVA/Generic.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
