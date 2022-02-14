@@ -127,3 +127,194 @@ List<String> list = new ArrayList<>(); // 선언부에 String을 명시하여 �
 public <타입 파라미터> 리턴타입 메소드명(매개변수, ...) { ... }
 ```
 
+
+
+### 호출 방법
+
+> 제네릭 메소드는 두 가지 방법으로 호출할 수 있다. **명시적으로 구체적 타입을 지정해주는 방법**과 **매개값을 보고 구체적 타입을추정**하는 방법이 있는데 일반적으로 후자의 방법을 더 많이 사용한다.
+
+```java
+Box<Integer> box = <Integer>boxing(100); // 타입 파라미터를 명시적으로 Integer로 지정
+Box<Integer> box = boxing(100); // 매개변수의 타입을 보고 Integer로 추정
+```
+
+
+
+### 제네릭 메소드 예제
+
+* 메소드를 생성하는 Util 클래스
+
+```java
+public class Util {
+    public static <T> Box<T> boxing(T t) {
+        Box<T> box = new Box<>();
+        box.setT(t);
+        return box; 
+    }
+}
+```
+
+* Box
+
+```java
+public class Box<T> {
+    private T t;
+
+    public T getT() {
+        return t;
+    }
+
+    public void setT(T t) {
+        this.t = t;
+    }
+}
+```
+
+* 메소드를 호출하는 Main
+
+```java
+public class BoxMethodExample {
+    public static void main(String[] args) {
+        Box<Integer> box1 = Util.boxing(100);
+        int intValue = box1.getT();
+
+        Box<String> box2 = Util.boxing("스트링링");
+        String strValue = box2.getT();
+    }
+}
+```
+
+
+
+### compare를 활용한 제네릭 메소드 예제
+
+> boolean타입의 정적 제네릭 메소드 compare()를 정의하여 이를 활용한다.
+
+* 제네릭 메소드를 만드는  Util 클래스
+
+```java
+public class Util {
+    public static <K, V> boolean compare(Pair<K, V> p1, Pair<K, V> p2) {
+        boolean keyCompare = p1.getKey().equals(p2.getKey());
+        boolean valueCompare = p1.getValue().equals(p2.getValue());
+
+        return keyCompare && valueCompare;
+    }
+}
+```
+
+* 제네릭 타입의 Pair 클래스
+
+```java
+public class Pair<K, V> {
+    private K key;
+    private V value;
+
+    public Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    public K getKey() {
+        return key;
+    }
+
+    public void setKey(K key) {
+        this.key = key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+
+    public void setValue(V value) {
+        this.value = value;
+    }
+}
+```
+
+* 제네릭 메소드를 호출하는 Example
+
+```java
+public class CompareMethodExample {
+    public static void main(String[] args) {
+        Pair<Integer, String> pair1 = new Pair<>(1, "사과"); // 제네릭 타입 구체적 명시
+        Pair<Integer, String> pair2 = new Pair<>(1, "사과");
+
+        boolean result = Util.compare(pair1, pair2); // true
+
+        if (result) {
+            System.out.println("논리적 동등 객체");
+        } else {
+            System.out.println("논리적 동등 객체 아님");
+        }
+
+        Pair<String, String> pair3 = new Pair<>("user1", "홍길동"); // 제네릭 타입 구체적 명시
+        Pair<String, String> pair4 = new Pair<>("user2", "홍길동");
+        boolean result2 = Util.compare(pair3, pair4);
+        if (result2) {
+            System.out.println("논리적 동등 객체");
+        } else {
+            System.out.println("논리적 동등 객체 아님");
+        }
+    }
+}
+```
+
+
+
+## 제한된 타입 파라미터(<T extends 최상위타입>)
+
+> 타입 파라미터에 저장되는 구체적 타입을 제한할 필요가 종종 있다. 숫자를 연산하는 제네릭 메소드에서는 Number타입과 그 하위 타입의 인스턴스만 가져야 하듯 말이다. 이것이 **제한된 타입 파라미터가 필요한 이유**이다.  
+>
+> 제한된 타입 파라미터를 선언하려면 타입 파라미터 뒤에 **extends 키워드를 붙이고 상위 타입을 명시하면 된다.** 여기서 extends는 상속이 아니라 종류의 의미로 사용된다.
+
+```java
+public <T extends 상위 타입> 리턴타입 메소드(매개변수, ...) { ... }
+```
+
+* 타입 파라미터에 저장되는 구체적인 타입은 상위 타입이거나 상위 타입의 하위 또는 구현 클래스만 가능하다.
+* 주의 : 메소드의 중괄호`{}` 안에서 타입 파라미터의 변수로 사용 가능한 것은 상위 타입의 멤버(필드, 메소드)로 제한된다.
+
+
+
+### 숫자 타입만 갖는 제네릭 메소드 예제
+
+> doubleValue() 메소드는 Number 클래스에 정의되어 있는 메소드로 숫자를 double 타입으로 변환한다. 크면 1, 같으면 0, 작으면 -1을 리턴한다.
+
+  
+
+* 제한된 타입 파라미터를 가지는 Util 클래스
+
+```java
+public class Util {
+    public static <T extends Number> int compare(T t1, T t2) {
+        double v1 = t1.doubleValue();
+        double v2 = t2.doubleValue();
+        return Double.compare(v1, v2);
+    }
+}
+```
+
+  
+
+* Main 클래스 
+
+```java
+public class BoundedTypeParameterExample {
+    public static void main(String[] args) {
+        // String str = Util.compare("1", "2"); // String은 Number 타입이 아님
+
+        int result1 = Util.compare(10, 20); // int -> Integer autoBoxing
+        System.out.println(result1);
+
+        int result2 = Util.compare(4.5, 3.0); // double -> Double autoBoxing
+        System.out.println(result2);
+
+    }
+}
+```
+
+
+
+## 와일드카드 타입( <?>, <? extends ...>, <? super ...>)
