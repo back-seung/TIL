@@ -318,3 +318,111 @@ public class BoundedTypeParameterExample {
 
 
 ## 와일드카드 타입( <?>, <? extends ...>, <? super ...>)
+
+> 일반적으로 코드에서 `?` 를 와일드카드라고 부른다. 제네릭 타입을 매개변수나 리턴타입으로 사용할 때 타입 파라미터를 제한할 목적으로 사용된다.
+
+
+
+### 와일드카드의 세가지 형태 
+
+* `제네릭타입<?>` : Unbounded Wildcards (제한 없음)
+
+  > 타입 파라미터를 대치하는 구체적인 타입으로 모든 클래스나 인터페이스 타입이 올 수 있다.
+
+* `제네릭타입<? extends 상위타입>` : Upper Bounded Wildcards
+
+  > 타입 파라미터를 대치하는 구체적인 타입으로 상위 타입이나 하위 타입만 올 수 있다.
+
+* `제네릭타입<? super 하위타입>` : Lower Bounded Wildcards(하위 클래스)
+
+  > 타입 파라미터를 대치하는 구체적인 타입으로 하위 타입이나 상위 타입이 올 수 있다.
+
+  
+
+### 세가지 형태의 대한 설명을 코드를 통해 이해하는 예제
+
+> 제네릭 타입 Course는 과정 클래스로 과정 이름과 수강생을 저장할 수 있는 배열을 가지고 있다. 타입 파라미터 T가 적용된 곳은 수강생 타입 부분이다.
+
+```java
+public class Course<T> {
+    private String name;
+    private T[] students;
+
+    public Course(String name, int capacity) {
+        this.name = name;
+        students = (T[]) (new Object[capacity]);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public T[] getStudents() {
+        return students;
+    }
+
+    public void add(T t) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = t;
+                break;
+            }
+        }
+    }
+}
+```
+
+* 클래스들이 다음과 같은 관계를 가지고 있다고 생각해보자.
+
+![스크린샷 2022-02-14 17.29.44](/Users/mac/Library/Application Support/typora-user-images/스크린샷 2022-02-14 17.29.44.png)
+
+* `Course<?>`
+
+  > 수강생은 모든 타입(Person, Worker, Student, HighStudent)이 될 수 있다.
+
+* `Course<? extends Student>`
+
+  >수강생은 Student와 HighStudent만 될 수 있다.
+
+* `Course<? super Worker>`
+
+  > 수강생은 Worker와 Person만 될 수 있다.
+
+
+
+## 제네릭 타입의 상속과 구현
+
+> 제네릭 타입도 다른 타입과 마찬가지로 부모 클래스가 될 수 있다.
+
+```java
+public class ChildProduct<T, M> extends Product<T,M> { ... }
+public class ChildProduct<T, M, C> extends Product<T,M> { ... }
+```
+
+* ChildProduct<T, M>은 Product<T, M>을 상속하여 정의된다. 또한 자식 제네릭 타입은 추가적으로 타입 파라미터를 가질 수 있다.
+
+
+
+### ChildProduct 예제
+
+```java
+package generic;
+
+public class ChildProduct<T, M, C> extends Product {
+    private C company;
+
+    public C getCompany() {
+        return company;
+    }
+
+    public void setCompany(C company) {
+        this.company = company;
+    }
+}
+```
+
+> Product를 상속 하는 ChildProduct에는 윗 부분에서 선언만 Product 클래스에 타입 파라미터 C가 추가 되었다.
+
+
+
+* 제네릭 인터페이스를 구현한 클래스도 제네릭 타입이 된다. 인터페이스가 제네릭 타입<T>를 가지고 있다고 가정할 때 이를 구현한 클래스 또한 <T> 타입 파라미터를 가지고 있어야 한다는 뜻이다.
