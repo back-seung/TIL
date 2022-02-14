@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic/Box.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic/BoxExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic/BoxMethodExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic/ProductExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic/Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic2/CompareMethodExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic2/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic2/Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic3/BoundedTypeParameterExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic3/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generic/ChildProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generic3/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Generic.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Generic.md" afterDir="false" />
     </list>
@@ -157,7 +147,7 @@
       <workItem from="1644565254403" duration="1471000" />
       <workItem from="1644630579958" duration="2703000" />
       <workItem from="1644655022581" duration="8639000" />
-      <workItem from="1644820456590" duration="2576000" />
+      <workItem from="1644820456590" duration="5178000" />
     </task>
     <servers />
   </component>
