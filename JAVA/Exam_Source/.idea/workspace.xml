@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/generic/ChildProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generic3/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Generic.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Generic.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +144,7 @@
       <workItem from="1644565254403" duration="1471000" />
       <workItem from="1644630579958" duration="2703000" />
       <workItem from="1644655022581" duration="8639000" />
-      <workItem from="1644820456590" duration="5178000" />
+      <workItem from="1644820456590" duration="6403000" />
     </task>
     <servers />
   </component>
