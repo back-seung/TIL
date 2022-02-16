@@ -284,3 +284,161 @@ public class UsingLoclaVariableExample {
 
 
 
+## 표준  API의 함수적 인터페이스
+
+> 자바에서 제공되는  표준 API에서 한 개의 추상 메소드를 가지는 인터페이스들은 모두 람다식으로 표현 가능하다.
+>
+> 자바 8부터는 빈번하게 사용되는 함수적 인터페이스는 `java.util.function` 표준 API 패키지로 제공된다. 패키지에서 제공하는 목적은 메소드 또는 생성자의 매개 타입으로 사용되어 람다식을 대입할 수 있도록 하기 위해서이다.  
+>
+> 자바 8부터 추가되거나 변경된 API에서 이 함수적 인터페이스들을 매개타입으로 많이 사용하며 사용자 개발 메소드에도 함수적 인터페이스를 사용할 수 있다.
+
+
+
+### 함수적 인터페이스 구분
+
+> 구분 기준은 인터페이스에 선언된 추상 메소드의 매개값과 리턴값의 유무이다.
+
+| 종류      | 추상 메소드 특징                                             |                          |
+| --------- | ------------------------------------------------------------ | ------------------------ |
+| Consumer  | 매개값은 있고, 리턴값은 없음                                 | 매개값▶️Consumer          |
+| Supplier  | 매개값은 없고, 리턴값은 있음                                 | Sullplier▶️리턴값         |
+| Function  | 매개값도 있고, 리턴값도 있음<br />주로 매개값을 리턴값으로 매핑 | 매개값▶️Function▶️리턴값   |
+| Operator  | 매개값고 있고, 리턴값도 있음<br />주로 매개값을 연산하고 결과를 리턴 | 매개값▶️Operator▶️리턴값   |
+| Predicate | 매개값은 있고, 리턴 타입은 boolean<br />매개값을 조사해서 true/false를 리턴 | 매개값▶️Predicate▶️boolean |
+
+​	
+
+### Consumer 함수적 인터페이스
+
+> 리턴값이 없는 accept() 메소드를 가지고 있다. 이 메소드는 단지 매개값을 소비하는 역할만 한다. 사용만하고 리턴은 없다.
+
+*  매개 변수의 타입과 수에 따라서 아래와 같은 Consumer들이 있다.
+
+| 인터페이스명         | 추상 메소드                    | 설명                         |
+| -------------------- | ------------------------------ | ---------------------------- |
+| Consumer<T>          | void accept(T t)               | 객체 T를 받아 소비           |
+| BiConsumer<T, U>     | void accept(T t, U u)          | 객체 T, U를 받아 소비        |
+| DoubleConsumer       | void accept(double value)      | double값을 받아 소비         |
+| IntConsumer          | void accept(int value)         | int값을 받아 소비            |
+| LongConsumer         | void accept(long value)        | long값을 받아 소비           |
+| ObjDoubleConsumer<T> | void accept(T t, double value) | T객체와 double값을 받아 소비 |
+| ObjIntConsumer<T>    | void accept(T t, int value)    | T객체와 int값을 받아 소비    |
+| ObjLongConsumer<T>   | void accept(T t, long value)   | T객체와 long값을 받아 소비   |
+
+  
+
+* Consumer<T> 인터페이스를 타겟 타입으로 하는 람다식은 다음과 같이 작성할 수 있다. accept() 메소드는 매개값으로 T 객체 하나를 가지므로 람다식도 한 개의 매개 변수를 사용한다.
+* BiConsumer<T, U>를 타겟 타입으로 하는 람다식은 두 개의 객체를 가지므로 람다식도 두 개의 매개 변수를 사용한다.
+* ObjXXXConsumer를 타겟 타입으로 하는 람다식은 T 객체와 XXX의 타입 두 개를 사용한다.
+
+```java
+Consumer<String> consumer = t -> { t를 소비하는 실행문 };  // Consumer<T>
+BiConsumer<String, String> consumer = (t, u) -> { t와 u를 소비하는 실행문 }; // BiConsumer<T, U>
+ObjIntConsumer<String> consumer = (t, i) -> { t와 i를 소비하는 실행문 };
+```
+
+  
+
+### Supplier 함수적 인터페이스
+
+> 매개 변수가 없고 리턴값은 있는 getXXX() 메소드를 가지고 있다. 실행 후 호출한 곳으로 데이터를 리턴한다.
+
+| 인터페이스명   | 추상 메소드            | 설명              |
+| -------------- | ---------------------- | ----------------- |
+| Supplier<T>    | T get()                | T 객체를 리턴     |
+| BooleanSuplier | boolean getAsBoolean() | boolean 값을 리턴 |
+| DoubleSupplier | double getAsDouble()   | double 값을 리턴  |
+| IntSupplier    | int getAsInt()         | int 값을 리턴     |
+| LongSupplier   | long getAsLong         | long 값을 리턴    |
+
+  
+
+* Supplier와 XXXSupplier는 다음과 같이 람다식으로 작성할 수 있다.
+
+```java
+Supplier<String> supplier = () -> { return "문자열"; }
+IntSupplier supplier = () -> {...; return int값; }
+```
+
+
+
+### Function 함수적 인터페이스
+
+> 매개값과 리턴값이 있는 applyXXX() 메소드를 가지고 있다. 매개값을 리턴값으로 매핑하는 역할을 한다.
+
+| 인터페이스명            | 추상 메소드                      | 설명                       |
+| ----------------------- | -------------------------------- | -------------------------- |
+| Function<T,R>           | R apply(T t)                     | 객체 T를 객체  R로 매핑    |
+| BiFunction<T,U,R>       | R apply(T t, U u)                | 객체 T와 U를 객체 R로 매핑 |
+| DoubleFunction<R>       | R apply(double value)            | double을 객체 R로 매핑     |
+| IntFunction<R>          | R apply(int value)               | int를 객체 R로 매핑        |
+| IntToDoubleFunction     | double applyAsDouble(int value)  | int를 double로 매핑        |
+| intToLongFunction       | long applyAsLong(int value)      | int를 long으로 매핑        |
+| LongToDoubleFunction    | double applyAsDouble(long value) | long을 double로 매핑       |
+| LongToIntFunction       | int applyAsInt(long value)       | long을 int로 매핑          |
+| ToDoubleBiFiontion<T,U> | double applyAsDouble(T t, U u)   | T와 U를 double로 매핑      |
+| ToDoubleFunction<T>     | double applyAsDouble(T t)        | T를 double로 매핑          |
+| ToIntBiFunction<T, U>   | int applyAsInt(T t, U u)         | T와 U를  int로 매핑        |
+| ToIntFunction<T>        | int applyAsInt(T t)              | T를 int로 매핑             |
+| ToLongBiFunction<T, U>  | long applyAsLong(T t, U u)       | T와 U를 long으로 매핑      |
+| ToLongFunction<T>       | long applyAsLong(T t)            | T를 long으로 매핑          |
+
+  
+
+* Funciton<T,R>을 타겟 타입으로 하는 람다식은 매개값으로 T를 가지고 리턴값으로는 R을 가진다.
+* ToIntFunction<T>을 타겟 타입으로 하는 람다식은 t 객체를 int로 리턴한다.
+
+```java
+Function<Student, String> function = t -> { return t.getName(); } // Fucntion<T,R>
+ToIntFunction<Student> toIntFunction = t -> { return t.getScore(); }
+```
+
+
+
+### Operator 함수적 인터페이스
+
+> Function과 동일하게 매개변수와 리턴값이 있는 apply() 메소드를 가지고 있다. 하지만 매개값을 리턴값으로 매팡하는 역할보다는 매개값을 이용해 연산을 수행한다음 동일한 타입으로 리턴값을 제공하는 역할을 한다. 
+
+| 인터페이스명         | 추상메소드                           | 설명                     |
+| -------------------- | ------------------------------------ | ------------------------ |
+| BinaryOperator<T>    | T apply(T t, Tt)                     | T와 T를 연산한 후 T 리턴 |
+| UnaryOperator<T>     | T apply(T t)                         | T를 연산한 후 T 리턴     |
+| DoubleBinaryOperator | double applyAsDouble(double, double) | 두 개의 double 연산      |
+| DoubleUnaryOperator  | double applyAsDouble(double)         | 한 개의 double연산       |
+| IntBinaryOperator    | int applyAsInt(int, int)             | 두 개의 int 연산         |
+| IntUnaryOperator     | int applyAsint(int)                  | 한 개의 int 연산         |
+| LongBinaryOperator   | long applyAsLong(long, long)         | 두 개의 long 연산        |
+| LongUnaryOperator    | long applyAsLong(long)               | 한 개의 long 연산        |
+
+
+
+* IntBinaryOperator를 타겟 타입으로 하는 람다식은 매개값으로 두 개의 int를 받고 int를 리턴한다.
+
+```java
+IntBinaryOperator operator = (x, y) -> { ...; return int값; }
+```
+
+
+
+### Predicate 함수적 인터페이스
+
+> 매개 변수와 boolean 리턴 값이 있는 testXXX() 메소드를 가지고 있다. 매개갑을 조사해서 true/false를 리턴하는 역할을 한다.
+
+
+
+| 인터페이스명      | 추상메소드                 | 설명             |
+| ----------------- | -------------------------- | ---------------- |
+| Predicate<T>      | boolean test(T t)          | 객체 T를 조사    |
+| BiPredicate<T, U> | boolean test(T t, U u)     | 객체  T,U를 조사 |
+| DoublePredicate   | boolean test(double value) | double값을 조사  |
+| IntPredicate      | boolean test(int value)    | int 값을 조사    |
+| LongPredicate     | boolean test(long value)   | long값을 조사    |
+
+
+
+* Predicate<T>를 타겟 타입으로하는 람다식은 T를 조사하여 boolean을 리턴한다.
+
+```java
+Predicate<Student> predicate = t -> { return t.getSex().equals("남자"); }
+```
+
