@@ -565,3 +565,92 @@ public class FunctionAndThenComposeExample {
 }
 ```
 
+
+
+### and(), or(), negate() 디폴트 메소드와 isEqual() 정적 메소드
+
+> Predicate 함수적 인터페이스는 and(), or(), negate() 디폴트 메소드를 가지고 있다. &&, ||, !과 대응된다고 볼 수있다.
+
+| 종류      | 함수적 인터페이스 | and() | or() | negate() |
+| --------- | ----------------- | ----- | ---- | -------- |
+| Predicate | Predicate<T>      | O     | O    | O        |
+|           | BiPredicate<T,U>  | O     | O    | O        |
+|           | DoublePredicate   | O     | O    | O        |
+|           | IntPredicate      | O     | O    | O        |
+|           | LongPredicate     | O     | O    | O        |
+
+
+
+* 2와 3의 배수를 조사하는 두 Predicate를 논리 연산한 새로운 Predicate 생성 예제
+
+```java
+import java.util.function.IntPredicate;
+
+public class PredicateAndOrNegateExample {
+    public static void main(String[] args) {
+        // 2의 배수 검사
+        IntPredicate predicateA = a -> a % 2 == 0;
+
+        // 3의 배수 검사
+        IntPredicate predicateB = a -> a % 3 == 0;
+
+        IntPredicate predicateAB;
+        boolean result;
+
+        //and()
+        predicateAB = predicateA.and(predicateB);
+        result = predicateAB.test(9);
+        System.out.println("9는 2와 3의 배수인가? " + result);
+
+        // or()
+        predicateAB = predicateA.or(predicateB);
+        result = predicateAB.test(9);
+        System.out.println("9는 2또는 3의 배수인가? " + result);
+
+        // negate()
+        predicateAB = predicateA.negate();
+        result = predicateAB.test(9);
+        System.out.println("9는 홀수인가? " + result);
+    }
+}
+```
+
+
+
+> 또한 Predicate<T>는 디폴트 메소드 이외에 isEqual() 정적 메소드를 추가로 제공한다.  
+>
+> isEqual() 메소드는 test() 매개값인 sourceObject와 isEqual()의 매개값인  targetObject를 `java.util.Object` 클래스의  equals() 매개값으로 제공하고 Objects.equals(sourceObject, targetObject)의 리턴값을 얻어 새로운 Predicate<T> 를 생성한다.
+
+```java
+Predicate<Object> predicate = Predicate.isEqual(targetObject);
+boolean result = predicate.test(sourceObject);
+```
+
+
+
+`Objects.equals(sourceObject, targetObject)`는 다음과 같은 리턴값을 제공한다.
+
+| sourceObject | targetObject | 리턴값                                     |
+| ------------ | ------------ | ------------------------------------------ |
+| null         | null         | true                                       |
+| not null     | null         | false                                      |
+| null         | not null     | false                                      |
+| not null     | not null     | sourceObject.equals(targetObject)의 리턴값 |
+
+
+
+* IsEqual 정적 메소드 예제
+
+
+
+### minBy(), maxBy() 정적 메소드
+
+
+
+## 메소드 참조
+
+### 정적 메소드와 인스턴스 메소드 참조
+
+### 매개 변수의 메소드 참조
+
+### 생성자 참조
