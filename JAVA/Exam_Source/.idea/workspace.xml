@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/andThenCompose/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/andThenCompose/FunctionAndThenComposeExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/andThenCompose/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/andOrNegate/PredicateAndOrNegateExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Lambda.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Lambda.md" afterDir="false" />
     </list>
@@ -55,7 +53,7 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.FunctionAndThenComposeExample">
+  <component name="RunManager" selected="애플리케이션.PredicateAndOrNegateExample">
     <configuration name="BoundedTypeParameterExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="generic3.BoundedTypeParameterExample" />
       <module name="Exam_Source" />
@@ -108,12 +106,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorExam" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Week_4.IteratorExam" />
+    <configuration name="PredicateAndOrNegateExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="andOrNegate.PredicateAndOrNegateExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Week_4.*" />
+          <option name="PATTERN" value="andOrNegate.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.PredicateAndOrNegateExample" />
         <item itemvalue="애플리케이션.FunctionAndThenComposeExample" />
         <item itemvalue="애플리케이션.BoundedTypeParameterExample" />
         <item itemvalue="애플리케이션.CompareMethodExample" />
         <item itemvalue="애플리케이션.IfElseExam" />
-        <item itemvalue="애플리케이션.IteratorExam" />
       </list>
     </recent_temporary>
   </component>
@@ -149,7 +147,7 @@
       <workItem from="1644630579958" duration="2703000" />
       <workItem from="1644655022581" duration="8639000" />
       <workItem from="1644820456590" duration="6403000" />
-      <workItem from="1645020578867" duration="503000" />
+      <workItem from="1645020578867" duration="1467000" />
     </task>
     <servers />
   </component>
