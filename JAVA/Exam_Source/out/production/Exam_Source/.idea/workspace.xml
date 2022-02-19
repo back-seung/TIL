@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/week_5/BinarySearchTreeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_5/BinaryTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_5/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/LambdaExpressionExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/isEqual/PredicateIsEqualExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/isEqual/PredicateIsEqualExample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +53,7 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.BinarySearchTreeTest">
+  <component name="RunManager" selected="애플리케이션.LambdaExpressionExample">
     <configuration name="BinarySearchTreeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="week_5.BinarySearchTreeTest" />
       <module name="Exam_Source" />
@@ -69,12 +67,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BoundedTypeParameterExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="generic3.BoundedTypeParameterExample" />
+    <configuration name="FunctionAndThenComposeExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="andThenCompose.FunctionAndThenComposeExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="generic3.*" />
+          <option name="PATTERN" value="andThenCompose.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,12 +80,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FunctionAndThenComposeExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="andThenCompose.FunctionAndThenComposeExample" />
+    <configuration name="LambdaExpressionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.LambdaExpressionExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="andThenCompose.*" />
+          <option name="PATTERN" value="stream.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.LambdaExpressionExample" />
         <item itemvalue="애플리케이션.BinarySearchTreeTest" />
         <item itemvalue="애플리케이션.PredicateIsEqualExample" />
         <item itemvalue="애플리케이션.PredicateAndOrNegateExample" />
         <item itemvalue="애플리케이션.FunctionAndThenComposeExample" />
-        <item itemvalue="애플리케이션.BoundedTypeParameterExample" />
       </list>
     </recent_temporary>
   </component>
@@ -151,7 +149,8 @@
       <workItem from="1644820456590" duration="6403000" />
       <workItem from="1645020578867" duration="1467000" />
       <workItem from="1645101344134" duration="993000" />
-      <workItem from="1645256877325" duration="3713000" />
+      <workItem from="1645256877325" duration="5482000" />
+      <workItem from="1645289613617" duration="376000" />
     </task>
     <servers />
   </component>
