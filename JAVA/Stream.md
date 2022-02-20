@@ -71,8 +71,8 @@ public class LambdaExpressionExample {
 **외부 반복자**란 개발자가 코드로 직접 컬렉션의 요소를 반복해서 가져오는 코드 패턴을 말한다.  
 
 내부 반복자는 컬렉션 내부에서 요소들을 반복시키고, 개발자는 요소당 처리해야 할 코드만 제공하는 코드 패턴을 말한다.  
-
-![스크린샷 2022-02-20 10.38.57.png](/var/folders/lr/kr79btws2rn24c1jtbx10slw0000gn/T/TemporaryItems/NSIRD_screencaptureui_m37lJo/스크린샷%202022-02-20%2010.38.57.png)
+    
+<img width="648" alt="스크린샷 2022-02-20 11 09 03" src="https://user-images.githubusercontent.com/84169773/154825649-788738b4-a222-4a1a-8960-c5d254638c53.png">
 
 > 그림을 통해 이해하는 외부 반복자, 내부 반복자
 
