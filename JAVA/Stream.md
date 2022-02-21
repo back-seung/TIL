@@ -303,5 +303,152 @@ public class FromFileContentExameple {
 
 ### 중간 처리와 최종 처리
 
-> 스트림은 데이터의 중간처리(필터링, 매핑, 그룹핑)와 최종 처리(카운팅, 평균, 합계)를 파이프라인으로 해결한다. 파이프라인은 **여러 개의 스트림이 연결되어 있는 구조를 말한다**. 파이프라인에서 최종 처리를 제외하고는 모두 중간 처리 스트림이다.
+> 스트림은 데이터의 중간처리(필터링, 매핑, 그룹핑)와 최종 처리(카운팅, 평균, 합계)를 파이프라인으로 해결한다. 파이프라인은 **여러 개의 스트림이 연결되어 있는 구조를 말한다**. 파이프라인에서 최종 처리를 제외하고는 모두 중간 처리 스트림이다.  
+>
+> 중간 스트림이 생성될 때 바로 중간 처리 되는 것이 아니라 최종 처리가 시작되기 전까지 중간처리는 지연된다. 이후 최종 처리가 시작되면 비로소 컬렉션의 요소가 하나씩 처리 되고, 최종 처리 된다.
+
+* 파이프라인 예시
+
+```java
+// 로컬 변수 사용 시
+Stream<Member> maleFemaleStream = list.stream();
+Stream<Member> maleStream = maleFemaleStream.filter( m -> m.getSex == Member.Male);
+IntStream ageStream = maleStream.mapToInt(Member::getAge);
+OptionalDouble optionalDouble = ageStream.average();
+double ageAvg = optionalDouble.getAsDouble();
+
+// 로컬 변수 사용 X
+double ageAvg = list.stream()
+  .filter( a -> a.getSex == Member.MALE)
+  .mapToInt(Member::getAge)
+  .average()
+  .getAsDouble();
+```
+
+
+
+* 예제
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class StreamPipelinesExample {
+    public static void main(String[] args) {
+        List<Member> list = Arrays.asList(
+                new Member("kildong", Member.MALE, 25),
+                new Member("baek", Member.MALE, 45),
+                new Member("weon", Member.FEMALE, 27)
+        );
+
+        double ageAvg = list.stream()
+                .filter(a -> a.getSex() == Member.MALE)
+                .mapToInt(Member::getAge)
+                .average()
+                .getAsDouble();
+
+        System.out.println(ageAvg);
+    }
+}
+```
+
+
+
+### 중간 처리 메소드와 최종 처리 메소드
+
+> 스트림 파이프라인에서 중간 처리를 하는 메소드와 최종 처리를 하는 메소드의 종류를 살펴본다.
+
+| 종류     | 종류   | 리턴타입                                                | 메소드(매개변수)     | 소속된 언터페이스                   |
+| -------- | ------ | ------------------------------------------------------- | -------------------- | ----------------------------------- |
+| 중간처리 | 필터링 | Stream<br />IntStream<br />LongStream<br />DoubleStream | distinct()           | 공통                                |
+|          |        |                                                         | filter(...)          | 공통                                |
+|          | 매핑   |                                                         | flatMap(...)         | 공통                                |
+|          |        |                                                         | flatMapToDouble(...) | Stream                              |
+|          |        |                                                         | flatMapToInt(...)    | Stream                              |
+|          |        |                                                         | flatMapToLong(...)   | Stream                              |
+|          |        |                                                         | map(...)             | 공통                                |
+|          |        |                                                         | mapToInt(...)        | Stream, LongStream, DoubleStream    |
+|          |        |                                                         | mapToDouble(...)     | Stream, LongStream, IntStream       |
+|          |        |                                                         | mapToLong(...)       | Stream, IntStream, DoubleStream     |
+|          |        |                                                         | mapToObj(...)        | IntStream, LongStream, DoubleStream |
+|          |        |                                                         | asDoubleStream()     | IntStream, LongStream               |
+|          |        |                                                         | asLongStream()       | IntStream                           |
+|          |        |                                                         | boxed()              | IntStream, LongStream, DoubleStream |
+|          | 정렬   |                                                         | sorted(...)          | 공통                                |
+|          | 루핑   |                                                         | peek(...)            | 공통                                |
+| 최종처리 | 매칭   | boolean                                                 | allMatch(...)        | 공통                                |
+|          |        | boolean                                                 | anyMatch(...)        | 공통                                |
+|          |        | boolean                                                 | noneMatch(...)       | 공통                                |
+|          | 집계   | long                                                    | count()              | 공통                                |
+|          |        | OptionalXXX                                             | findFirst()          | 공통                                |
+|          |        | OptionalXXX                                             | max(...)             | 공통                                |
+|          |        | OptionalXXX                                             | min(...)             | 공통                                |
+|          |        | OptionalDouble                                          | average()            | IntStream, LongStream, DoubleStream |
+|          |        | OptionalXXX                                             | reduce(...)          | 공통                                |
+|          |        | int, long, double                                       | sum()                | IntStream, LongStream, DoubleStream |
+|          | 루핑   | void                                                    | forEach(...)         | 공통                                |
+|          | 수집   | R                                                       | collect(...)         | 공통                                |
+
+> 리턴 타입이 스트림이라면 중간 처리 타입이고, 기본 타입이거나 OptionalXXX라면 최종 처리 메소드이다.
+>
+> 공통의 의미는 Stream, IntStream, LongStream, DoubleStream에서 모두 제공된다는 것이다.  
+
+
+
+## 필터링(distinct(), filter())
+
+> 필터링은 중간 처리 기능으로 요소를 걸러내는 역할을 한다.ㄴㄴ
+
+| 리턴 타입                                               | 메소드(매개 변수)       | 설명        |
+| ------------------------------------------------------- | ----------------------- | ----------- |
+| Stream<br />IntStream<br />LongStream<br />DoubleStream | distinct()              | 중복제거    |
+|                                                         | filter(Predicate)       | 조건 필터링 |
+|                                                         | filter(IntPredicate)    |             |
+|                                                         | filter(LongPredicate)   |             |
+|                                                         | filter(DoublePredicate) |             |
+
+* distinct() 메소드는 중복을 제거하는데, Stream의 경우 Object.eqauls(Object)가 true이면 동일 객체로 판단하고 중복을 제거한다. 그 외 int, long, double Stream의 경우 동일 값이면 중복을 제거한다.
+
+* 예제
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FilteringExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList(
+                "baek",
+                "weon",
+                "cho",
+                "weon",
+                "bung"
+        );
+
+        // 중복 제거
+        names.stream()
+                .distinct()
+                .forEach(n -> System.out.println(n));
+        System.out.println();
+
+
+        // 필터링
+        names.stream()
+                .filter(n -> n.startsWith("b"))
+                .forEach(n -> System.out.println(n));
+        System.out.println();
+
+        // 중복 제거 후 필터링
+        names.stream()
+                .distinct()
+                .filter(n -> n.startsWith("b"))
+                .forEach(n -> System.out.println(n));
+    }
+}
+```
 
