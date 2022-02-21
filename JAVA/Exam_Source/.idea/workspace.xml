@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/MapAndReduceExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Stream.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream.md" afterDir="false" />
     </list>
@@ -151,7 +150,7 @@
       <workItem from="1645101344134" duration="993000" />
       <workItem from="1645256877325" duration="5482000" />
       <workItem from="1645289613617" duration="1310000" />
-      <workItem from="1645321471568" duration="1834000" />
+      <workItem from="1645321471568" duration="2213000" />
     </task>
     <servers />
   </component>
