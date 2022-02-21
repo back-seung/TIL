@@ -100,7 +100,7 @@ public class ParallelExample {
         stream.forEach(ParallelExample::print);
         System.out.println();
 
-        
+
         // 병렬 처리
         Stream<String> parallelStream = list.parallelStream();
         parallelStream.forEach(ParallelExample::print);
@@ -121,8 +121,54 @@ public class ParallelExample {
 * List에 저장되어 있는 Student 객체를 중간 처리에서 score 필드값으로 매핑하여 최종 처리에서 평균값 산출하는 예제
 
 ```java
+package stream;
 
+import java.util.Arrays;
+import java.util.List;
+
+public class MapAndReduceExample {
+    public static void main(String[] args) {
+        List<Student> studentList = Arrays.asList(
+                new Student("baek", 70),
+                new Student("cho", 58),
+                new Student("weon", 80)
+        );
+
+        double avg = studentList.stream()
+                .mapToInt(Student::getScore)
+                .average()
+                .getAsDouble();
+
+        System.out.println("평균 점수 : " + avg);
+    }
+}
 ```
+
+## 스트림의 종류
+
+> 자바 8부터 새로 추가된 `java.util.stream` 패키지에는 부모 인터페이스인 BaseStream과 그 자식들로 이루어져 있다.  
+> 
+> BaseStream에는 공통 메소드가 있을 뿐, 직접적으로 사용은 하지 않는다.
+
+### 자식 인터페이스
+
+1. Stream
+
+2. IntStream
+
+3. LongStream
+
+4. DoublStream
+
+> `Stream`은 객체 요소를 처리하는 스트림이고, 나머지는 기본 타입인 int, long, double을 처리하는 스트림이다.
+
+### 스트림 구현 객체를 얻는 소스
+| 리턴 타입 | 메소드 (매개변수) |     | 소스 |
+| --------- | ----------------- | --- | ---- |
+|Stream\<T>           |                   |     |      |
+|           |                   |     |      |
+|           |                   |     |      |
+
 
 
 
