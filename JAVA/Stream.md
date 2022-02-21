@@ -163,13 +163,145 @@ public class MapAndReduceExample {
 > `Stream`은 객체 요소를 처리하는 스트림이고, 나머지는 기본 타입인 int, long, double을 처리하는 스트림이다.
 
 ### 스트림 구현 객체를 얻는 소스
-| 리턴 타입 | 메소드 (매개변수) |     | 소스 |
-| --------- | ----------------- | --- | ---- |
-|Stream\<T>           |                   |     |      |
-|           |                   |     |      |
-|           |                   |     |      |
+| 리턴 타입 | 메소드 (매개변수) | 소스 |
+| --------- | ----------------- | --- |
+|Stream\<T>           | java.util.Collection.stream()<br />java.util.Collection.parallelStream() | 컬렉션 |
+| Stream<T><br />IntStream<br />LongStream<br />DoubleStream | Arrays.Stream(T[])          Stream.of(T[])<br />Arrays.stream(int[])          IntStream.of(int[])<br />Arrays.stream(long[])          LongStream.of(long[])<br />Arrays.stream(double[])          DoubleStream.of(double[]) | 배열 |
+| IntStream | IntStream.range(int, int)<br />IntStream.rangeClosed(int, int) | int 범위 |
+| LongStream | LongStream.range(long, long)<br />LongStream.rangeClosed(long, long) | long 범위 |
+| Stream<Path> | Files.find(Path, int, BiPredicate, FileVisitOption)<br />Files.list(Path) | 디렉토리 |
+| Stream<String> | Files.lines(Path, Charset)<br />BufferedReader.lines() | 파일 |
+| DoubleStream | Random.doubles(...)<br />Random.ints()<br />Random.longs() | 랜덤 수 |
+
+
+
+### 컬렉션으로부터 스트림 얻기
+
+> 다음 예제는 List<Stream> 컬렉션에서 Stream<Student>를 얻어내고 요소를 콘솔에 출력한다.
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class FromCollectionExample {
+	public static void main(String[] args) {
+		List<Student> studentList = Arrays.asList(new Student("baek", 25), new Student("weon", 25),
+				new Student("cho", 25));
+		
+		Stream<Student> stream = studentList.stream();
+		
+		stream.forEach(s -> {
+			System.out.println(s.getName());
+		});
+	}
+}
+```
+
+
+
+### 배열로부터 스트림 얻기
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
+
+public class FromArrayExample {
+	public static void main(String[] args) {
+		String[] strArray = {"baek", "weon", "cho"};
+		Stream<String> strStream = Arrays.stream(strArray);
+		
+		strStream.forEach(a -> System.out.print(a + ", "));
+	}
+}
+```
+
+
+
+### 숫자 범위로부터 스트림 얻기
+
+> 1부터 100까지의 합을 구하기 위해 IntStream의 rangeClosed() 메소드를 사용한다.  
+>
+> `rangeClosed()`는 첫 번쨰 매개값에서부터 두 번째 매개값까지 순차적으로 제공하는 IntStream을 리턴한다. `range()`는 똑같이 IntStream을 리턴하는데, 두 번쨰 매개값은 포함하지 않는다.
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class FromIntRangeExample {
+	public static int sum;
+
+	public static void main(String[] args) {
+
+		IntStream stream = IntStream.rangeClosed(1, 100);
+		stream.forEach(a -> sum += a);
+		System.out.println("총합 : " + sum);
+	}
+}
+```
+
+ 
+
+### 파일로부터 스트림 얻기 
+
+> `Files`의 정적 메소드인 lines()와BufferedReader의 lines() 메소드를 이용하여 문자 파일의 내용을 스트림을 통해 행단위로 읽고 콘솔에 출력한다.
+
+```java
+package stream;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+public class FromFileContentExameple {
+	public static void main(String[] args) throws IOException {
+		Path path = Paths.get("/Exam_Source/stream/linedata.txt");
+		Stream<String> stream;
+
+		// Files.lines() 메소드 ㅇ이용
+		stream = Files.lines(path, Charset.defaultCharset());
+		stream.forEach(System.out::print);
+		System.out.println();
+
+		// BufferedReader lines() 이용
+		File file = path.toFile();
+		FileReader fileReader = new FileReader(file);
+		BufferedReader br = new BufferedReader(fileReader);
+		stream = br.lines();
+		stream.forEach(System.out::println);
+	}
+}
+```
+
+
+
+### 디렉토리로부터 스트림 얻기
 
 
 
 
+
+## 스트림 파이프라인
+
+> 리덕션 : 대량의 데이터를 가공해서 축소하는 것. 합계, 평균값, 카운팅, 최대값 등이 대표적인 리덕션의 결과물이라고 볼 수있다. 그러나 컬렉션의 요소를 리덕션의 결과물로 바로 집계할 수 없을 경우에는 집계하기 좋도록 필터링, 매핑, 정렬, 그룹핑 등의 중간 처리가 필요하다.
+
+
+
+### 중간 처리와 최종 처리
+
+> 스트림은 데이터의 중간처리(필터링, 매핑, 그룹핑)와 최종 처리(카운팅, 평균, 합계)를 파이프라인으로 해결한다. 파이프라인은 **여러 개의 스트림이 연결되어 있는 구조를 말한다**. 파이프라인에서 최종 처리를 제외하고는 모두 중간 처리 스트림이다.
 
