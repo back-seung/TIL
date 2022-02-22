@@ -452,3 +452,174 @@ public class FilteringExample {
 }
 ```
 
+
+
+## 매핑( flatMapXXX(), mapXXX(), asXXXStream(), boxed())
+
+> 매핑은 중간처리 기능으로 스트림의 요소를 다른 요소로 대체하는 작업이다.
+
+
+
+### flatMapXXX()
+
+> 요소를 대체하는 복수 개의 요소들로 구성된 새로운 스트림을 리턴한다.
+
+![스크린샷 2022-02-22 09.10.50](/Users/mac/Desktop/스크린샷 2022-02-22 09.10.50.png)
+
+* flatMapXXX() 메소드의 종류는 다음과 같다
+
+| 리턴 타입    | 메소드(매개 변수)                          | 요소 ->대체 요소       |
+| ------------ | ------------------------------------------ | ---------------------- |
+| Stream<R>    | flatMap(Function<T.Stream<R>>)             | T -> Stream<R>         |
+| DoubleStream | flatMap(DoubleFunction<DoubleStream>)      | double -> DoubleStream |
+| IntStream    | flatMap(IntFucntion<IntStream>)            | int -> IntStream       |
+| LongStream   | flatMap(LongFunction<LongStream>)          | long -> LongStream     |
+| DoubleStream | flatMapToDouble(Function<T, DoubleStream>) | T -> DoubleStream      |
+| IntStream    | flatMapToInt(Function<T, IntStream>)       | T -> IntStream         |
+| LongStream   | flatMapToLong(Function<T, LongStream>)     | T -> LongStream        |
+
+
+
+* List<String>에 저장된 요소별로 단어를 뽑아 단어 스트림으로 재생성하는 예제
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FlatMapExample {
+    public static void main(String[] args) {
+        List<String> inputList1 = Arrays.asList(
+                "java8 Lambda", "stream mapping"
+        );
+
+        inputList1.stream()
+                .flatMap(data -> Arrays.stream(data.split(" ")))
+                .forEach(word -> System.out.println(word));
+
+        List<String> inputList2 = Arrays.asList("10, 20, 30, 40, 50, 60");
+
+        inputList2.stream()
+                .flatMapToInt(data -> {
+                    String[] strArr = data.split(",");
+                    int[] intArr = new int[strArr.length];
+                    for (int i = 0; i < strArr.length; i++) {
+                        intArr[i] = Integer.parseInt(strArr[i].trim());
+                    }
+                    return Arrays.stream(intArr);
+                })
+                .forEach(number -> System.out.println(number));
+    }
+}
+```
+
+
+
+### mapXXX() 메소드
+
+> 요소를 대체하는 요소로 구성된 새로운 스트림을 리턴한다. A와 B스트림이 있을때 각각 A->C, B->D 요소로 대체된다고 할 경우 C, D 요소를 가지는 새로운 스트림이 생성된다.
+
+
+
+* mapXXX() 메소드 종류
+
+| 리턴 타입    | 메소드 (매개 변수)                | 요소 -> 대체요소 |
+| ------------ | --------------------------------- | ---------------- |
+| Stream<R>    | map(Function<T, R>)               | T -> R           |
+| DoubleStream | mapToDouble(ToDoubleFunction<T>)  | T -> Double      |
+| IntStream    | mapToInt(ToIntFunction<T>)        | T -> Int         |
+| LongStream   | mapToLong(ToLongFunction<T>)      | T -> Long        |
+| DoubleStream | map(DoubleUnaryOperator)          | double -> double |
+| IntStream    | mapToInt(DoubleToIntFunction)     | double -> Int    |
+| LongStream   | mapToLong(DoubleToLongFunction)   | double -> long   |
+| Stream<U>    | mapToObj(DoubleFunction<U>)       | double -> U      |
+| IntStream    | map(IntUnaryOperator)             | int -> int       |
+| DoubleStream | maptoDouble(IntToDoubleFunction)  | int -> double    |
+| LongStream   | mapToLong(IntToLongFunction)      | int -> long      |
+| Stream<U>    | maoToObj(IntFunction<U>)          | int -> U         |
+| LongStream   | map(LongUnaryOperator)            | long -> long     |
+| DoubleStream | mapToDouble(LongToDoubleFunction) | long -> double   |
+| IntStream    | mapToInt(LongToIntFunction)       | long -> int      |
+| Stream<U>    | mapToObj(LongFunction<U>)         | long -> U        |
+
+* 예제
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class MapExample {
+    public static void main(String[] args) {
+        List<Student> studentList = Arrays.asList(
+                new Student("홍길동", 10),
+                new Student("백승한", 20),
+                new Student("김말이", 30)
+        );
+        studentList.stream()
+                .mapToInt(Student::getScore)
+                .forEach(score -> System.out.println(score));
+    }
+}
+```
+
+
+
+### asDoubleStream(), asLongStream(), boxed() 메소드
+
+> asDoubleStream 메소드는 IntStream의 int 요소 또는 LongStream의 long 요소를 double 요소로 변환해서 DoubleStream을 생성한다.  
+>
+> asLongStream 메소드 또한 마찬가지로 IntStream의 int요소 또는 DoubleStream의 double 요소를 long으로 변환해서 LongStream을 생성한다.  
+>
+> boxed() 메소드는 int, long, double 요소를 Wrapper 클래스로 박싱해서 Stream을 생성한다.
+
+
+
+* 예제
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
+public class AsDoubleStreamAndBoxedExample {
+    public static void main(String[] args) {
+        int[] intArr = {1, 2, 3, 4, 5};
+
+        IntStream intStream = Arrays.stream(intArr);
+        intStream
+                .asDoubleStream()
+                .forEach(d -> System.out.println(d));
+
+        System.out.println();
+
+        intStream = Arrays.stream(intArr);
+        intStream
+                .boxed()
+                .forEach(obj -> System.out.println(obj.intValue()));
+
+    }
+}
+```
+
+
+
+## 정렬 (sorted())
+
+> 스트림은 요소가 최종 처리되기 전에 중간 단계에서 요소를 정렬해서 최종 처리 순서를 변경할 수 있다. 요소를 정렬하는 메소드는 다음과 같다.
+
+| 리턴 타입    | 메소드( 매개 변수)    | 설명                                    |
+| ------------ | --------------------- | --------------------------------------- |
+| Stream<T>    | sorted()              | 객체를 Comparable 구현 방법에 따라 정렬 |
+| Stream<T>    | sorted(Comparator<T>) | 객체를 주어진 Comparator에 따라 정렬    |
+| DoubleStream | sorted()              | double 요소를 오름차순 정렬             |
+| IntStream    | sorted()              | int 요소를 오름차순 정렬                |
+| LongStream   | sorted()              | long 요소를 오름차순 정렬               |
+
+
+
+객체 요소일 경우에는 클래스가 Comparable을 구현하지 않으면 sorted() 메소드를 호출했을 때 `ClassCastException`이 발생한다. 따라서 Comparable을 구현한 요소에서만 sorted() 메소드를 호출해야 한다.
+

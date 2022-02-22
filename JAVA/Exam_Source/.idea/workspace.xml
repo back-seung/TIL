@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/FilteringExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/StreamPipelinesExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/AsDoubleStreamAndBoxedExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/FlatMapExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/MapExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Stream.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +55,20 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.FilteringExample">
+  <component name="RunManager" selected="애플리케이션.AsDoubleStreamAndBoxedExample">
+    <configuration name="AsDoubleStreamAndBoxedExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.AsDoubleStreamAndBoxedExample" />
+      <module name="Exam_Source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="stream.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FilteringExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="stream.FilteringExample" />
       <module name="Exam_Source" />
@@ -70,8 +82,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LambdaExpressionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.LambdaExpressionExample" />
+    <configuration name="FlatMapExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.FlatMapExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -83,21 +95,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MapAndReduceExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.MapAndReduceExample" />
-      <module name="Exam_Source" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="stream.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ParallelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.ParallelExample" />
+    <configuration name="MapExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.MapExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -124,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.AsDoubleStreamAndBoxedExample" />
+        <item itemvalue="애플리케이션.MapExample" />
+        <item itemvalue="애플리케이션.FlatMapExample" />
         <item itemvalue="애플리케이션.FilteringExample" />
         <item itemvalue="애플리케이션.StreamPipelinesExample" />
-        <item itemvalue="애플리케이션.MapAndReduceExample" />
-        <item itemvalue="애플리케이션.ParallelExample" />
-        <item itemvalue="애플리케이션.LambdaExpressionExample" />
       </list>
     </recent_temporary>
   </component>
@@ -155,7 +154,7 @@
       <workItem from="1645256877325" duration="5482000" />
       <workItem from="1645289613617" duration="1310000" />
       <workItem from="1645321471568" duration="2213000" />
-      <workItem from="1645451996706" duration="1916000" />
+      <workItem from="1645451996706" duration="4941000" />
     </task>
     <servers />
   </component>
