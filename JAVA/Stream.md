@@ -623,3 +623,300 @@ public class AsDoubleStreamAndBoxedExample {
 
 객체 요소일 경우에는 클래스가 Comparable을 구현하지 않으면 sorted() 메소드를 호출했을 때 `ClassCastException`이 발생한다. 따라서 Comparable을 구현한 요소에서만 sorted() 메소드를 호출해야 한다.
 
+Comparable을 구현한 객체이면 다음 중 하나의 방법으로 sorted()를 호출하면 된다.
+
+```java
+sorted();
+sorted( (a,b) -> a.compareTo(b) );
+sorted( Comaparator.naturalOrder() );
+```
+
+
+
+만약 객체 요소가 Comparable을 구현하고 있지만 기본비교 방법과 정반대 방법으로 정렬하고 싶다면 다음과 같이 sorted()를 호출하면 된다.
+
+```java
+sorted( (a,b) -> b.compare(a) );
+sorted( Comparator.reverseOrder() );
+```
+
+
+
+만약 객체 요소가 Comaprable을 구현하지 않았다면 Comparable을 매개값으로 갖는 sorted() 메소드를 사용하면 된다. Comparator는 함수적 인터페이스이므로 다음과 같이 작성할 수 있다.
+
+```java
+sorted( (a,b) -> { . . . })
+```
+
+> 중괄호 안에는 a와 b 중 a가 작으면 음수, 같으면 0, 크면 1을 리턴하는 코드를 작성하면 된다.
+
+
+
+* 예제 - 숫자 요소일 경우 오름차순 정렬, Student 요소일 경우 기본 비교(Comparable) 기준으로 오름차순 정렬 후 출력
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.IntStream;
+
+public class SortingExample {
+    public static void main(String[] args) {
+        // 숫자 요소일 경우
+        IntStream intStream = Arrays.stream(new int[]{5, 2, 4, 3, 1});
+        intStream
+                .sorted()
+                .forEach(n -> System.out.print(n + ","));
+        System.out.println();
+
+        //객체 요소일 경우
+        List<Student> studentList = Arrays.asList(
+                new Student("홍길동", 30),
+                new Student("백승한", 40),
+                new Student("신용권", 20)
+        );
+
+        studentList.stream()
+                .sorted()   // 오름차순 정렬
+                .forEach(s -> System.out.print(s.getScore() + ","));
+        System.out.println();
+
+
+        studentList.stream()
+                .sorted(Comparator.reverseOrder()) // 내림차순 정렬
+                .forEach(s -> System.out.print(s.getScore() + ","));
+
+    }
+}
+```
+
+
+
+## 루핑(peek(), forEach())
+
+> 루핑은 요소 전체를 반복하는 것을 말한다. 루핑하는 메소드에는 peek(), forEach()가 있다. 각자 루핑의 기능은 같지만 동작 방식이 다르다. peek()은 중간 처리 메소드, forEach()는 최종 처리 메소드이다.  
+
+* peek()은 중간 처리 단계에서 전체 요소를 루핑하며 추가적 작업을 하기 위해 사용한다. 반드시 최종 처리 메소드가 호출되야 작동한다.  
+
+  ```java
+  intStream
+    .filter( a -> a % 2 == 0 )
+    .peek( a -> System.out.println(a)) // peek() 지연
+    .sum() // 정상 작동
+  ```
+
+  > 요소 처리의 최종 단계가 전체 합이라면 sum() 메소드를 호출해야만 정상적으로 동작한다.
+
+
+
+* forEach()는 최종 처리 메소드이기 때문에 파이프라인 마지막에 루핑하면서 요소를 하나씩 처리한다. forEach()는 요소를 소비하는 최종 처리 메소드이므로 이후에 sum()처럼 다른 최종 처리 메소드를 호출하면 안된다.
+
+```java
+package stream;
+
+import java.util.Arrays;
+
+public class LoopingExample {
+    public static void main(String[] args) {
+        int[] intArr = {1, 2, 3, 4, 5};
+
+        System.out.println("[peek()를 마지막에 호출한 경우]");
+        Arrays.stream(intArr)
+                .filter(a -> a % 2 == 0)
+                .peek(n -> System.out.println(n)); // 동작 X
+
+        System.out.println("[최종 처리 메소드를 마지막에 호출한 경우]");
+        int total = Arrays.stream(intArr)
+                .filter(a -> a % 2 == 0)
+                .peek(n -> System.out.println(n)) // 동작 O
+                .sum(); // 최종 처리 메소드
+        System.out.println("총합 : " + total);
+
+        System.out.println("[forEach()를 마지막에 호출한 경우]");
+        Arrays.stream(intArr)
+                .filter(a -> a % 2 == 0)
+                .forEach(n -> System.out.println(n)); // 최종 메소드로 동작
+    }
+}
+```
+
+
+
+## 매칭(allMatch(), anyMatch(), noneMatch())
+
+> 스트림 클래스는 최종 처리 단계에서 요소들이 특정 조건에 만족하는지 조사할 수 있도록 세가지 매칭 메소드를 제공하고 있다.  
+>
+> * allMatch() : 모든 요소들이 매개값으로 주어진 Predicate의 조건을 만족하는지 조사한다.
+>
+> * anyMatch() :  최소한 한 개의 요소가 매개값으로 주어진 Predicate의 조건을 만족하는지 조사한다.
+> * noneMatch() : 모든 요소들이 매개값으로 주어진 Predicate의 조건을 만족하지 않는지 조사한다.
+
+| 리턴 타입 | 메소드(매개 변수)                                            | 제공 인터페이스 |
+| --------- | ------------------------------------------------------------ | --------------- |
+| boolean   | allMatch(Predicate<T> predicate)<br />anyMatch(Predicate<T> predicate)<br />noneMatch(Predicate<T> predicate) | Stream          |
+| boolean   | allMatch(IntPredicate<T> predicate)<br />anyMatch(IntPredicate<T> predicate)<br />noneMatch(IntPredicate<T> predicate) | IntStream       |
+| boolean   | allMatch(LongPredicate<T> predicate)<br />anyMatch(LongPredicate<T> predicate)<br />noneMatch(LongPredicate<T> predicate) | LongStream      |
+| boolean   | allMatch(DoublePredicate<T> predicate)<br />anyMatch(DoublePredicate<T> predicate)<br />noneMatch(DoublePredicate<T> predicate) | DoubleStream    |
+
+
+
+* 예제 - int 배열 스트림 생성(모든 요소가 2의 배수인지, 하나라도 3의 배수가 존재하는지, 모든 요소가 3의 배수가 아닌지를 조사)
+
+```java
+package stream;
+
+import java.util.Arrays;
+
+public class MatchExample {
+    public static void main(String[] args) {
+        int[] intArr = {2, 4, 6};
+
+        boolean result = Arrays.stream(intArr)
+                .allMatch(a -> a % 2 == 0);
+        System.out.println("모두 2의 배수인가? : " + result);
+
+        result = Arrays.stream(intArr)
+                .anyMatch(a -> a % 3 == 0);
+        System.out.println("하나라도 3의 배수인가? : " + result);
+
+        result = Arrays.stream(intArr)
+                .noneMatch(a -> a % 3 == 0);
+        System.out.println("3의 배수가 없는가? : " + result);
+    }
+}
+```
+
+
+
+## 기본 집계(sum(), count(), average(), min(), max())
+
+> 집계는 최종 처리 기능으로 요소들을 처리해서 카운팅, 합계, 평균값, 최대값, 최소값 등과 같이 하나의 값으로 산출하는 것을 말한다.  
+>
+> 집계 : 대량의 데이터를 가공해서 축소하는 리덕션
+
+
+
+### 스트림이 제공하는 기본 집계
+
+| 리턴 타입                    | 메소드(매개 변수)             | 설명         |
+| ---------------------------- | ----------------------------- | ------------ |
+| long                         | count()                       | 요소 개수    |
+| OptionalXXX                  | findFirst()                   | 첫 번째 요소 |
+| Optional<T><br />OptionalXXX | max(Comparator<T>)<br />max() | 최대 요소    |
+| Optional<T><br />OptionalXXX | min(Comparator<T>)<br />min() | 최소 요소    |
+| OptionalDouble               | average()                     | 요소 평균    |
+| int, long, double            | sum()                         | 요소 합계    |
+
+> `OptionalXXX` 는 자바 8에서 추가한 `java.util`패키지의 Optional, OptionalInt, OptionalLong, OptionalDouble을 말한다. 이들은 값을 저장하는 값 기반 클래스이다. 
+
+
+
+### Optional 클래스
+
+> 이 클래스들은 저장하는 값의 타입만 다를 뿐 제공하는 기능은 거의 동일하다. Optional 클래스는 단순히 집계 값만 저장하는 것이 아니라, 집계 값이 존재하지 않을 경우 디폴트 값을 설정할 수 도 있고, 집계 값을 처리하는 Consumer도 등록이 가능하다.
+
+ 
+
+* 메소드 종류
+
+| 리턴 타입                        | 메소드(매개 변수)                                            | 설명                                         |
+| -------------------------------- | ------------------------------------------------------------ | -------------------------------------------- |
+| boolean                          | isPresent()                                                  | 값이 저장되어 있는지 여부                    |
+| T<br />double<br />int<br />long | orElse(T)<br />orElse(double)<br />orElse(int)<br />orElse<long | 값이 저장되어 있지 않을 경우 Default 값 지정 |
+| void                             | ifPresent(Consumer)<br />ifPresent(DoubleConsumer)<br />ifPresent(IntConsumer)<br />ifPresent(LongConsumer) | 값이 저장되어 있을 경우 Consumer에서 처리    |
+
+* 컬렉션은 주로 동적으로 요소가 추가된다. 만약 값이 없을 때 평균(average())를 구한다면NoSuchElementException이 발생하게 된다.
+* 요소가 없을 경우 예외를 피하는 3가지 방법에 대해서 알아보자.
+
+```java
+// 1. Optional 객체 얻어 isPresent() 메소드로 평균 여부 확인
+OptionalDouble optional = list.stream()
+  .mapToInt(Integer :: intValue)
+  .average();
+if(optional.isPresent()) {
+  System.out.println("평균 : " + optional.getAsDouble());
+} else {
+  System.out.println("평균 : 0.0");
+}
+
+// 2. orElse() 사용
+double avg = list.stream()
+  .mapToInt(Integer :: intValue)
+  .average()
+  .orElse(0.0);
+System.out.println("평균 : " + avg);
+
+// 3. ifPresent() 메소드 사용 - 평균값이 있을 경우에만 값 사용
+list.stream()
+  .mapToInt(Integer :: intValue)
+  .average()
+  .ifPresent(a -> System.out.println("평균 : " + a));
+```
+
+
+
+* 집계 예제
+
+```java
+package stream;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalDouble;
+
+public class OptionalExample {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+
+        // 예외 발생 NoSuchElementException
+//        double avg = list.stream()
+//                .mapToInt(Integer::intValue)
+//                .average()
+//                .getAsDouble();
+
+        // 방법 1
+        OptionalDouble optional = list.stream()
+                .mapToInt(Integer::intValue)
+                .average();
+        if (optional.isPresent()) {
+            System.out.println("평균 : " + optional.getAsDouble());
+        } else {
+            System.out.println("방법1 평균 : 0.0");
+        }
+
+        // 방법 2
+        double avg = list.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .orElse(0.0);
+        System.out.println("방법2 평균 : " + avg);
+
+        // 방법 3
+        list.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .ifPresent(a -> System.out.println("방법3 평균 : " + a));
+    }
+}
+```
+
+
+
+## 커스텀 집계(reduce())
+
+> 스트림은 기본 집계 메소드를 제공하지만, 프로그램화 해서 다양한 집계 결과물을 만들 수 있도록 reduce() 메소드도 제공한다.
+
+| 인터페이스   | 리턴 타입      | 메소드(매개 변수)                                 |
+| ------------ | -------------- | ------------------------------------------------- |
+| Stream       | Optional<T>    | reduce(BinaryOperator<T> accumulator)             |
+|              | T              | reduce(T identity, BinaryOperator<T> accumulator) |
+| IntStream    | OptionalInt    | reduce(IntBinaryOperator op)                      |
+|              | int            | reduce(int identity, IntBinaryOperator op)        |
+| LongStream   | OptionalLong   | reduce(LongBinaryOperator op)                     |
+|              | long           | reduce(long identity, LongBinaryOperator op)      |
+| DoubleStream | OptionalDouble | reduce(DoubleBinaryOperator op)                   |
+|              | double         | reduce(double identity, DoubleBinaryOperator op)  |
+
+> 각 인터페이스에는 매개 타입으로 XXXOperator, 리턴 타입으로 OptionalXXX, int, long, double을 가지는 reduce() 메소드가 오버로딩 되어있다. 스트림에 요소가 전혀 없을 경우 identity(디폴트값)가 리턴된다.
