@@ -464,7 +464,7 @@ public class FilteringExample {
 
 > 요소를 대체하는 복수 개의 요소들로 구성된 새로운 스트림을 리턴한다.
 
-![스크린샷 2022-02-22 09.10.50](/Users/mac/Desktop/스크린샷 2022-02-22 09.10.50.png)
+<img width="676" alt="스크린샷 2022-02-22 09 10 50" src="https://user-images.githubusercontent.com/84169773/155125882-3d2115b8-bfb4-4b91-b160-eae4cc290752.png">
 
 * flatMapXXX() 메소드의 종류는 다음과 같다
 
