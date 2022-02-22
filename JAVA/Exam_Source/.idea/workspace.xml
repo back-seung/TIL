@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/AsDoubleStreamAndBoxedExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/FlatMapExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/MapExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/LoopingExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/MatchExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/OptionalExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/SortingExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stream/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Stream.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +58,7 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.AsDoubleStreamAndBoxedExample">
+  <component name="RunManager" selected="애플리케이션.OptionalExample">
     <configuration name="AsDoubleStreamAndBoxedExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="stream.AsDoubleStreamAndBoxedExample" />
       <module name="Exam_Source" />
@@ -69,8 +72,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FilteringExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.FilteringExample" />
+    <configuration name="LoopingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.LoopingExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -82,8 +85,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlatMapExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.FlatMapExample" />
+    <configuration name="MatchExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.MatchExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -95,8 +98,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MapExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.MapExample" />
+    <configuration name="OptionalExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.OptionalExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -108,8 +111,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StreamPipelinesExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.StreamPipelinesExample" />
+    <configuration name="SortingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.SortingExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -123,11 +126,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.OptionalExample" />
+        <item itemvalue="애플리케이션.MatchExample" />
+        <item itemvalue="애플리케이션.LoopingExample" />
+        <item itemvalue="애플리케이션.SortingExample" />
         <item itemvalue="애플리케이션.AsDoubleStreamAndBoxedExample" />
-        <item itemvalue="애플리케이션.MapExample" />
-        <item itemvalue="애플리케이션.FlatMapExample" />
-        <item itemvalue="애플리케이션.FilteringExample" />
-        <item itemvalue="애플리케이션.StreamPipelinesExample" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +157,7 @@
       <workItem from="1645256877325" duration="5482000" />
       <workItem from="1645289613617" duration="1310000" />
       <workItem from="1645321471568" duration="2213000" />
-      <workItem from="1645451996706" duration="4941000" />
+      <workItem from="1645451996706" duration="9982000" />
     </task>
     <servers />
   </component>
