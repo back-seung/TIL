@@ -6,8 +6,8 @@ import java.util.stream.Stream;
 
 public class FromCollectionExample {
 	public static void main(String[] args) {
-		List<Student> studentList = Arrays.asList(new Student("baek", 25), new Student("weon", 25),
-				new Student("cho", 25));
+		List<Student> studentList = Arrays.asList(new Student("baek", 25, Student.SEX.MALE), new Student("weon", 25, Student.SEX.MALE),
+				new Student("cho", 25, Student.SEX.MALE));
 		
 		Stream<Student> stream = studentList.stream();
 		

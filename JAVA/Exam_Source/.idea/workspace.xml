@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/LoopingExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/MatchExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/OptionalExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/SortingExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/MaleStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/MaleStudentExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/ReductionExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stream/FromCollectionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/FromCollectionExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stream/LambdaExpressionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/LambdaExpressionExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stream/MapAndReduceExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/MapAndReduceExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stream/MapExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/MapExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stream/SortingExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/SortingExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stream/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Stream.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream.md" afterDir="false" />
     </list>
@@ -58,9 +63,9 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.OptionalExample">
-    <configuration name="AsDoubleStreamAndBoxedExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.AsDoubleStreamAndBoxedExample" />
+  <component name="RunManager" selected="애플리케이션.MaleStudentExample">
+    <configuration name="LoopingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.LoopingExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -72,8 +77,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoopingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.LoopingExample" />
+    <configuration name="MaleStudentExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.MaleStudentExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -111,8 +116,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.SortingExample" />
+    <configuration name="ReductionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.ReductionExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -126,11 +131,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.MaleStudentExample" />
+        <item itemvalue="애플리케이션.ReductionExample" />
         <item itemvalue="애플리케이션.OptionalExample" />
         <item itemvalue="애플리케이션.MatchExample" />
         <item itemvalue="애플리케이션.LoopingExample" />
-        <item itemvalue="애플리케이션.SortingExample" />
-        <item itemvalue="애플리케이션.AsDoubleStreamAndBoxedExample" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +162,8 @@
       <workItem from="1645256877325" duration="5482000" />
       <workItem from="1645289613617" duration="1310000" />
       <workItem from="1645321471568" duration="2213000" />
-      <workItem from="1645451996706" duration="9982000" />
+      <workItem from="1645451996706" duration="10463000" />
+      <workItem from="1645530820234" duration="4001000" />
     </task>
     <servers />
   </component>
