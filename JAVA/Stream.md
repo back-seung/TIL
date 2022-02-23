@@ -920,3 +920,206 @@ public class OptionalExample {
 |              | double         | reduce(double identity, DoubleBinaryOperator op)  |
 
 > 각 인터페이스에는 매개 타입으로 XXXOperator, 리턴 타입으로 OptionalXXX, int, long, double을 가지는 reduce() 메소드가 오버로딩 되어있다. 스트림에 요소가 전혀 없을 경우 identity(디폴트값)가 리턴된다.
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class ReductionExample {
+    public static void main(String[] args) {
+        List<Student> studentList = Arrays.asList(
+                new Student("홍길동", 25),
+                new Student("백승한", 30),
+                new Student("신용권", 40)
+        );
+				// sum() 이용
+        int sum1 = studentList.stream()
+                .mapToInt(Student::getScore)
+                .sum();
+				// reduce(BinaryOperator<Integer>) 이용
+        int sum2 = studentList.stream()
+                .mapToInt(Student::getScore)
+                .reduce((a, b) -> a + b)
+                .getAsInt();
+				// reduce(int identity, IntBinaryOperator op) 이용
+        int sum3 = studentList.stream()
+                .mapToInt(Student::getScore)
+                .reduce(0, (a, b) -> a + b);
+
+        System.out.println("Sum 1 : " + sum1);
+        System.out.println("Sum 2 : " + sum2);
+        System.out.println("Sum 3 : " + sum3);
+
+    }
+}
+```
+
+
+
+## 수집 (collect())
+
+> 스트림은 요소들을 필터링 또는 매핑한 후 요소들을 수집하는 최종 처리 메소드인 collect()를 제공한다. 이 메소드를 통해 필요한 요소만 컬렉션으로 담을 수 있고, 요소들을 그룹핑한 후 집계할 수 있다.
+
+### 필터링한 요소 수집
+
+> Stream의 collect(Collector<T,A,R> collector) 메소드는 필터링 또는 매핑된 요소들을 새로운 컬렉션에 수집하고, 이 컬렉션을 리턴한다.
+
+| 리턴 타입 | 메소드 (매개 변수)                  | 인터페이스 |
+| --------- | ----------------------------------- | ---------- |
+| R         | collect(Collector<T,A,R> collector) | Stream     |
+
+매개값인 Collector는 어떤 요소를 어떤 컬렉션에 수집할 것인지를 결정한다. Collector의 타입 파라미터 T는 요소이고, A는 누적기(accumulator)이다. 그리고 R은 요소가 저장될 컬렉션이다. 즉, T요소를 A에 누적하여 R에 저장한다.
+
+
+
+### Collectors 정적 메소드
+
+| 리턴 타입                           | Collectors의 정적 메소드                                     | 설명                                                         |
+| ----------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Collector<T, ?, List<T>>            | toList()                                                     | T를 list에 저장                                              |
+| Collector<T, ?, Set<T>>             | toSet()                                                      | T를 set에 저장                                               |
+| Collector<T, ?, Collection<T>>      | toCollection(Supplier<Collection<T>>)                        | T를 Supplier가 제공한 Collection에 저장                      |
+| Collector<T, ?, Map<K,U>>           | toMap(Function<T,K> keyMapper, Function<T,U> valueMapper)    | T를 K와 U로 매핑해서 K를 키로 U를 값으로 Map에 저장          |
+| Collector<T, ?, ConcurrentMap<K,U>> | toCurrentMap(Function<T,K> keyMapper, Function<T,U> valueMapper) | T를 K와 U로 매핑해서 K를 키로, U를 값으로 ConcurrentMap에 저장 |
+
+> 리턴값인 Collector를 보면 A가 ?로 되어있는데 이것은 Collector가 R에 T를 저장하는 방법을 알고 있어 A가 필요없기 떄문이다. 
+
+* 예제
+
+```java
+// 1. 변수 사용
+Stream<Student> totalStream = totalList.stream();
+Stream<Student> maleStream = totalStream.filter(a -> a.getSex() == Student.MALE);
+Collector<Student, ?, List<Student>> collector = Collectors.toList();
+
+List<Student> maleList = maleStream.collect(collector);
+
+// 1. 변수 사용 X
+List<Student> maleList = totalList.stream()
+  .filter(a -> a.getSex() == Student.MALE)
+  .collect(Collectors.toList());
+
+// 2. 변수 사용
+Stream<Student> totalStream = totalList.stream();
+Stream<Student> femaleStream = totalStream.filter(s -> s.getSex() == Student.FEMALE);
+Supplier<HashSet<Student>> supplier = HashSet :: new;
+Collector<Student, ?, HashSet<Student>> collector = Collectors.toCollection(supplier);
+Set<Student> femaleSet = femaleStream.collect(collector);
+
+// 2. 변수 사용 X
+Set<Student> femaleSet = totalList.stream()
+  .filter(s -> s.getSex() == Student.FEMALE)
+	.collect(Collectors.toCollection(HashSet::new));
+```
+
+
+
+### 사용자 정의 컨테이너에 수집하기
+
+> List, Map, Set같은 컬렉션이 아니라 사용자 정의 컨테이너 객체에 수집하는 방법에 대해 알아본다.  
+>
+> 스트림은 요소들을 필터링, 매핑해서 사용자 정의 컨테이너 객체에 수집할 수 있도록 collect() 메소드를 추가적으로 제공한다.  
+
+| 인터페이스   | 리턴 타입 | 메소드 (매개 변수)                                           |
+| ------------ | --------- | ------------------------------------------------------------ |
+| Stream       | R         | collect(Supplier<R>, BiConsumer<R,? super T>, BiConsumer<R,R>) |
+| IntStream    | R         | collect(Supplier<R>, ObjIntConsumer<R>, BiConsumer<R,R>)     |
+| LongStream   | R         | collect(collect(Supplier<R>, ObjLongtConsumer<R>, BiConsumer<R,R>)) |
+| DoubleStream | R         | collect(Supplier<R>, ObjDoubleConsumer<R>, BiConsumer<R,R>)  |
+
+* 첫 번째 Supplier는 요소들이 수집될 컨테이너 객체(R)를 생성하는 역할을 한다. 순차 처리 스트림에서는 단 한 번 Supplier가 실행되고 하나의 컨테이너 객체를 생성한다. 병렬 처리 스트림에서는 여러 번 Supplier가 실행되고 여러 개의 컨테이너를 생성하지만 결국 하나로 결합된다.
+* 두 번째 XXXConsumer는 컨테이너 객체(R)에 요소(T)를 수집하는 역할을한다. 스트림에서 요소를 컨테이너에 수집할 때마다 XXXConsumer가 실행된다.
+* 세 번째 BiConsumer는 컨테이너 객체를 결합하는 역할을 한다. 순차 처리 스트림에서는 호출되지 않고, 병렬처리 스트림에서만 호출되어, 각 객체를 결합해서 하나의 최종 컨테이너를 완성한다.
+
+> 리턴 타입 R은 요소들이 최종 수집된 컨테이너 객체이다. 순차 처리 스트림에서는 리턴 객체가 첫 번째 Supplier가 생성한 객체지만, 병렬 처리 스트림에서는 최종 결합된 컨테이너 객체가 된다.
+
+* 예제
+
+```java
+package stream;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MaleStudent {
+    private List<Student> list; // 남학생들이 수집될 필드
+
+    public MaleStudent() {
+        list = new ArrayList<>();
+        // 생성자가 몇 번 호출되었는지 확인
+        System.out.println("[" + Thread.currentThread().getName() + "] MaleStudent()");
+    }
+
+    public void accumulate(Student student) {
+        list.add(student); // 매개값으로 받은 Student를 list에 수집
+        // accumulate() 실행 횟수
+        System.out.println("[" + Thread.currentThread().getName() + "] accumulate()");
+    }
+
+    public void combine(MaleStudent other) { // 병렬 처리 스트림 사용시 다른 MaleStudent와 결합될 목적
+        list.addAll(other.getList());
+        System.out.println("[" + Thread.currentThread().getName() + "] combine()");
+    }
+
+    public List<Student> getList() {
+        return list;
+    }
+}
+```
+
+* 남학생 MaleStudent에 누적하는 예제
+
+```java
+package stream;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class MaleStudentExample {
+    public static void main(String[] args) {
+        List<Student> totalList = Arrays.asList(
+                new Student("홍길동", 25, Student.SEX.MALE),
+                new Student("백승한", 6, Student.SEX.MALE),
+                new Student("김수애", 10, Student.SEX.FEMALE),
+                new Student("박수미", 6, Student.SEX.FEMALE)
+        );
+
+        MaleStudent maleStudent = totalList.stream()
+                .filter(s -> s.getSEX() == Student.SEX.MALE)
+                .collect(MaleStudent::new, MaleStudent::accumulate, MaleStudent::combine);
+
+        maleStudent.getList().stream()
+                .forEach(s -> System.out.println(s.getName()));
+    }
+}
+```
+
+> 순차 처리를 담당하는 스레드는 main인 것을 알 수 있다. 생성자가 한 번 호출되었기에 한 개의 MaleStudent가 생성 되었고, accumulate가 2번 호출 되었기 때문에 요소가 2번 호출됐다. 따라서 collect()가 리턴한 최종 남학생은 2명이다.
+
+
+
+### 요소를 그룹핑해서 수집
+
+### 그룹핑 후 매핑 및 집계
+
+## 병렬처리
+
+### 동시성(Concerrency)과 병렬성(Parallelism)
+
+#### 데이터 병렬성
+
+#### 작업 병렬성
+
+### 포크조인 프레임워크
+
+### 병렬 스트림 생성
+
+### 병렬 처리 성능
+
+#### 요소의 수와 요소당 처리 시간
+
+#### 스트림 소스의 종류
+
+#### 코어의 수

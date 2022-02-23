@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/StreamPipelinesExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/ReductionExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Stream.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream.md" afterDir="false" />
     </list>
@@ -54,22 +53,9 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.StreamPipelinesExample">
-    <configuration name="BinarySearchTreeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_5.BinarySearchTreeTest" />
-      <module name="Exam_Source" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="week_5.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LambdaExpressionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.LambdaExpressionExample" />
+  <component name="RunManager" selected="애플리케이션.ReductionExample">
+    <configuration name="LoopingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.LoopingExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -81,8 +67,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MapAndReduceExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.MapAndReduceExample" />
+    <configuration name="MatchExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.MatchExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -94,8 +80,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParallelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.ParallelExample" />
+    <configuration name="OptionalExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.OptionalExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -107,8 +93,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StreamPipelinesExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.StreamPipelinesExample" />
+    <configuration name="ReductionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.ReductionExample" />
+      <module name="Exam_Source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="stream.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.SortingExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -122,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.StreamPipelinesExample" />
-        <item itemvalue="애플리케이션.MapAndReduceExample" />
-        <item itemvalue="애플리케이션.ParallelExample" />
-        <item itemvalue="애플리케이션.LambdaExpressionExample" />
-        <item itemvalue="애플리케이션.BinarySearchTreeTest" />
+        <item itemvalue="애플리케이션.ReductionExample" />
+        <item itemvalue="애플리케이션.OptionalExample" />
+        <item itemvalue="애플리케이션.MatchExample" />
+        <item itemvalue="애플리케이션.LoopingExample" />
+        <item itemvalue="애플리케이션.SortingExample" />
       </list>
     </recent_temporary>
   </component>
@@ -153,7 +152,8 @@
       <workItem from="1645256877325" duration="5482000" />
       <workItem from="1645289613617" duration="1310000" />
       <workItem from="1645321471568" duration="2213000" />
-      <workItem from="1645451996706" duration="541000" />
+      <workItem from="1645451996706" duration="10463000" />
+      <workItem from="1645530820234" duration="519000" />
     </task>
     <servers />
   </component>
