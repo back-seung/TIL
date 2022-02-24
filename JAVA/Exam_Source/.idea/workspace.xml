@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/MaleStudent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/MaleStudentExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stream/ReductionExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stream/GroupingByExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream/FromCollectionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/FromCollectionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream/LambdaExpressionExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/LambdaExpressionExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream/MapAndReduceExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/MapAndReduceExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream/MapExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/MapExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream/SortingExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/SortingExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stream/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Stream.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream.md" afterDir="false" />
     </list>
@@ -63,9 +54,9 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.MaleStudentExample">
-    <configuration name="LoopingExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.LoopingExample" />
+  <component name="RunManager" selected="애플리케이션.GroupingByExample">
+    <configuration name="GroupingByExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.GroupingByExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -131,11 +122,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="애플리케이션.GroupingByExample" />
         <item itemvalue="애플리케이션.MaleStudentExample" />
         <item itemvalue="애플리케이션.ReductionExample" />
         <item itemvalue="애플리케이션.OptionalExample" />
         <item itemvalue="애플리케이션.MatchExample" />
-        <item itemvalue="애플리케이션.LoopingExample" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +154,7 @@
       <workItem from="1645289613617" duration="1310000" />
       <workItem from="1645321471568" duration="2213000" />
       <workItem from="1645451996706" duration="10463000" />
-      <workItem from="1645530820234" duration="4001000" />
+      <workItem from="1645530820234" duration="5125000" />
     </task>
     <servers />
   </component>
