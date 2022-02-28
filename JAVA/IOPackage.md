@@ -39,6 +39,14 @@
 
 ### InputStream
 
+![inputStream](https://t1.daumcdn.net/cfile/tistory/9961443C5C1E016C2B)
+
+​	출처 코딩팩토리  : https://coding-factory.tistory.com/281
+
+> `InputStream`이란 **바이트 기반 입력 스트림의 최상위 추상클래스이다.** 모든 바이트 기반 입력 스트림은 이 클래스를 상속받는다.  
+>
+> InputStream은 읽기에 대한 다양한 추상 메소드를 정의해 두었다. 이 추상메소드를 오버라이딩하여 목적에 따라 데이터를 입력 받을 수 있다.
+
 #### read() 메소드
 
 #### read(byte[] b) 메소드
@@ -50,6 +58,14 @@
 
 
 ### OutputStream
+
+![outputStream](https://t1.daumcdn.net/cfile/tistory/99C0C7335C1E049323)
+
+​	출처 코딩 팩토리 : https://coding-factory.tistory.com/281
+
+> 바이트 기반 출력 스트림의 최상위 추상클래스이다.  
+>
+> 모든 바이트 기반 출력 스트림 클래스는 이 클래스를 상속 받아 기능을 재정의 한다.
 
 #### write(int b) 메소드
 
@@ -208,3 +224,6 @@
 ### 발신자 구현
 
 ### 수신자 구현 
+
+
+
