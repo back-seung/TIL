@@ -110,17 +110,51 @@ while((readByteNo = is.read(readBytes)) != -1) { ... }
 
 #### write(int b) 메소드
 
+> 매개 변수로 주어진 b 값에서 끝에 있는 1바이트만 출력 스트림으로 보낸다. 매개 변수가 int 타입이므로 4바이트 모두를 보내는 것으로 오해할 수 있다.
 
+```java
+OutputStream os = new FileOutputStream("C:/test.txt");
+byte[] data = "ABC".getBytes();
+for (int i = 0; i < data.length; i++) {
+  os.write(data[i]); // A, B, C를 하나씩 출력
+}
+```
+
+  
 
 #### write(byte[] b) 메소드
 
+> 매개값으로 주어진 바이트 배열의 모든 바이트를 출력 스트림으로 내보낸다.
+
+```java
+OutputStream os = new FileOutputStream("C:/test.txt");
+byte[] data = "ABC".getBytes();
+os.write(data);
+```
+
+  
+
 #### write(byte[] b, int off, int len) 메소드
 
+> b[off]부터 len개의 바이트를 출력 스트림으로 보낸다.
+
+```java
+OutputStream os = new FileOutputStream("C:/test.txt");
+byte[] data = "ABC".getBytes();
+os.write(data, 1, 2); // B,C만 출력
+```
+
+  
+
 #### flush()와 close() 메소드
+
+> 출력 스트림은 내부에 작은 buffer가 있어서 데이터가 출력되기 전에 버퍼가 쌓여있다가 순서대로 출력된다. flush() 메소드는 버퍼에 잔류하고 있는 데이터를 모두 출력시키고 버퍼를 비우는 역할을 한다. 프로그램에서 더 이상 출력할 데이터가 없다면 flush() 메소드를 마지막으로 호출하여 버퍼에 잔류하는 모든 데이터가 출력되도록 해야 한다. OutputStream을 더 이상 사용하지 않을 경우에는 close() 메소드를 통해 OutputStream에서 사용했던 시스템 자원을 풀어준다.  
 
 
 
 ### Reader
+
+>
 
 #### read() 메소드
 
