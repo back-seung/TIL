@@ -69,13 +69,32 @@ while((readByte = is.read()) != -1) { ... }
 
 #### read(byte[] b) 메소드
 
+> 입력 스트림으로부터 매개값으로 주어진 바이트 배열의 길이만큼 바이트를 읽고 배열에 저장한다. 그리고 읽은 바이트 수를 리턴한다. 실제로 읽은 바이트 수가 배열의 길이보다 작을 경우 읽은 수만큼만 리턴한다. 길이가 3인 바이트 배열에 5개의 스트림이 들어온다면 2번 읽을 수 있다. raed(byte[] b) 메소드 또한 읽을 값이 없다면 -1을 리턴한다. 이를 통해 루프를 만들 수 있다.
 
+```java
+InputStream is = new FileInputStream("C:/Users/test.jpg");
+int readByteNo;
+byte[] readBytes = new byte[100];
+while((readByteNo = is.read(readBytes)) != -1) { ... } 
+```
+
+위 코드는 많은 양의 바이트를 읽을 때 사용하면 좋다. 기존 read() 메소드보다 현저하게 루핑하는 횟수가 줄기 때문이다.
+
+  
 
 #### read(byte[]b, int off, int len) 메소드
 
+> 입력 스트림으로부터 len개의 바이트만큼 읽고, 매개값으로 주어진 바이트 배열 b[off]부터 len개 까지 저장한다. 그리고 읽은 바이트 수인 len개를 리턴한다. 실제로 읽은 바이트 수가 len개 보다 작을 경우 읽은 수만큼 리턴한다.  
+>
+> read(byte[] b) 메소드와 차이점은 한 번에 읽어들이는 바이트 수를 len 매개값으로 조절할 수 있고, 배열에서 저장이 시작되는 인덱스를 지정할 수 있다는 점이다.
+
+  
+
 #### close() 메소드
 
+> InputStream을 더이상 사용하지 않을 경우에는 close() 메소드를 통해 InputStream에서 사용했던 시스템 자원을 풀어준다.
 
+  
 
 ### OutputStream
 
@@ -83,13 +102,15 @@ while((readByte = is.read()) != -1) { ... }
 
 ​	출처 코딩 팩토리 : https://coding-factory.tistory.com/281
 
-> 
->
 > 바이트 기반 출력 스트림의 최상위 추상클래스이다.  
 >
-> 모든 바이트 기반 출력 스트림 클래스는 이 클래스를 상속 받아 기능을 재정의 한다.
+> 모든 바이트 기반 출력 스트림 클래스는 이 클래스를 상속 받아 기능을 재정의 한다. 주요 메소드를 보자
+
+
 
 #### write(int b) 메소드
+
+
 
 #### write(byte[] b) 메소드
 
