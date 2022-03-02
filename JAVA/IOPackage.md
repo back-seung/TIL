@@ -293,13 +293,63 @@ writer.close();
 >
 > `int asciiCode = is.read();`  
 >
-> 컴퓨터는 0과 1만ㅇ을 
+> 컴퓨터는 0과 1만을 이해할 수 있다. 그리고 아스키코드는 1byte로 표현되는 256가지의 숫자에 영어 알파벳, 아라비아 숫자, 특수 기호를 매칭하고 있다. 이러한 숫자로 된 아스키코드 대신 문자를 직접 얻고 싶다면 read() 메소드로 얻은 아스키 코드를  char로 형변환 하면 된다.  
+>
+> `char inputChar = (char) is.read();`
+
+
 
 ### System.out 필드
 
+> 콘솔로 데이터를 출력하기 위해서는 System 클래스의  `out` 정적 필드를 사용한다. `out`은 PrintStream 타입의 필드이다.  
+>
+> `OutputStream os = System.out;`  
+>
+> 콘솔로 1개의 바이트를 출력하려면  OutputStream의 write(int b)메소드를 이용하면 된다. 이때 바이트 값은 아스키코드인데, write() 메소드는 아스키 코드를 문자로 콘솔에 출력한다. 예를 들어 아스키 코드 97번을 write(int b)로 출력하면 'a'가 출력된다.
+
+* System 클래스의 out 필드를 OutputStream으로 변환해서 사용하는 것은 그리 편하지 않다. 따라서 PrintStream의 print(), println() 등을 사용하여 좀 더 쉬운 방법으로 다양한 타입의 데이터를 콘솔에 출력할 수 있다.
+
+
+
 ### Console 클래스
 
+> 자바 6부터 콘솔에서 입력받은 문자열을 쉽게 읽을 수 있도록 `java.io.Console` 클래스를 제공하고 있다. Console객체는 `System.console()`로 호출하여 얻으면 된다.
+
+* 이클립스에서 실행하면 null을 리턴하기 때문에 명령 프롬프트에서 실행해야 한다.
+* Console 클래스 읽기 메소드 정리
+
+| 리턴 타입 | 메소드         | 설명                                                  |
+| --------- | -------------- | ----------------------------------------------------- |
+| String    | readLine()     | Enter키를 입력하기 전의 모든 문자열을 읽음            |
+| char[]    | readPassword() | 키보드 입력 문자를 콘솔에 보여주지 않고 문자열을 읽음 |
+
+* 예제
+
+```java
+public class ConsoleExample {
+  public static void main(String[] args) {
+    Console console = System.console();
+    
+    System.out.println("아이디 : ");
+    String id = console.readLine();
+    
+    System.out.println("비밀번호 : ");
+    char[] charPass = console.readPassword();
+    String pw = new String(charPass);
+    
+    System.out.println(id);
+    System.out.println(pw);
+  }
+}
+```
+
+
+
 ### Scanner 클래스 
+
+> Console 클래스는 문자열은 읽을 수 있지만, 정수, 실수 값은 바로 읽을 수 없다. `java.io` 패키지의 클래스는 아니지만 `java.util` 패키지의 Scanner 클래스를 이용하면 콘솔로부터 기본 타입의 값을 바로 읽을 수 있다. **콘솔에서만 Scanner 클래스가 사용되는 것은 아니고 File, InputStream, Path 등과 같이 다양한 입력 소스를 지정할 수도 있다.**
+>
+> `Scanner sc = new Scanner(System.in);` 
 
 
 
