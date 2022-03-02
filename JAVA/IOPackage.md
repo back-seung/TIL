@@ -209,19 +209,91 @@ while((readCharNo = reader.read(cbuf)) != -1 ) { ... }
 
 ### Writer
 
+> 문자 기반 출력 스트림의 최상위 클래스로 추상 클래스이다. 모든 문자 출력 스트림 클래스는 이 클래스를 상속받아서 만들어진다.  
+>
+> 주요 메소드를 보자.
+
+| 리턴 타입 | 메소드                               | 설명                                                         |
+| --------- | ------------------------------------ | ------------------------------------------------------------ |
+| void      | write(int c)                         | 출력 스트림으로 주어진 한 문자를 보낸다.(c의 끝 2바이트)     |
+| void      | write(char[] cbuf)                   | 출력 스트림으로 주어진 문자 배열 cbuf의 모든 문자를 보낸다.  |
+| void      | write(char[] cbuf, inf off, int len) | 출력 스트림으로 주어진 문자 배열 cbuf[off]부터 len개의 문자를 보낸다. |
+| void      | write(String str)                    | 출력 스트림으로 주어진 문자열을 전부 보낸다.                 |
+| void      | write(String str, int off, int len)  | 출력 스트림으로 주어진 문자열 off순번부터 len개까지의 문자를 보낸다. |
+| void      | flush()                              | 버퍼에 잔류하는 모든 문자열을 출력한다.                      |
+| void      | close()                              | 시스템 자원을 반납하고 출력 스트림을 닫는다.                 |
+
+  
+
 #### write(int c) 메소드
+
+> int값을 제공을 하게되면 int에서 끝 2바이트에 있는 문자 정보를 출력 스트림으로 보낸다. (4바이트 전부가 보내지는 것이 아니다.)
+
+* 예제
+
+```java
+Writer writer = new FileWriter("C:/Temp/test.txt");
+char[] data = "홍길동".toCharArray();
+for(int i = 0; i < data.length; i++) {
+  writer.write(data[i]); // 홍 길 동 출력
+}
+writer.flush();
+writer.close();
+```
+
+
 
 #### write(char[] cbuf) 메소드
 
+> 매개값으로 주어진 char[] 배열의 모든 문자를 출력 스트림으로 보낸다.
+
+```java
+Writer writer = new FileWriter("C:/Temp/test.txt");
+char[] data = "홍길동".toCharArray();
+writer.write(data); // 홍길동 모두 출력
+writer.flush();
+writer.close();
+```
+
+
+
 #### write(char[]) cbuf, int off, int len) 메소드
+
+> cbuf[off]의 위치부터 len개 까지의 문자를 출력 스트림으로 보낸다.
+
+```java
+Writer writer = new FileWriter("C:/Temp/test.txt");
+char[] data = "홍길동".toCharArray();
+writer.write(data, 1, 2); // 길 동 출력
+writer.flush();
+writer.close();
+```
+
+
 
 #### write(String str)과 write(String str, int off, int len) 메소드
 
-
+> Writer는 좀 더 쉽게 문자열을 내보내기 위해서 매개값이 String타입인 write(String str)메소드와 write(String str, int off, int len) 메소드를 가진다. 
 
 ## 콘솔 입출력
 
+> 콘솔은 시스템을 사용하기 위해 키보드로 입력을 받고 화면으로 출력하는 소프트웨어를 말한다. 
+>
+> unix/linux 운영체제에서는 terminal이 있고 windows 운영체제는 명령프롬프트가 있다.  
+>
+> 자바는 콘솔로부터 데이터를 입력받을 떄 `System.in`, 콘솔에 출력할 때 `System.out`을, 에러를 출력할 때 `System.err`을 사용한다.
+
+
+
 ### System.in 필드
+
+> System 클래스에는 정적 필드 `in`이 있다. `System.in`은 InputStream 타입의 필드이므로 다음과 같이 변수로 참조가 가능하다. `InputStream is = System.in;`  
+>
+> 키보드로부터 어떤 키가 입력되었는지 확인하려면 read() 메소드로 한 바이트를 읽으면 된다.  
+>
+> `int asciiCode = is.read();`  
+>
+> 컴퓨터는 0과 1만ㅇ을 
 
 ### System.out 필드
 
