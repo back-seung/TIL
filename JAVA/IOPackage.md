@@ -351,19 +351,122 @@ public class ConsoleExample {
 >
 > `Scanner sc = new Scanner(System.in);` 
 
-
-
 ## 파일 입출력
 
 ### File 클래스
 
+> IO 패키지에서 제공하는 File 클래스는 파일크기, 속성, 이름 등의 정보를 얻어내는 기능과 파일 생성 및 삭제 기능을 제공하고 있다. 그리고 디렉토리를 생성하고 디렉토리에 존재하는 파일 리스트를 얻어내는 기능도 있다. 그러나 파일의 데이터를 읽고 쓰는 기능은 지원하지 않는다. 파일의 입출력은 Stream을 사용한다.
+>
+> `File file = new File("C:/file/test.txt");`
+>
+> `File file = new File("C:\\file\\test.txt");`
+>
+> * 구분자 : 디렉터리 구분자는 운영체제마다 조금씩 다르다. 윈도우의 경우 `/`, `\`를 사용할 수 있고, 유닉스나 리눅스는 `/`를 사용한다.  `File.seperator`를 출력하면 해당 운영체제에서 사용하는 구분자를 확인할 수 있다.
+>
+> 또한 단지 File 객체를 생성 및 초기화 했다고 해서 파일 || 디렉토리가 생성된 것은 아니다. 해당 객체로 실제 파일이나 디렉토리가 있는지 확인하려면 boolean타입의 `exist()`를 호출할 수 있다.
+
+* exist()의 리턴값이 false라면 이러한 메소드를 사용할 수 있다.
+
+| 리턴 타입 | 메소드          | 설명                            |
+| --------- | --------------- | ------------------------------- |
+| boolean   | createNewFile() | 새로운 파일을 생성              |
+| boolean   | mkdir()         | 새로운 디렉토리를 생성          |
+| boolean   | mkdirs()        | 경로상에 없는 디렉토리들을 생성 |
+| boolean   | delete()        | 파일 또는 디렉토리 삭제         |
+
+* 파일 또는 디렉토리가 존재할 경우에는 다음 메소드를 사용할 수 있다.
+
+| 리턴 타입 | 메소드                          | 설명                                                         |
+| --------- | ------------------------------- | ------------------------------------------------------------ |
+| boolean   | canExcute()                     | 실행할 수 있는 파일인지 여부                                 |
+| boolean   | canRead()                       | 읽을 수 있는 파일인지 여부                                   |
+| boolean   | canWrite()                      | 수정 및 저장할 수 있는 파일인지 여부                         |
+| String    | getName()                       | 파일의 이름을 리턴                                           |
+| String    | getParent()                     | 파일 상위 디렉토리의 이름을 리턴                             |
+| File      | getParentFile()                 | 부모 디렉토리를 File객체로 생성 후 리턴                      |
+| String    | getPath()                       | 전체 경로를 리턴                                             |
+| boolean   | isDirectory()                   | 디렉토리인지 여부                                            |
+| boolean   | isFile()                        | 파일인지 여부                                                |
+| boolean   | isHidden()                      | 숨겨진 파일인지 여부                                         |
+| long      | lastModified()                  | 마지막 수정 날짜 및 시간을 리턴                              |
+| long      | length()                        | 파일의 크기를 리턴                                           |
+| String[]  | list()                          | 디렉토리에 포함된 파일 및 서브디렉토리 목록 전부를 String 배열로 리턴 |
+| String[]  | list(FilenameFilter filter)     | 디렉토리에 포함된 파일 및 서브디렉토리 목록 중에 FilenameFileter에 맞는 것만 String 배열로 리턴 |
+| File[]    | listFiles()                     | 디렉토리에 포함된 파일 및 서브 디렉토리 목록 전부를 File 배열로 리턴 |
+| File[]    | listFiles(FilnameFilter filter) | 디렉토리에 포함된 파일 및 서브디렉토리 목록 중에 FilenameFileter에 맞는 것만 File 배열로 리턴 |
+
+
+
 ### FileInputStream
+
+> 파일로부터 바이트 단위로 읽어들일 때 사용하는 바이트 기반 입력 스트림이다. 바이트 단위로 읽기 때문에 그림, 오디오, 비디오, 텍스트 파일 등 모든 종류의 파일을 읽을 수 있다. 다음은 FileInputStream을 생성하는 두 가지 방법을 보여준다.
+
+```java
+// # 1
+FileInputStream fis = new FileInputStream("C:/temp/test.txt");
+
+// # 2
+File file = new File("C:/temp/test.txt")
+FileInputStream fis = new FIleInputStream(file);
+```
+
+> 만약 파일이 존재하지 않을시  FileNotFoundException을 발생시킨다. 따라서 try-catch로 예외 처리를 해야한다.
 
 ### FileOutputStream
 
+> 바이트 단위로 데이터를 파일에 저장할 때 사용하는 바이트 기반의 출력 스트림이다. 바이트 단위로 저장하기 때문에 그림, 오디오, 비디오 등 모든 종류의 데이터를 파일로 저장할 수 있다. 
+
+```java
+// # 1
+FileOutputStream fis = new FileOutputStream("C:/temp/test.txt");
+
+// # 2
+File file = new File("C:/temp/test.txt")
+FileOutputStream fis = new FileOutputStream(file);
+```
+
+> 파일이 이미 존재할 경우 데이터를 출력하면 파일을 덮어쓰게 되므로 기존의 파일 내용은 사라지게 된다. 기존의 파일 내용 끝에 데이터를 추가할 경우에는 생성자의 두 번째 매개값으로 `true`를 주면 된다.
+
+```java
+// # 1
+FileOutputStream fis = new FileOutputStream("C:/temp/test.txt", true);
+
+// # 2
+File file = new File("C:/temp/test.txt")
+FileOutputStream fis = new FileOutputStream(file, true);
+```
+
+  
+
 ### FileReader
 
+> 텍스트 파일을 프로그램으로 읽어들일 때 사용하는 문자 기반 스트림이다. 문자 단위로 읽기 때문에 텍스트가 아닌 그림, 오디오, 비디오 등은 읽을 수 없다. FileReader를 생성하는 두가지 방법을 보자
+
+```java
+// # 1
+FileReader reader = new FileReader("C:/temp/test.txt");
+
+// # 2
+File file = new File("C:/temp/test.txt");
+FileReader reader = new FileReader(file);
+```
+
+> 객체가 생성될 때 파일과 직접 연결이 되는데, 만약 파일이 존재하지 않으면 `FileNotFoundException`을 발생시키므로 try-catch로 감싸줘야 한다. 
+
 ### FileWriter
+
+> 텍스트 데이터를 파일에 저장할 때 사용하는 문자 기반 스트림이다. 문자 단위로 저장하기 때문에 텍스트 외의 다른 파일 등은 저장할 수 없다. FileWriter를 생성하는 두가지 방법을 보자
+
+```java
+// # 1
+FileWriter writer = new FileWriter("C:/temp/test.txt");
+
+// # 2
+File file = new File("C:/temp/test.txt");
+FileWriter writer = new FileWriter(file);
+```
+
+> 주의할 점으로 경로에 해당 파일이 이미 존재할 경우 덮어쓰여지므로 원래 파일의 내용은 사라지게 된다. 기존의 파일 내용 끝에 데이터를 추가하는 경우에는 생성자 두 번째 매개값으로 `true`를 주자.
 
 
 
