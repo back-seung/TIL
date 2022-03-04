@@ -592,11 +592,54 @@ BufferedWriter bw = new BufferedWriter(문자 출력 스트림);
 
 ### 기본 타입 입출력 보조 스트림
 
+> 바이트 스트림은 바이트 단위로 입출력하기 때문에 자바의 기본 데이터 타입인 boolean, char, short, int, long, float, double 단위로 입출력할 수 없다. 그러나 `DataInputStream`과 `DataOutputStream` 보조 스트림을 연결하면 기본 데이터 타입으로 입출력이 가능하다. 객체 생성 방법에 대해 알아보자.
 
+```java
+DataInputStream dis = new DataInputStream(바이트 입력 스트림);
+DataOutputStream dos = new DataOutputStream(바이트 출력 스트림);
+```
+
+* `DataInputStream`과 `DataOutputStream`이 가지는 메소드
+
+| DataInputStream |               | DataOutputStream |                         |
+| --------------- | ------------- | ---------------- | ----------------------- |
+| boolean         | readBoolean() | void             | writeBoolean(boolean v) |
+| byte            | readByte()    | void             | writeByte(int v)        |
+| char            | readChar()    | void             | writeChar(char v)       |
+| double          | readDouble()  | void             | writeDouble(double v)   |
+| float           | readFloat()   | void             | writeFloat(float v)     |
+| int             | readInt()     | void             | writeInt()              |
+| long            | readLong()    | void             | writeLong()             |
+| short           | readShort()   | void             | writeShort()            |
+| String          | readString()  | void             | writeString()           |
+
+이 메소드들로 입출력할 떄의 주의점은 **데이터 타입의 크기가 모두 다르므로 DataOutputStream으로 출력한 데이터를 다시  DataInputStream으로 읽어올 때는 출력한 순서와 동일한 순서로 읽어야 한다는 점**이다.
+
+예를 들어 int ▶️ boolean ▶️ double의 출력 순서를 가지고 있다면 입력 순서도 int ▶️ boolean ▶️ double의 순서를 지켜야 한다는 것이다.
 
 ### 프린터 보조 스트림
 
+> `PrintStream`과 `PrintWriter`는 프린터와 유사하게 출력하는 print(), println() 메소드를 가지고 있는 보조 스트림이다. System.out이 바로 PrintStream 타입이기 때문에 print(), println() 메소드를 사용할 수 있었다. PrintStream은 바이트 출력 스트림과 연결되고, PrintWriter는 문자 출력 스트림으로 연결된다. 둘 다 거의 같은 기능을 가지고 있다.
 
+```java
+PrintStream ps = new PrintStream(바이트출력스트림);
+PrintWriter pw = new PrintWriter(문자출력스트림);
+```
+
+* print()와 println()은 다음과 같이 오버로딩이 되어 있다.(데이터 타입에 따라)
+
+| PrintStream | PrintWriter      |      |                    |
+| ----------- | ---------------- | ---- | ------------------ |
+| void        | print(boolean b) | void | println(boolean b) |
+| void        | print(char c)    | void | println(char c)    |
+| void        | print(double d)  | void | println(double d)  |
+| void        | print(float f)   | void | println(float f)   |
+| void        | print(long l)    | void | println(long l)    |
+| void        | print(int i)     | void | println(int i)     |
+| void        | print(Object o)  | void | println(Object o)  |
+| void        | print(String s)  | void | println(String s)  |
+
+* 그 외에 printf()도 제공한다. printf()는 형식화된 문자열을 출력할 수 있도록 하기 위해 자바 5부터 추가된 메소드이다. 첫 번째 매개값으로 형식화된 문자열을 지정하고, 두 번째 매개값부터 형식화된 문자열에 들어갈 값을 나열해주면 된다.
 
 ### 객체 입출력 보조 스트림
 
