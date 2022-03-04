@@ -472,9 +472,62 @@ FileWriter writer = new FileWriter(file);
 
 ## 보조 스트림
 
-### 문자 변환 스트림
+> 다른 스트림과 연결되어 여러 가지 편리한 기능을 제공해주는 스트림을 말한다. 보조 스트림을 필터 스트림이라고도 하는데, 이는 보조 스트림의 일부가 FileInputStream, FileOutputStream의 하위 클래스이기 때문이다. 하지만 다른 보조 스트림은 이 클래스를 상속받지 않는다.  
+>
+> 보조 스트림은 자체적으로 입출력을 수행할 수 없기 때문에 입력 소스와 바로 연결되는 InputStream, FileInputStream, Reader, FileReader, 출력 소스와 바로 연결되는 OutputStream, FileOutputStream, Writer, FileWriter 등에 연결해서 입출력을 수행한다.  보조 스트림은 문자 변환, 입출력 성능 향상, 기본 데이터 타입 입출력, 객체 입출력 등의 기능을 제공한다.
+
+* 보조 스트림을 생성할 떄에는 자신이 연결될 스트림을 다음과 같이 생성자의 매개값으로 받는다.
+
+```java
+보조스트림 변수 = new 보조스트림(연결스트림);
+```
+
+* 예를 들어 콘솔 입력 스트림을 문자 변환 보조 스트림인 InputStreamReader에 연결하는 코드는 다음과 같다.
+
+```java
+InputStream is = System.in;
+InputStreamReader reader = new InputStreamReader(is);
+```
+
+* 문자 변환 보조 스트림인 InputStreamReader를 다시 성능 향상 보조 스트림인 BufferedReader에 연결하는 코드는 다음과 같다.
+
+```java
+InputStream is = System.in;
+InputStreamReader reader = new InputStreamReader(is);
+BufferedReader br = new BufferedReader(reader);
+```
+
+
+
+### 문자 변환 보조 스트림
+
+> 소스 스트림이 바이트 기반 스트림(InputStream, OutputStream, FileInputStream, FileOutputStream)이면서 입출력 데이터가 문자라면  Reader와 Writer로 변환해서 사용하는 것을 고려해야 한다.  
+>
+> 그 이유는 Reader와 Writer는 문자 단위로 입출력하기 때문에 바이트 기반 스트림보다는 편하고 문자셋의 종류를 지정할 수 있기 때문에 다양한 문자를 입출력할 수 있다.
 
 #### InputStreamReader
+
+> 바이트 입력 스트림에 연결되어 문자 입력 스트림인 Reader로 변환시키는 보조 스트림이다.
+
+```java
+Reader reader = new InputStreamReader(바이트입력스트림);
+```
+
+* 예를 들어 콘솔 입력을 위한 문자 변환 보조 스트림인 InputStream을 다음과 같이 Reader 타입으로 변환할 수 있다.
+
+```java
+InputSteream is = System.in;
+Reader reader = new InputStream(is);
+```
+
+* 파일 입력을 위한 FileInputStream도 다음과 같이 Reader 타입으로 변환시킬 수 있다.
+
+```java
+FileInputStream fis = new FileInputStream("C:/Temp/file.txt");
+Reader reader = new InputStreamReader(fis);
+```
+
+> FileInputStream에 InputStreamReader를 연결하지 않고 FileReader를 직접 생성할 수도 있다. FileReader는  InputStreamReader의 하위 클래스이다. 이것은 FileReader가 내부적으로 FileInputStream에 InputStreamReader 보조 스트림을 연결한 것이라고 볼 수 있다.
 
 #### OutputStreamReader
 
