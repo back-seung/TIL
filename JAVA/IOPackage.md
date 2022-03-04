@@ -531,13 +531,62 @@ Reader reader = new InputStreamReader(fis);
 
 #### OutputStreamReader
 
+> 바이트 출력 스트림에 연결되어 문자 출력 스트림인  Writer로 변환시키는 보조 스트림이다. 
 
+```java
+Writer writer = new OutputStreamWriter(바이트출력스트림);
+```
+
+* 예를 들어 파일 출력을 위한 FileOutputStream을 다음과 같이 Writer 타입으로 변환할 수 있다.
+
+```java
+FileOutputStream fos = new FileOutputStream("C:/Temp/test.txt");
+Writer writer = new OutputStreamWriter(fos);
+```
+
+> FileOutputStream에 OutputStreamWriter를 연결하지 않고 FileWriter를 직접 생성할 수도 있다.  
+>
+> FileWriter는 OutputStreamWriter의 하위 클래스이다. 이것은 FileWriter가 내부적으로 FileOutputStream에 OutputStreamWriter 보조 스트림을 연결한 것으로 볼 수 있다. 
 
 ### 성능 향상 보조 스트림
 
+> 프로그램의 실행 성능은 입출력이 가장 늦은 장치를 따라간다. CPU와 메모리가 아무리 뛰어나도 하드 디스크의 입출력이 늦어지면 프로그램의 실행 성능은 하드 디스크의 처리 속도에 맞춰진다. 네트워크로 데이터를 전송할 때도 마찬가지다. 이러한 문제에 대한 완전한 해결책은 될 수 없지만, 프로그램이 입출력 소스와 직접 작업하지 않고 중간에 메모리 버퍼와 작업함으로써 실행 성능을 향상시킬 수 있따. 예를 들어 프로그램은 직접 하드 디스크에 데이터를 보내지 않고 메모리 버퍼에 데이터를 보냄으로써 쓰기 속도가 향상된다. **버퍼는 데이터가 쌓이길 기다렸다가 꽉 차게 되면 데이터를 한 번에 하드디스크로 보냄으로써 출력 횟수를 줄여준다.**  
+>
+> 보조 스트림 중에서는 위와 같이 **메모리 버퍼를 제공하여 프로그램의 성능을 향상시키는 것**들이 있다.
+
+
+
 #### BufferedInputStream과 BufferedReader
 
+> `BufferedInputStream` : 바이트 입력 스트림에 연결되어 버퍼를 제공해주는 보조 스트림이다. **최대 8192 바이트**
+>
+> `BufferedReader` : 문자 입력 스트림에 연결되어 버퍼를 제공해주는 보조 스트림이다. **최대 8192 문자**
+>
+> 둘 다 입력 소스로부터 자신의 내부 버퍼 크기만큼 데이터를 미리 읽고 버퍼에 저장해둔다. 프로그램은 외부의 입력 소스로부터 직접 읽는 대신 버퍼로부터 읽음으로써 읽기 성능이 향상된다.  
+>
+> `BufferedInputStream`과 `BufferedReader` 보조 스트림은 다음과 같이 생성자의 매개값으로 준 입력스트림과 연결되어 8192 내부 버퍼 사이즈를 가지게 된다. 
+>
+> 데이터를 읽어들이는 방법은 InputStream || Reader와 동일하다.
+
+```java
+BufferedInputStream bis = new BufferedInputStream(바이트 입력 스트림);
+BufferedReader br = new BufferedReader(문자 입력 스트림);
+```
+
 #### BufferedOutputStream과 BufferedWriter
+
+> `BufferedOutputStream` : 바이트 출력 스트림에 연결되어 버퍼를 제공해주는 보조 스트림이다. **최대 8192 바이트**
+>
+> `BufferedWriter` : 문자 출력 스트림에 연결되어 버퍼를 제공해주는 보조 스트림이다. **최대 8192 문자**
+>
+> 둘 다 프로그램에서 전송한 데이터를 내부 버퍼에 쌓아두었다가 꽉 차면 버퍼의 모든 데이터를 한꺼번에 보낸다. 프로그램 입장에서 보면 직접 데이터를 보내는 것이 아니라, 메모리 버퍼로 데이터를 고속 전송하기 때문에 성능이 향상되는 효과를 얻게 된다.  
+>
+> 데이터를 출력하는 방법은  OutputStream || Writer와 동일하다.
+
+```java
+BufferedOutputStream bos = new BufferedOutputStream(바이트 출력 스트림);
+BufferedWriter bw = new BufferedWriter(문자 출력 스트림);
+```
 
 
 
