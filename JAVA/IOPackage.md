@@ -694,13 +694,217 @@ public class PrintExample {
 #### ObjectInputStream, ObjectOutputStream
 
 > * ObjectOutputStream : 바이트 출력 스트림과 연결되어 객체를 직렬화하는 역할을 한다.
-> * ObjectInputStream : 바이트 입력 스트림과 연결되어 객체로 역직렬화 하는 역할을 한다
+> * ObjectInputStream : 바이트 입력 스트림과 연결되어 객체로 역직렬화 하는 역할을 한다.
+
+```java
+// # 생성하는 방법
+ObjectInputStream ois = new ObjectInputStream(바이트입력스트림);
+ObjectOutputStream oos = new ObjectOutputStream(바이트출력스트림);
+
+// ObjectOutputStream으로 객체를 직렬화하기 위해서는 writeObject() 메소드를 사용한다.
+oss.writeObejct(객체);
+
+// 반대로 ObjectInputStream의 readObject() 메소드는 입력 스트림에서 읽은 바이트를 역직렬화해서 객체로 생성한다. readObject()의 리턴 타입은 Object이기 때문에 객체 원래의 타입으로 캐스팅 해주어야 한다.
+객체타입 변수 = (객체타입) ois.readObject();
+```
+
+#### 예제
+
+```java
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+public class ObjectInputOutputStreamExample {
+    public static void main(String[] args) throws Exception {
+        String path = "/Object.dat";
+        FileOutputStream fos = new FileOutputStream(path);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        oos.writeObject(new Integer(10));
+        oos.writeObject(new Double(3.14));
+        oos.writeObject(new int[]{1, 2, 3});
+        oos.writeObject(new String("홍길동"));
+
+        oos.flush();
+        oos.close();
+        fos.close();
+
+        FileInputStream fis = new FileInputStream(path);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+        Integer obj1 = (Integer) ois.readObject();
+        Double obj2 = (Double) ois.readObject();
+        int[] obj3 = (int[]) ois.readObject();
+        String obj4 = (String) ois.readObject();
+
+        ois.close();
+        fis.close();
+
+        System.out.println(obj1);
+        System.out.println(obj2);
+        System.out.println(obj3[0] + "" + obj3[1] + "" + obj3[2]);
+        System.out.println(obj4);
+
+    }
+}
+```
+
+
 
 #### 직렬화가 가능한 클래스(Seriallizable)
 
-#### serialVersionUID
+> 자바는 Serializable 인터페이스를 구현한 클래스만 직렬화가 가능하도록 제한하고 있다. Serializable 인터페이스는 필드나 메소드가 없는 빈 인터페이스지만, 객체를 직렬화할 때 private 필드를 포함한 모든 필드를 바이트로 변환해도 좋다는 표시 역할을 한다.
+
+```java
+public class XXX implements Serializable { }
+```
+
+> 객체를 직렬화하면 바이트로 변환되는 것은 필드들이고 생성자 및 메소드는 직렬화에 포함되지 않는다. 따라서 역직렬화할 때에는 필드의 값만 복원된다. 하지만 모든 필드가 직렬화 대상이 되는 것은 아니다. 필드 선언에 static 또는 는  transient가 붙어 있을 경우에는 직렬화가 되지 않는다.
+
+```java
+public class XXX implements Serializable {
+  public int field1;
+  public int field2;
+  int field3;
+  private int field4;
+  public static int field5; // static 키워드가 붙어 직렬화가 되지 않음
+  transient int field6; // transient 키워드가 붙어 직렬화가 되지 않음
+}
+```
+
+
+
+#### serialVersionUID 필드
+
+>  직렬화된 객체를 역직렬화 할 때는 직렬화했을 때와 같은 클래스를 사용해야 한다. 클래스의 이름이 같더라도 클래스의 내용이 변경되면 역직렬화는 실패하며 다음과 같은 예외가 발생한다.
+
+`java.io.InvalidClassException: XXX; local class incompatible: stream classdesc
+serialVersionUID = -975398275932579136, local class serialVersionUID = -12131123948237592845`
+
+: 직렬화 할 때와 역직렬화 할 때 사용된 클래스의  serialVersionUID가 다르다는 것이다. serialVersionUID는 같은 클래스임을 알려주는 식별자 역할을 하는데, Serializable 인터페이스를 구현한 클래스를 컴파일하면 자동적으로 이 정적 필드가 추가 된다. 문제는 재 컴파일하면 이 UID값이 달라진다는 것이다. 네트워크로 객체를 직렬화하여 전송하는 경우, 보내는 쪽과 받는 쪽이 모두 같은 serialVersionUID를 갖는 클래스를 가지고 있어야 하는데, 한 쪽에서 클래스를 변경해서 재컴파일하면 다른 serialVerisonUID를 가지게 되므로 역직렬화에 실패한다.
+
+* SerialVersionUID 변경에 따른 예외 발생 예제
+
+1. 직렬화가 가능한 클래스
+
+```java
+public class ClassC implements Serializable {
+    // 직렬화가 가능한 클래스
+    int field1;
+}
+```
+
+2. 객체 직렬화 수행
+
+```java
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+public class SerialVerionUIDExample1 {
+    // 직렬화 수행
+    public static void main(String[] args) throws Exception {
+        FileOutputStream fos = new FileOutputStream("C:/Temp/Object.dat");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        ClassC classC = new ClassC();
+        classC.field1 = 1;
+
+        oos.writeObject(classC);
+        oos.flush();
+        oos.close();
+        fos.close();
+    }
+}
+```
+
+3. 객체 역직렬화 수행
+
+```java
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class SerialVersionUIDExample2 {
+    // 역직렬화 수행
+    public static void main(String[] args) throws Exception {
+        FileInputStream fis = new FileInputStream("C:/Temp/Object.dat");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+        ClassC classC = (ClassC) ois.readObject();
+        System.out.println("field1 : " + classC.field1);
+    }
+}
+```
+
+4. 1.의 필드 수정 - serialVersionUID 변경됨
+
+```java
+import java.io.Serializable;
+
+public class ClassC implements Serializable {
+    // 직렬화가 가능한 클래스
+    int field1;
+    // 필드 수정 - serialVersionUID 변경됨
+    int field2;
+}
+```
+
+> 이후 파일에 저장된 ClassC 객체를 복원하기 위해 역직렬화를 수행하면  serialVersionUID가 다르기 때문에 예외가 발생한다.
+>
+> 만일 불가피하게 클래스의 수정이 필요할 때는 명시적으로 필드에 serialVersionUID를 선언하면 된다.
+
+```java
+import java.io.Serializable;
+
+public class ClassC implements Serializable {
+	static final long serialVersionUID = 정수값;
+}
+```
+
+
 
 #### writeObject()와 readObject() 메소드
+
+> 두 클래스가 상속 관계에 있을 때를 가정할 때, 부모 클래스가  Serializable 인터페이스를 구현하고 있으면 자식 클래스는 이를 구현하지 않아도 자식 객체를 직렬화하면 부모 필드 및 자식 필드가 모두 직렬화 된다. 하지만 그 반대로 부모 클래스가 Serializable을 구현하지 않고, 자식 클래스만 구현하고 있다면 자식 객체를 직렬화할 때 **부모 클래스의 필드는 직렬화에서 제외된다.**
+>
+>   
+>
+> 이럴 경우 부모 클래스의 필드를 직렬화하고 싶다면 다음 2가지 방법 중 택 1을 해야한다.
+>
+> * 부모 클래스가 Serializable 인터페이스를 구현하도록 한다.
+> * 자식 클래스에서 writeObject()와 readObject() 메소드를 선언해서 부모 객체의 필드를 직접 출력시킨다.  
+>
+>   
+>
+> 물론 부모 클래스를 수정하면 좋겠지만, 수정할 수 없을 경우에는 후자의 방법을 사용해야 한다.
+
+* writeObject()  : 직렬화될 때 자동적으로 호출된다.
+* readObject() : 역직렬화될 때 자동적으로 호출된다.
+* 
+
+```java
+// writeObject() 선언 방법
+private void writeObject(ObjectOutputStream out) throws IOException {
+  out.writeXXX(부모필드); // 부모 객체의 필드값을 출력함
+  .
+  .
+ 	out.defaultWriteObject(); // 자식 객체의 필드값을 직렬화
+}
+```
+
+```java
+// readObject() 선언 방법
+private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+  부모필드 = in.readXXX(); // 부모 객체의 필드값을 읽어옴
+  .
+  .
+  in.defaultReadObject(); // 자식 객체의 필드값을 역직렬화
+}
+```
+
+> 주의할 점은 두 메소드의 접근 제한자가 `private`가 아니면 자동 호출되지 않기 때문에 반드시 private을 적어줘야 한다는 점이다.
+>
+> 메소드의 매개값인 `ObjectInputStream`, `ObjectOutputStream`은 다양한 종류의 `readXXX()`, `writeXXX()`를 제공하기 때문에 부모 필드 타입에 맞는 것을 선택해서 사용하면 된다.
 
 
 
