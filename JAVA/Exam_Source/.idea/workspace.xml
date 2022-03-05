@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/serialize_deserialize/ClassC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serialize_deserialize/SerialVerionUIDExample1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serialize_deserialize/SerialVersionUIDExample2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sub_Stream/ObjectInputOutputStreamExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sub_Stream/PrintExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extendsextendsextends/AClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extendsextendsextends/BClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extendsextendsextends/CClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extendsextendsextends/DClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extendsextendsextends/EClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/stream/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stream/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/stream/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../IOPackage.md" beforeDir="false" afterPath="$PROJECT_DIR$/../IOPackage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../자바스터디-6주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바스터디-6주차.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +158,7 @@
       <workItem from="1645321471568" duration="2213000" />
       <workItem from="1645451996706" duration="10463000" />
       <workItem from="1645530820234" duration="6439000" />
-      <workItem from="1646460222543" duration="2521000" />
+      <workItem from="1646460222543" duration="3948000" />
     </task>
     <servers />
   </component>
