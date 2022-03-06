@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/extendsextendsextends/AClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extendsextendsextends/BClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extendsextendsextends/CClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extendsextendsextends/DClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extendsextendsextends/EClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_6/Phone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_6/SmartPhone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../자바스터디-6주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바스터디-6주차.md" afterDir="false" />
     </list>
@@ -159,6 +157,7 @@
       <workItem from="1645451996706" duration="10463000" />
       <workItem from="1645530820234" duration="6439000" />
       <workItem from="1646460222543" duration="4624000" />
+      <workItem from="1646545702044" duration="541000" />
     </task>
     <servers />
   </component>
