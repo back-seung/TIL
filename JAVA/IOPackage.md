@@ -984,9 +984,60 @@ String IPAddress = InetAddress.getHostAddress();
 
 ## TCP 네트워킹
 
+> TCP(Tranmission Control Protocol)는 연결 지향적 프로토콜이다. 연결 지향 프로토콜이란 클라이언트와 서버가 연결된 상태에서 데이터를 주고받는 프로토콜을 말한다. 클라이언트가 연결 요청을 하고, 서버가 연결을 수락하면 통신 선로가 고정되고, 모든 데이터는 고정된 통신 선로를 통해서 순차적으로 전달된다. 그렇기 때문에 TCP는 데이터를 정확하고 안정적으로 전달한다.  
+>
+> * 단점 :
+>   * 데이터를 보내기 전에 반드시 연결이 형성되어야 한다. (**가장 시간이 많이 걸리는 작업이다.**)
+>   * 고정된 통신 선로가 최단선이 아닐경우 상대적으로 UDP보다 데이터 전송 속도가 느릴수 있다.  
+> * 자바에서의 TCP
+>   * `java.net.ServerSocket`
+>   * `java.net.Socket`
+
+
+
 ### ServerSocket과 Socket의 용도
 
+> TCP 서버의 역할은 두 가지로 볼 수 있다. 하나는 클라이언트가 연결 요청을 해오면 연결을 수락하는 것이고, 다른 하나는 연결된 클라이언트와 통신하는 것이다. 자바에서는 이 두 역할별로 별도의 클래스를 제공하고 있다.
+>
+> * `java.net.ServerSocket` : 클라이언트의 연결 요청을 기다리면서 연결 수락을 담당
+> * `java.net.Socket` : 연결된 클라이언트와 통신을 담당\
+>
+>   
+>
+> 클라이언트가 연결 요청을 해오면 ServerSocket은 연결을 수락하고 통신용 Socket을 만든다.  
+>
+> 서버는 클라이언트가 접속할 포트를 가지고 있어야 하는데 이 포트를 **바인딩 포트(Binding Port)** 라고 한다. 서버는 고정도니 포트 번호에 바인딩해서 실행하므로, ServerSocket을 생성할 때 포트 번호를 하나 지정해야 한다. 서버가 실행되면 클라이언트는 서버의 IP주소와 바인딩 포트 번호로 Socket을 생성해서 연결 요청을 할 수 있다. ServerSocket은 클라이언트가 연결 요청을 해오면 accept() 메소드로 연결 수락을 하고 통신용 Socket을 생성한다. 그 후 각각의 Socket을 이용해서 데이터를 주고 받게 된다.
+
+
+
 ### ServerSocket 생성과 연결 수락
+
+> ServerSocket은 서버를 개발하기 위한 객체이다. ServerSocket을 얻는 가장 간단한 방법은 생성자에 바인딩 포트를 대입하고 객체를 생성하는 것이다. 
+
+```java
+ServerSocket serverSocket = new ServerSocket(5001); // 5001번의 바인딩 포트를 가지는 서버소켓 생성
+```
+
+> 다른 방법은 디폴트 생성자로 객체를 생성하고 포트 바인딩을 위해 bind() 메소드를 호출하는 것이다.  bind()  메소드의 매개값은 포트 정보를 가진 InetSocketAddress이다.
+
+```java
+ServerSocket serverSocket = new ServerSocket();
+serverSocket.bind(new InetSocketAddress(5001));
+```
+
+> 만약 서버 PC에 멀티 IP가 할당되어 있을 경우, 특정 IP로 접속할 때만 연결 수락을 하고 싶다면 다음과 같이 작성하고 `localhost`에 정확한 IP를 준다.
+
+```java
+ServerSocket serverSocket = new ServerSocket();
+serverSocket.bind(new InetSocketAddress("IP 주소", 5001));
+```
+
+
+
+* `BindException` : ServerSocket을 생성할 때 바인딩 포트가 사용 중이라면 발생한다.  이 경우에는 다른 포트로 바인딩하거나 다른 프로그램을 종료하고 다시 실행한다.
+* 바인딩 수행이 끝났을 때 : ServerSocket은 클라이언트 연결 수락을 위해 `accept()` 메소드를 
+
+
 
 ### Socket 생성과 연결 요청
 
@@ -1031,6 +1082,5 @@ String IPAddress = InetAddress.getHostAddress();
 ### 발신자 구현
 
 ### 수신자 구현 
-
 
 

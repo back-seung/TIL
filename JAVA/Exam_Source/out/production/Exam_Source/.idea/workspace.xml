@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/week_6/dispatch/A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_6/dispatch/B.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_6/dispatch/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_6/dispatch/StaticDispatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Animal/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Animal/Human.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Animal/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Animal/Monkey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/andOrNegate/HashSetExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CLOUD_COMPUTING/AWS.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../CLOUD_COMPUTING/AWS.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../자바스터디-6주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바스터디-6주차.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IOPackage.md" beforeDir="false" afterPath="$PROJECT_DIR$/../IOPackage.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,13 +59,13 @@
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.ObjectInputOutputStreamExample">
-    <configuration name="GroupingByExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.GroupingByExample" />
+  <component name="RunManager" selected="애플리케이션.Main (2)">
+    <configuration name="Dispatch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_6.dispatch.Dispatch" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stream.*" />
+          <option name="PATTERN" value="week_6.dispatch.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -70,12 +73,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MaleStudentExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.MaleStudentExample" />
+    <configuration name="EqualsAndDeepEqualsExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_6.equals.EqualsAndDeepEqualsExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stream.*" />
+          <option name="PATTERN" value="week_6.equals.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -83,12 +86,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ObjectInputOutputStreamExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sub_Stream.ObjectInputOutputStreamExample" />
+    <configuration name="HashSetExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="andOrNegate.HashSetExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sub_Stream.*" />
+          <option name="PATTERN" value="andOrNegate.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,12 +99,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PrintExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sub_Stream.PrintExample" />
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_6.equals.Main" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sub_Stream.*" />
+          <option name="PATTERN" value="week_6.equals.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,12 +112,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReductionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.ReductionExample" />
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Animal.Main" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stream.*" />
+          <option name="PATTERN" value="Animal.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,11 +127,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.ObjectInputOutputStreamExample" />
-        <item itemvalue="애플리케이션.PrintExample" />
-        <item itemvalue="애플리케이션.GroupingByExample" />
-        <item itemvalue="애플리케이션.MaleStudentExample" />
-        <item itemvalue="애플리케이션.ReductionExample" />
+        <item itemvalue="애플리케이션.Main (2)" />
+        <item itemvalue="애플리케이션.HashSetExample" />
+        <item itemvalue="애플리케이션.EqualsAndDeepEqualsExample" />
+        <item itemvalue="애플리케이션.Main (1)" />
+        <item itemvalue="애플리케이션.Dispatch" />
       </list>
     </recent_temporary>
   </component>
@@ -158,7 +161,9 @@
       <workItem from="1645451996706" duration="10463000" />
       <workItem from="1645530820234" duration="6439000" />
       <workItem from="1646460222543" duration="4624000" />
-      <workItem from="1646545702044" duration="1302000" />
+      <workItem from="1646545702044" duration="4806000" />
+      <workItem from="1646817219338" duration="210000" />
+      <workItem from="1646822141819" duration="433000" />
     </task>
     <servers />
   </component>
