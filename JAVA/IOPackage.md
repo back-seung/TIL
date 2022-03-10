@@ -1035,13 +1035,175 @@ serverSocket.bind(new InetSocketAddress("IP 주소", 5001));
 
 
 * `BindException` : ServerSocket을 생성할 때 바인딩 포트가 사용 중이라면 발생한다.  이 경우에는 다른 포트로 바인딩하거나 다른 프로그램을 종료하고 다시 실행한다.
-* 바인딩 수행이 끝났을 때 : ServerSocket은 클라이언트 연결 수락을 위해 `accept()` 메소드를 
+* 바인딩 수행이 끝났을 때 : ServerSocket은 클라이언트 연결 수락을 위해 `accept()` 메소드를 실행해야 된다 .`accept()`는  클라이언트가 연결 요청하기 전까지 블로킹 되는데, 블로킹이란 스레드가 대기상태가 된다는 뜻이다. 그렇기 때문에 UI를 생성하는 스레드나, 이벤트를 처리하는 스레드에서 accept(() 메소드르 호출하지 않도록 한다. 블로킹이 되면 UI갱신이나 이벤트 처리를 할 수 없기 떄문이다. 클라이언트가 연결 요청을 하면 accept()는 클라이언트와 통신할 Socket을 만들고 리턴한다. 이것이 `연결 수락`이다.  
+* accept()에서 블로킹 되었을 때 : ServerSocket을 닫기 위해 close() 메소드를 호출하면 SocketException이 발생한다. 예외 처리가 필요하다.
+
+```java
+try {
+  Socket socket = serverSocket.accept();
+} catch (SocketException e) {
+  e.printStackTrace();
+}
+```
+
+> 연결된 클라이언트 IP, PORT를 알고 싶다면 `getRemoteSocketAddress`를 호출해서 SocketAddress를 얻으면 된다.  
+>
+> 실제로 리턴되는 것은 InetSocketAddress이므로 다음과 같이 타입 변환을 할 수 있다.
+
+```java
+InetSocketAddress socketAddress = (InetSocketAddress) socket.getRemoteAddress();
+```
+
+* InetSocketAddress IP, PORT 리턴 메소드
+
+| 리턴 타입 | 메소드 (매개 변수) | 설명                             |
+| --------- | ------------------ | -------------------------------- |
+| String    | getHostName()      | 클라이언트 IP리턴                |
+| int       | getPort()          | 클라이언트 포트 번호 리턴        |
+| String    | toString()         | "IP 포트번호" 형태의 문자열 리턴 |
+
+* 언바인딩 : 더 이상 클라이언트 연결 수락이 필요없을 떄는 ServerSocket의 close() 메소드를 호출해서 포트를 언바인딩 시켜야 한다. 
+
+```java
+serverSocket.close();
+```
+
+
+
+#### accept() 메소드 호출하여 다중 클라이언트 연결을 수락하는 예제
+
+```java
+package socket;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ServerExample {
+    public static void main(String[] args) {
+        ServerSocket serverSocket = null;
+
+        try {
+            serverSocket = new ServerSocket();
+            serverSocket.bind(new InetSocketAddress("localhost", 5001));
+
+            while (true) {
+                System.out.println(" [연결 기다림]");
+                Socket socket = serverSocket.accept();
+                InetSocketAddress isa = (InetSocketAddress) socket.getRemoteSocketAddress();
+                System.out.println("[연결 수락]" + isa.getHostName());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (!serverSocket.isClosed()) {
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```
 
 
 
 ### Socket 생성과 연결 요청
 
+> 클라이언트가 서버에 연결 요청을 하려면 `java.net.Socket`을 이용해야 한다. Socket 객체를 생성함과 동시에 연결 요청을 하려면 생성자의 매개값으로 서버의 IP주소와 바인딩 포트 번호를 제공하면 된다. 
+
+```java
+try {
+  Socket socket = new Socket("localhost", 5001); // 방법 1
+  Socket socket = new Socket( new InetSocketAddress ("localhost", 5001)); // 방법 2
+} catch (UnknownHostException e) {
+  // IP 표기 방법이 잘못되었을 경우
+} catch (IOException e) {
+  // 해당 포트의 서버에 연결할 수 없는 경우
+}
+```
+
+> 외부 서버에 접속하려면 localhost 대신 정확한 IP를 입력하면 된다. 만약 IP대신 도메인만 알고 있다면, 도메인 이름을 IP주소로 번역해야 하므로 InetSocketAddress 객체를 이용하는 방법을 사용해야 한다.  
+>
+> Socket 객체를 생성과 동시에 연결을 요청하지 않고 기본 생성자로 Socket을 생성한 후, connect() 메소드로 연결 요청을 할 수도 있다.
+
+```java
+socket = new Socekt();
+socket.connect(new InetSocketAddress("localhost", 5001));
+```
+
+* 연결 요청시 발생 예외 2가지
+  * `UnknownHostException` : 잘못 표기된 IP주소를 입력했을 경우 발생
+  * `IOException` : 주어진 포트로 접속할 수 없을 때 발생.
+* 두가지 예외를 처리하는 방법
+  * Socket 생성자 및 connect() 메소드는 서버와 연결이 될 때까지 블로킹되기 때문에 UI를 생성하는 스레드나 이벤트를 처리하는 스레드에서 Socket 생성자 및 connect()를 호출하지 않도록 한다. 블로킹시 UI 갱신 || 이벤트 처리를 할 수 없다.
+  * 연결된 후, 클라이언트 프로그램을 종료하거나 강제적으로 연결을 끊고 싶다면 Socket의 close() 메소드를 호출한다. close() 메소드 또한 IOException이 발생할 수 있기 때문에 예외 처리가 필요하다.
+
+* localhost 5001 포트 요청 예제
+
+```java
+package socket;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+
+public class ClientExample {
+    public static void main(String[] args) {
+        Socket socket = null;
+        try {
+            socket = new Socket("localhost",5001);
+            System.out.println("[연결 요청]");
+            socket.connect(new InetSocketAddress("localhost", 5001));
+            System.out.println("[연결 성공]");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (!socket.isClosed()) {
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+}
+```
+
+
+
 ### Socket 데이터 통신
+
+> 클라이언트가 연결 요청(`connect()`)하고 서버가 연결 수락(`accept()`)했다면, 양쪽의 Socket 객체로부터 각각 입력 스트림(InputStream)과 출력 스트림(OutputStream)을 얻을 수 있다.
+
+```java
+InputStream is = socket.getInputStream();
+OutputStream os = socket.getOutputStream();
+```
+
+* 상대에게 데이터를 보낼 때 : byte[] 배열로 생성하고 이것을 매개값으로 해서 `OutputStream`의 `write()`메소드를 호출하면 된다.
+
+```java
+```
+
+* 상대방이 보낸 데이터를 받을 떄 : byte[] 배열로 하나 생성하고, 이것을 매개값으로 해서 `InputStream`의  `read()` 메소드를 호출하면 된다. 읽은데이터를 byte[] 배열에 저장하고 읽은 바이트 수를 리턴한다. 
+
+```java
+```
+
+
+
+
+
+
+
+
 
 ### 스레드 병렬 처리
 
@@ -1082,5 +1244,4 @@ serverSocket.bind(new InetSocketAddress("IP 주소", 5001));
 ### 발신자 구현
 
 ### 수신자 구현 
-
 
