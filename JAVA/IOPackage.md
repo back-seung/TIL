@@ -1190,54 +1190,172 @@ OutputStream os = socket.getOutputStream();
 * 상대에게 데이터를 보낼 때 : byte[] 배열로 생성하고 이것을 매개값으로 해서 `OutputStream`의 `write()`메소드를 호출하면 된다.
 
 ```java
+String data = "보낼 데이터";
+byte[] byteArr = data.getBytes("UTF-8");
+OutputStream os = socket.getOutputStream();
+os.write(byteArr);
+os.flush();
 ```
 
 * 상대방이 보낸 데이터를 받을 떄 : byte[] 배열로 하나 생성하고, 이것을 매개값으로 해서 `InputStream`의  `read()` 메소드를 호출하면 된다. 읽은데이터를 byte[] 배열에 저장하고 읽은 바이트 수를 리턴한다. 
 
 ```java
+byte[] byteArr = new byte[100];
+InputStream is = socket.getInputStream();
+int readByteCount = is.read(byteArr);
+String data = new String(byteArr, 0, readByteCount, "UTF-8");
 ```
 
 
 
+* 데이터 보내고 받기 예제
+
+```java
+package socket;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+
+public class ClientExample2 {
+    public static void main(String[] args) {
+        Socket socket = null;
+        try {
+            socket = new Socket();
+            System.out.println("[연결 요청]");
+            socket.connect(new InetSocketAddress("localhost", 5001));
+            System.out.println("[연결 성공]");
+
+            byte[] bytes = null;
+            String message = null;
+
+            OutputStream os = socket.getOutputStream();
+            message = "Hello Server";
+            bytes = message.getBytes("UTF-8");
+            os.write(bytes);
+            os.flush();
+            System.out.println("[데이터 보내기 성공");
+
+            InputStream is = socket.getInputStream();
+            bytes = new byte[100];
+            int readByteCount = is.read(bytes);
+            message = new String(bytes, 0, readByteCount, "UTF-8");
+            System.out.println("[데이터 받기 성공]");
+
+            os.close();
+            is.close();
+
+        } catch (Exception e) {
+
+        }
+
+        if (!socket.isClosed()) {
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```
 
 
 
+* 데이터 받고 보내기
+
+```java
+package socket;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+
+public class ServerExample2 {
+    public static void main(String[] args) {
+        ServerSocket serverSocket = null;
+
+        try {
+            serverSocket = new ServerSocket();
+            serverSocket.bind(new InetSocketAddress("localhost", 5001));
+            while (true) {
+                System.out.println("[연결 기다림]");
+                Socket socket = serverSocket.accept();
+                InetSocketAddress isa = (InetSocketAddress) socket.getRemoteSocketAddress();
+
+                byte[] bytes = null;
+                String message = null;
+
+                InputStream is = socket.getInputStream();
+                bytes = new byte[100];
+                int readByteCount = is.read(bytes);
+                message = new String(bytes, 0, readByteCount, "UTF-8");
+                System.out.println("[데이터 받기 성공]");
+
+                OutputStream os = socket.getOutputStream();
+                message = "Hello Server";
+                bytes = message.getBytes("UTF-8");
+                os.write(bytes);
+                os.flush();
+
+                is.close();
+                os.close();
+
+                socket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (!serverSocket.isClosed()) {
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```
+
+
+
+> 데이터를 받기 위해 InputStream의 `read()` 메소드를 호출하면 상대방이 데이터를 보내기 전까지는 블로킹 되는데, `read()` 메소드가 블로킹 해제되고 리턴되는 경우는 세가지이다.
+
+| 블로킹이 해제되는 경우 3가지                | 리턴값           |
+| ------------------------------------------- | ---------------- |
+| 상대방이 데이터를 보냄                      | 읽은 바이트 수   |
+| 상대방이 정상적으로 Socket의 close()를 호출 | -1               |
+| 상대방이 비정상적으로 종료                  | IOException 발생 |
+
+> 상대방이 정상적으로 Socket의 close() 메소드를 호출하고 연결을 끊었을 경우와 비정상적으로 종료했을 경우 모두 예외 처리를 해서 이쪽도 Socket을 닫기 위해 close() 메소드를 호출해야 한다.
 
 
 
 ### 스레드 병렬 처리
 
+> 연결 수락을 위해 ServerSocket의 accept()를 실행하거나, 서버 연결 요엉을 위해 Socket을 생성자 또는 connect()를 실행할 경우에는 해당 작업이 완료되기 전까지 블로킹된다. 
+>
+> 데이터 통신을 할 때에도 마찬가지인데 InputStream의 read() 메소드는 상대방이 데이터를 보내기 전까지 블로킹되고, OutputStream의 wirte() 메소드는 데이터를 완전하게 보내기 전까지 블로킹된다.  결론적으로 말해서 ServerSocket과 Socket은 동기 방식으로 구동된다. 
+>
+> 만약 서버를 실행시키는 main 스레드가 직접 입출력 작업을 담당하게 되면 입출력이 완료될 때까지 다른 작업을 할 수 없는 상태가 된다. 서버 애플리케이션은 지속적으로 클라이언트의 연결 수락 기능을 수행해야 되는데, 입출력에서 이 작업을 할 수 없게 된다.  또한 클라이언트1과 입출력하는 동안에는 클라이언트2와 입출력을 할 수 없게 된다. 그렇기 때문에 accept(), connect(), read(), write()는 별도의 작업 스레드를 생성하고, 다중 클라이언트와 병렬적으로 통신하는 모습을 보여준다.
 
+* 다중 클라이언트와 병렬적으로 통신하는 모습( 그림 )
 
-### 채팅 서버 구현
+  : 스레드로 병렬처리를 할 경우, 수천 개의 클라이언트가 동시에 연결되면 서버에서 수천 개의 스레드가 생성되기 때문에 서버 성능이 급격하게 저하된다. 클라이언트 폭증의 이슈를 방지하려면 스레드풀을 사용하는 것이 바람직하다.
 
-#### 서버 클래스 구조
+* 스레드풀을 이용한 서버 구현 방식( 그림 )
 
-#### startServer() 메소드
+  : 클라이어늩가 연결 요청을 하면 서버의 스레드풀에서 연결 수락을 하고 Socket을 생성한다. 클라이언트가 작업 처리 요청을 하면 서버의 스레드 풀에서 요청을 처리하고 응답을 클라이언트로 보낸다. 스레드풀은 스레드 수를 제한해서 사용하기 때문에 갑작스런 클라이언트의 폭증은 작업 큐의 작업량만 증가시킬 뿐, 스레드의 수는 변함이 없다. 따라서 서버 성능은 완만히 저하되지만 클라이언트가 응답을 받는 시간이 조금 더 늦춰질 수는 있다.
 
-#### stopServer() 메소드
-
-#### Client 클래스
-
-#### UI 생성 코드
-
-
-
-### 채팅 클라이언트 구현
-
-#### 클라이언트 클래스 구조
-
-#### startClient() 메소드
-
-#### stopClient() 메소드
-
-#### recieve() 메소드
-
-#### send(String data) 메소드
-
-#### UI 생성 코드
-
-
+  
 
 ## UDP 네트워킹
 
