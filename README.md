@@ -7,6 +7,14 @@
 * [22/01/28 WAS란?](https://github.com/back-seung/TIL/blob/master/WEB/WAS.md)
 * [22/01/31 HTTP_통신_이해](https://github.com/back-seung/TIL/blob/master/WEB/HTTP_%ED%86%B5%EC%8B%A0%EC%9D%B4%ED%95%B4.md)
 * [22/02/04 인터넷_네트워크](https://github.com/back-seung/TIL/blob/master/WEB/%EC%9D%B8%ED%84%B0%EB%84%B7_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC.md)
+
+## CLOUD COMPUTING
+* [22/03/09 AWS](https://github.com/back-seung/TIL/blob/master/CLOUD_COMPUTING/AWS.md)
+
+## IT
+* [22/03/10 On_Premise](https://github.com/back-seung/TIL/blob/master/IT/On_Premise.md)
+* [22/03/10 Privisioning](https://github.com/back-seung/TIL/blob/master/IT/Provisioning.md)
+
 ## Java
 * [21/12/29 인터페이스](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
 * [22/01/21 백기선 자바 스터디 - 2](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%A3%BC%EC%B0%A8.md)
