@@ -1347,11 +1347,11 @@ public class ServerExample2 {
 >
 > 만약 서버를 실행시키는 main 스레드가 직접 입출력 작업을 담당하게 되면 입출력이 완료될 때까지 다른 작업을 할 수 없는 상태가 된다. 서버 애플리케이션은 지속적으로 클라이언트의 연결 수락 기능을 수행해야 되는데, 입출력에서 이 작업을 할 수 없게 된다.  또한 클라이언트1과 입출력하는 동안에는 클라이언트2와 입출력을 할 수 없게 된다. 그렇기 때문에 accept(), connect(), read(), write()는 별도의 작업 스레드를 생성하고, 다중 클라이언트와 병렬적으로 통신하는 모습을 보여준다.
 
-* 다중 클라이언트와 병렬적으로 통신하는 모습( 그림 )
+* 다중 클라이언트와 병렬적으로 통신하는 모습![KakaoTalk_Image_2022-03-14-23-40-25](/Users/mac/Downloads/KakaoTalk_Image_2022-03-14-23-40-25.jpeg)
 
   : 스레드로 병렬처리를 할 경우, 수천 개의 클라이언트가 동시에 연결되면 서버에서 수천 개의 스레드가 생성되기 때문에 서버 성능이 급격하게 저하된다. 클라이언트 폭증의 이슈를 방지하려면 스레드풀을 사용하는 것이 바람직하다.
 
-* 스레드풀을 이용한 서버 구현 방식( 그림 )
+* 스레드풀을 이용한 서버 구현 방식![KakaoTalk_Image_2022-03-14-23-40-31](/Users/mac/Downloads/KakaoTalk_Image_2022-03-14-23-40-31.jpeg)
 
   : 클라이어늩가 연결 요청을 하면 서버의 스레드풀에서 연결 수락을 하고 Socket을 생성한다. 클라이언트가 작업 처리 요청을 하면 서버의 스레드 풀에서 요청을 처리하고 응답을 클라이언트로 보낸다. 스레드풀은 스레드 수를 제한해서 사용하기 때문에 갑작스런 클라이언트의 폭증은 작업 큐의 작업량만 증가시킬 뿐, 스레드의 수는 변함이 없다. 따라서 서버 성능은 완만히 저하되지만 클라이언트가 응답을 받는 시간이 조금 더 늦춰질 수는 있다.
 
@@ -1359,7 +1359,122 @@ public class ServerExample2 {
 
 ## UDP 네트워킹
 
+> **UDP** (User Datagram Protocol)는 비연결 지향적 프로토콜이다. 비연결 지향적이란 데이터를 주고받을 때 연결 절차를 거치지 않고, 발신자가 일방적으로 데이터를 발신하는 방식이다. **연결 과정이 없기 때문에 TCP보다는 빠른 전송을 할 수 있지만, 데이터 전달의 신뢰성은 떨어진다.**  
+>
+> UDP는 발신자가 데이터 패킷을 순차적으로 보내더라도 이 패킷들은 서로 다른 통신 선로를 통해 전달될 수 있다. 먼저 보낸 패킷이 느린 선로를 통해 전송될 경우 나중에 보낸 패킷보다 늦게 도착할 수 있다. 또한 일부 패킷은 잘못된 선로로 전송되어 잃어버릴 수도 있다.
+>
+> UDP는 편지에 비유할 수 있다. 발신자는 봉투(**패킷**)에 수신자의 주소(**IP와 Port**)와 발신자의 주소(**로컬 IP와 Port**)를 쓴다. 그리고 봉투 안에 편지(**전송할 데이터**)를 넣고 편지를 보낸다.  
+>
+> 발신자는 수신자가 편지를 받았는지의 여부는 모른다. 게다가 최근에 보낸 편지가 일찍 보내질 수도 있고, 보내지지 않았을 수도 있다. 
+>
+> 일반적으로 데이터 전달의 신뢰성보다는 속도가 중요한 프로그램에서는 UDP를 사용하고 신뢰성이 중요한 프로그램에서는 TCP를 사용한다. 자바에서는 UDP 프로그래밍을 위해 `java.net.DatagramSocket`과 `java.net.DatagramPacket`을 제공한다. 
+>
+> * **DatagramSocket** : 발신점과 수신점에 해당하는 클래스
+> * **DatagramPacket** : 주고 받는 패킷 클래스
+
+
+
 ### 발신자 구현
 
+```java
+DatagramSocket datagramSocket = new DatagramSocket();
+```
+
+> 보내고자 하는 데이터를 byte[] 배열로 생성하는데, 문자열인 경우 다음과 같이 UTF-8로 인코딩해서 byte[] 배열을 얻으면 된다.
+
+```java
+byte[] byteArr = data.getBytes("UTF-8");
+```
+
+> 데이터와 수신자 정보를 담고 있는 `DatagramPacket`을 생성해야 하는데, `DatagramPacket` 생성자의 **첫 번째 매개값**은 보낼 데이터 `byte[]`이고 **두 번째 매개값**은 byte[] 배열에서 보내고자하는 항목 수이다. 전체 항목을 보내려면 length 값으로 대입하면 된다. **세 번째 매개값은** 수신자 IP와 Port를 가지고 있는 **SocketAddress**이다. SocketAddress는 추상 클래스이므로 하위 클래스인 InetSocketAddress를 생성해서 대입한다. 
+
+
+
+* 예제
+
+```java
+DatagramSocket datagramSocket = new DatagramSocket();
+
+byte[] byteArr = data.getBytes("UTF-8");
+DatagramPacket packet = new Datagram(
+  byteArr,
+  byteArr.length,
+  new InetSocketAddress("localhost", 5001)
+  );
+
+datagramSocket.send(packet);
+datagramSocket.close();
+```
+
+
+
 ### 수신자 구현 
+
+```java
+DatagramSocket datagramSocket = new DatagramSocket();
+```
+
+> `**receive()** 메소드를 사용해서 패킷을 읽을 준비를 한다. 패킷을 받을 때까지 블로킹되고, 도착하면 매개값으로 주어진 DatagramPacket에 패킷 내용을 저장한다.
+
+```java
+datagramSocket.receive(datagramPacket);
+```
+
+> 패킷의 내용을 저장할 DatagramPacket 객체는 다음과 같이 생성한다. **첫 번째 매개값**은 읽은 패킷 데이터를 저장할 바이트 배열이고, **두번 째 매개값**은 읽을 수 있는 최대 바이트 수로 첫 번째 바이트 배열의 크기와 같거나 작아야 한다. 일반적으로 첫 번째 바이트배열의 크기를 준다.
+
+```java
+DatagramPacket datagramPacket = new DatagramPacket(new byte[100], 100);
+```
+
+> receive() 메소드가 패킷을 읽었다면 `DatagramPacket`의 getData()로 데이터가 저장된 바이트 배열을 얻어낼 수 있다. 그리고 getLength()를 호출해서 읽은 바이트 수를 얻을 수 있다. 받은 데이터가 인코딩된 문자열이라면 다음과 같이 디코딩해서 문자열을 얻는다.
+
+```java
+String data = new String(datagramPacket.getData(), 0, datagramPacket.getLength(), "UTF-8");
+```
+
+> 수신자가 패킷을 받고나서 발신자에게 응답 패킷을 보내고 싶다면 발신자의 IP와 Port를 알아야 하는데 DatagramPacket의 getSocketAddress()를 통해 발신자의 SocketAddress를 얻을 수 있어 send()메소드에서 이용할 수 있다.  
+>
+> 수신자는 항상 데이터를 받을 준비를 해야 하므로 작업 스레드를 생성하여 receive() 메소드를 반복적으로 호출해야 한다. 작업 스레드를 종료 시키는 방법은 receive() 메소드가 블로킹 된 상태에서 DatagramSocket의 close()를 호출하면 된다. 이 경우 receive()에서 `SocketException`이 발생하고, 예외 처리 코드에서 작업 스레드를 종료시킨다.
+
+
+
+* 예제
+
+```java
+public class UdpReceiveExample extends Thread {
+
+    public static void main(String[] args) throws Exception {
+        DatagramSocket socket = new DatagramSocket(5001);
+
+        Thread thread = new Thread() {
+
+            @Override
+            public void run() {
+                System.out.println("[수신 시작]");
+                try {
+                    while (true) {
+                        DatagramPacket packet = new DatagramPacket(new byte[100], 100);
+                        socket.receive(packet);
+
+                        String data = new String(packet.getData(), 0, packet.getLength(), "UTF-8");
+                        System.out.println("[받은 내용 :" + packet.getSocketAddress() + " ] " + data);
+
+                    }
+                } catch (Exception e) {
+                    System.out.println("[수신 종료]");
+
+                }
+            }
+        };
+        thread.start();
+
+        Thread.sleep(10000);
+        socket.close();
+    }
+}
+```
+
+
+
+
 
