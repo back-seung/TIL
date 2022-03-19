@@ -228,5 +228,370 @@ public class FileSystemExample {
 | String                | probeContentType(...)    | 파일의 MIME 타입을 리턴                |
 | byte[]                | readAllBytes(...)        | 파일의 모든 바이트를 읽고 배열로 리턴  |
 | List<String>          | readAllLines(...)        | 텍스트 파일의 모든 라인을 읽고 리턴    |
-|                       |                          |                                        |
+| long                  | size(...)                | 파일의 크기 리턴                       |
+| Path                  | write(...)               | 파일에 바이트나 문자열을 저장          |
+
+
+
+* 파일의 속성을 읽고 출력하는 예제
+
+  ```java
+  public class FileExample {
+    public static void main(String[] args) throws Exception {
+      Path path = Paths.get("src/sec02/exam03_file_directory/FileExample.java");
+      System.out.println("디렉토리 여부 : " + Files.isDirectory(path));
+      System.out.println("파일 여부 : " + Files.isRegularFile(path));
+      System.out.println("마지막 수정 시간 : " + Files.getLastModifiedTime(path));
+      System.out.println("파일 크기 : " + Files.size(path));
+      System.out.println("소유자 : " + Files.getOwner(path).getName());
+      System.out.println("숨김 파일 여부 : " + Files.isHidden(path));
+      System.out.println("읽기 가능 여부 : " + Files.isReadable(path));
+      System.out.println("쓰기 가능 여부 : " + Files.isWritable(path));
+    }
+  }
+  ```
+
+
+
+### 와치 서비스 (WatchService)
+
+자바 7에서 처음 소개된 것으로 디렉토리 내부에서 파일 생성, 삭제, 수정 등의 내용 변화를 감시하는데 사용된다. 흔하게 볼 수 있는 와치 서비스의 적용 예는 에디터에서 파일을 편집하고 있을 때, 에디터 바깥에서 파일 내용을 수정하게 되면 파일 내용이 변경되었으니 파일을 다시 불러올 것인지를 묻는 대화상자를 띄우는 것이다. **와치 서비스는 일반적으로 파일 변경 통지 메커니즘으로 알려져 있다.** WatchService를 생성하려면 다음과 같이 FileSystem의 newWatchService()를 호출한다.
+
+
+
+```java
+WatchService watchService = FileSystem.getDefault().newWatchService();
+```
+
+생성했다면 감시가 필요한 디렉토리의 Path 객체에서 register() 메소드로 등록하면 된다. 이때 어떤 변화(생성 ,삭제 ,수정)를 감시할 것인지를 StandardWatchEventKinds 상수로 지정할 수 있다. 
+
+```java
+path.register(watchService.StandardWatchEventKinds.ENTRY_CREATE,
+              						 StandardWatchEventKinds.ENTRY_MODIFY,
+             							 StandarsWatchEventKinds.ENTRY_DELETE);
+```
+
+Path에 WatchService를 등록한 순간부터 디렉토리 내부에서 변경이 발생되면 와치 이벤트가 발생하고 WatchService는 해당이벤트 정보를 가진 WatchKey를 생성하여 큐에 넣어준다. 프로그램은 무한 루프를 돌면서 WatchService의 take() 메소드를 호출하여 WatchKey가 큐에 들어올 때 까지 대기하고 있다가 WatchKey가 큐에 들어오면 WatchKey를 얻어 처리하면 된다.
+
+```java
+while(true) {
+	WatchKey watchKey = watchService.take();
+}
+```
+
+Key를 얻었다면 pollEvents() 메소드를 호출해서 WatchEvent 리스트를 얻어낸다. 한개의 WatchEvent가 아니라 List<WatchEvent<?>>로 리턴하는 이유는 여러개의 파일이 동시에 삭제, 수정, 생성될 수 있기 때문이다. 참고로 WatchEvent는 파일당 하나씩 발생한다.
+
+```java
+List<WatchEvnet<?>> list = watchKey.pollEvents();
+```
+
+프로그램은 WatchEvent리스트에서 WatchEvent를 하나씩 꺼내어 이벤트의 종류와 Path 객체를 얻어낸 다음 적절히 처리하면 된다.
+
+```java
+for(WatchEvent watchEvent : list) {
+  //이벤트 종류 얻기
+  Kind kind = watchEvent.kind();
+  // 감지된 Path 얻기 
+  Path path = (Path) watchEvent.context();
+  // 이벤트 종류별로 처리
+  if(kind == StandardWatchEventKinds.ENTRY_CREATE) {
+    // 생성되었을 경우, 실행 코드
+  } else if(kind == StandardWatchEventKinds.ENTRY_MODIFY) {
+    // 수정되었을 경우, 실행 코드
+  } else if(kind == StandardWatchEventKinds.ENTRY_DELETE) {
+    // 삭제 되었을 경우 실행 코드
+  } else if(kind == StandardWatchEventKinds.OVERFLOW) {
+    ...
+  }
+}
+```
+
+`OVERFLOW` 이벤트는 운영체제에서 이벤트가 소실됐거나 버려진 경우에 발생하므로 별도의 처리 코드가 필요없다. 따라서 `CREATE`,`MODIFY`,`DELETE`이벤트만 처리하면 된다. 한 번 사용된  WatchKey는 reset() 메소드로 초기화해야 하는데, 새로운 WatchEvent가 발생하면 큐에 다시 들어가기 때문이다. 초기화 성공시 true를 리턴하지만 감시하는 디렉토리나 삭제 || 키가 유효하지 않을 경우 false를 리턴한다. WatchKey가 더 이상 유효하지 않게 되면 무한 루프를 빠져나와 WatchService의 close() 메소드를 호출하고 종료하면 된다.
+
+```java
+while(true) {
+  WatchKey watchKey = watchService.take();
+  List<WatchEvent<?>> list = watchKey.pollEvents();
+  
+  for(WatchEvent watchEvent : list) {
+    ...
+  }
+  boolean valid = watchKey.reset();
+  if(valid) break;
+}
+watchService.close();
+```
+
+
+
+## 버퍼 (Buffer)
+
+NIO에서는 데이터를 입출력하기 위해서 항상 버퍼를 사용한다.  
+
+버퍼는 읽고 쓰기가 가능한 메모리 배열이다. 버퍼를 이해하고 잘 사용할 수 있어야 NIO에서 제공하는 API를 올바르게 활용할 수 있다.
+
+
+
+### 버퍼의 종류
+
+Buffer는 저장되는 데이터 타입에 따라 분류될 수 있고, 어떤 메모리를 사용하느냐에 따라 다이렉트(Direct) 넌다이렉트(NonDirect)로 분류할 수도 있다.
+
+
+
+#### 데이터 타입에 따른 버퍼
+
+![스크린샷 2022-03-19 12.13.57](/Users/mac/Library/Application Support/typora-user-images/스크린샷 2022-03-19 12.13.57.png)
+
+> 데이터 타입에 따라서 별도의 클래스로 제공된다. 이 버퍼 클래스들은 Buffer 추상 클래스를 상속한다.
+
+
+
+버퍼 클래스의 이름을 보면 어떤 데이터가 저장되는 버퍼인지 쉽게 알 수있다. 이 중에 MappedByteBuffer는 ByteBuffer의 하위 클래스로 파일의 내용에 랜덤하게 접근하기 위해서 파일의 내용을 메모리와 맵핑시킨 버퍼이다.
+
+
+
+#### 넌다이렉트와 다이렉트 버퍼
+
+버퍼가 사용하는 메모리의 위치에 따라서 넌다이렉트 버퍼와 다이렉트 버퍼로 분류된다.
+
+넌다이렉트 버퍼는 JVM이 관리하는 힙 메모리 공간을 이용하는 버퍼이고, 다이렉트 버퍼는 운영체제가 관리하는 메모리 공간을 사용하는 버퍼이다. 두 버퍼의 특징은 다음과 같다.
+
+| 구분                 | 넌다이렉트 버퍼  | 다이렉트 버퍼                     |
+| -------------------- | ---------------- | --------------------------------- |
+| 사용하는 메모리 공가 | JVM 힙 메모리    | 운영체제의 메모리                 |
+| 버퍼 생성시간        | 버퍼 생성이 빠름 | 버퍼 생성이 느림                  |
+| 버퍼의 크기          | 작다             | 크다 (큰 데이터를 처리할 때 유리) |
+| 입출력 성능          | 낮다.            | 높다(입출력이 빈번할 때 유리)     |
+
+* 넌다이렉트 버퍼
+  * JVM 힙 메모리를 사용하므로 버퍼 생성 시간이 빠르다.
+  * JVM의 제한된 힙 메모리를 사용하므로 버퍼의 크기를 크게 잡을 수 없다.
+  * 입출력을 하기 위해 임식 다이렉트 버퍼를 생성하고 넌다이렉트 버퍼에 있는 내용을 임시 다이렉트 버퍼에 복사한다. 그리고 나서 임시 다이렉트 버퍼를 사용해서 운영체제의 nativeI/O 기능을 수행한다. 따라서 입출력 성능이 상대적으로 낮다.
+* 다이렉트 버퍼 
+  * 운영체제의 메모리를 할당 받기 위해 운영체제의 네이티브(Native) C 함수를 호출해야 하고 여러가지 잡다한 처리를 해야하므로 상대적으로 버퍼 생성이 느리다. 따라서 **한번 생성한 후 재사용하는 것이 적합하다**
+  * 운영체제가 관리하는 메모리를 사용하므로 운영체제가 허용하는 범위 내에서 대용량 버퍼를 생성시킬 수 있다. 
+
+
+
+* 넌다이렉트 / 다이렉트 버퍼 성능 비교
+
+```java
+import java.io.File;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.EnumSet;
+
+public class PerformanceExample {
+    public static void main(String[] args) throws Exception{
+        Path from = Paths.get("src/sec03/exma01_direct_Buffer/house.jpg");
+        Path to1 = Paths.get("src/sec03/exma01_direct_Buffer/house2.jpg");
+        Path to2 = Paths.get("src/sec03/exma01_direct_Buffer/house3.jpg");
+
+        long size = Files.size(from);
+
+        FileChannel fileChannel_from = FileChannel.open(from);
+        FileChannel fileChannel_to1 = FileChannel.open(to1, EnumSet.of(StandardOpenOption.CREATE, StandardOpenOption.WRITE));
+        FileChannel fileChannel_to2 = FileChannel.open(to2, EnumSet.of(StandardOpenOption.CREATE, StandardOpenOption.WRITE));
+
+        ByteBuffer nonDirectBuffer = ByteBuffer.allocate((int) size);
+        ByteBuffer directBuffer = ByteBuffer.allocateDirect((int) size);
+
+        long start, end;
+
+        start = System.nanoTime();
+
+        for (int i = 0; i < 100; i++) {
+            fileChannel_from.read(nonDirectBuffer);
+            nonDirectBuffer.flip();
+            fileChannel_to1.write(nonDirectBuffer);
+            nonDirectBuffer.clear();
+        }
+        end = System.nanoTime();
+        System.out.println("넌 다이렉트 :\t" + (end - start) + " ns");
+
+        fileChannel_from.position(0);
+
+        start = System.nanoTime();
+        for (int i = 0; i < 100; i++) {
+            fileChannel_from.read(directBuffer);
+            directBuffer.flip();
+            fileChannel_to2.write(directBuffer);
+            directBuffer.clear();
+        }
+        end = System.nanoTime();
+        System.out.println("다이렉트 :\t" + (end - start) + " ns");
+
+        fileChannel_from.close();
+        fileChannel_to1.close();
+        fileChannel_to2.close();
+    }
+}
+```
+
+
+
+### Buffer 생성
+
+> 각 데이터 타입별로 넌 다이렉트 버퍼를 생성하기 위해서는 각 Buffer 클래스의 allocate()와 wrap() 메소드를 호출하면 되고, 다이렉트 버퍼는 ByteBuffer의 allocateDirect() 메소드를 호출하면 된다. 
+
+
+
+* **allocate() 메소드**
+  JVM 힙 메모리에 넌다이렉트 버퍼를 생성한다. 다음은 데이터 타입별로 Buffer를 생성하는 allocate() 메소드이다.  매개값은 해당 데이터 타입의 저장 개수를 의미한다.
+
+| 리턴 타입    | 메소드(매개 변수)                   | 설명                              |
+| ------------ | ----------------------------------- | --------------------------------- |
+| ByteBuffer   | ByteBuffer.allocate(int capacity)   | capacity개만큼의 byte 값을 저장   |
+| CharBuffer   | CharBuffer.allocate(int capacity)   | capacity개만큼의 char 값을 저장   |
+| DoubleBuffer | DoubleBuffer.allocate(int capacity) | capacity개만큼의 double 값을 저장 |
+| FloatBuffer  | FloatBuffer.allocate(int capacity)  | capacity개만큼의 float 값을 저장  |
+| IntBuffer    | IntBuffer.allocate(int capacity)    | capacity개만큼의 int 값을 저장    |
+| LongBuffer   | LongBuffer.allocate(int capacity)   | capacity개만큼의 long 값을 저장   |
+| ShortBuffer  | ShortBuffer.allocate(int capacity)  | capacity개만큼의 short 값을 저장  |
+
+
+
+* 100개의 바이트를 저장하는 ByteBuffer 생성 및 100개의 문자를 저장하는 CharBuffer 생성
+
+```java
+ByteBuffer byteBuffer = ByteBuffer.allocate(100);
+CharBuffer charBuffer = CharBuffer.allocate(100);
+```
+
+
+
+* **wrap() 메소드**
+  각 타입별 Buffer 클래스는 모두 wrap() 메소드를 가지고 있는데, wrap() 메소드는 이미 생성되어 있는 자바 배열을 래핑해서 Buffer 객체를 생성한다. 자바배열은 JVM 힙 메모리에 생성되므로 wrap() 메소드는 넌다이렉트 버퍼를 생성한다. 다음은 길이가 100인 byte[] 를 이용해서 ByteBuffer를 생성하고, 길이가 100인 char[] 를 이용해서 CharBuffer를 생성한다.
+
+```java
+byte[] byteArr = new byte[100];
+ByteBuffer byteBuffer = ByteBuffer.wrap(byteArr);
+
+char[] charArr = new char[100];
+CharBuffer charBuffer = CharBuffer.wrap(charArr);
+```
+
+ 	일부 데이터만을 가지고 Buffer 객체를 생성할 수도 있다. 이 경우 시작 인덱스와 길이를 추가적으로 지정하면 된다. `0 ~ 50`개만 버퍼로 생성해보자.
+
+```java
+byte[] byteArr = new byte[100];
+ByteBuffer byteBuffer = ByteBuffer.wrap(byteArr, 0, 50);
+
+char[] charArr = new char[100];
+CharBuffer charBuffer = CharBuffer.wrap(charArr, 0, 50);
+```
+
+
+
+* **allocateDirect() 메소드**
+  ByteBuffer의 allocateDirect() 메소드는 JVM 힙 메모리 바깥쪽, 즉 운영체제가 관리하는 메모리에 다이렉트 버퍼를 생성한다. 이 메소드는 각 타입별 Buffer 클래스에는 없고, ByteBuffer에서만 제공된다. 각 타입별로 다이렉트 버퍼를 생성하고 싶다면 우선 ByteBuffer의 allocateDirect() 메소드로 버퍼를 생성한 다음 ByteBuffer의 asCharBuffer(), asFloatBuffer(), asDoubleBuffer() ... asIntBuffer() 메소드를 이용해서 해당 타입별 Buffer를 얻으면 된다.
+
+
+
+* **byte 해석 순서(ByteOrder)**
+  데이터를 처리할 때 바이트 처리 순서는 운영체제마다 차이가 있따. 이러한 차이는 데이터를 다른 운영체제로 보내거나 받을 때 영향을 미치기 때문에 데잍러르 다루는 버퍼도 이를 고려해야 한다. 앞쪽 바이트부터 먼저 처리하는 것을 **Big endian**이라고 하고, 뒤쪽 바이트부터 먼저 처리하는 것을 **Little endian**이라고 한다.
+
+  * Big-endian
+
+  ![image-20220319193207991](https://tva1.sinaimg.cn/large/e6c9d24egy1h0fdq3yjh4j21hc0u0dgy.jpg)
+
+  * Little-endian
+
+  ![image-20220319193252142](https://tva1.sinaimg.cn/large/e6c9d24egy1h0fdpybkewj21hc0u0dgy.jpg)
+
+> Litte-endian으로 동작하는 운영체제에서 만든 데이터 파일을 Big-endian으로 동작하는 운영체제에서 읽는다면 ByteOrder 클래스로 데이터 순서를 맞춰야 한다. ByteOrder 클래스의 nativeOrder() 메소드는 현재 동작하고 있는 운영체제가 Big-endian인지 Little-endian인지 알려준다. **JVM도 일종의 독립된 운영체제이기 때문에** 이런 문제를 취급하는데, JRE가 설치된 어떤 환경이든 JVM은 무조건 Big-endian으로 동작하게 되어 있다. 다음 예제는 현재 컴퓨터의 운영체제 종류와 바이트를 해석하는 순서에 대해 출력한다.
+
+* 현재 컴퓨터의 운영체제 종류와 바이트를 해석하는 순서에 대해 출력한다.
+
+```java
+import java.nio.ByteOrder;
+
+public class ComputerByteOrderExample {
+    public static void main(String[] args) {
+        System.out.println("운영체제 종류 : " + System.getProperty("os.name"));
+        System.out.println("네이티브의 바이트 해석 순서 : " + ByteOrder.nativeOrder());
+    }
+}
+```
+
+![스크린샷 2022-03-19 19.44.31](https://tva1.sinaimg.cn/large/e6c9d24egy1h0fdrtfchkj216k07kjs7.jpg)
+
+
+
+운영체제와 JVM의 바이트 해석 순서가 다를 경우에는 JVM이 운영체제와 데이터를 교환할 때 자동적으로 처리해주기 때문에 문제는 없다. 하지만 다이렉트 버퍼일 경우 운영체제의 native I/O를 사용하므로 운영체제의 기본 해석 순서로 JVM의 해석 순서를 맞추는 것이 성능에 도움 된다. 다음과 같이 allocateDirect()로 버퍼를 생성한 후, order() 메소드를 호출해서 nativeOrder()의 리턴값으로 세팅해주면 된다.
+
+```java
+ByteBuffer byteBuffer = ByteBuffer.allocateDirect(100).order(ByteOrder.nativeOrder());
+```
+
+
+
+### Buffer의 위치 속성
+
+> * Buffer의 위치 속성 개념
+> * 위치 속성이 언제 변경되는지에 대해 알고 있어야 한다.
+
+
+
+* Buffer의 네 가지 위치 속성
+
+| 속성     | 설명                                                         |
+| -------- | ------------------------------------------------------------ |
+| position | 현재 읽거나 쓰는 위치값<br />인덱스 값이기 때문에 0부터 시작하며 limit보다 큰 값을 가질 수 없다. 만약 position과 limit의 값이 같아진다면 더 이상 데이터를 쓰거나 읽을 수 없다는 뜻이 된다. |
+| limit    | 버퍼에서 읽거나 쓸 수 있는 위치의 한게를 나타낸다. 이 값은 capacity보다 작거나 같은 값을 가진다. 최초에 버퍼를 만들었을 때는 capacity와 같은 값을 가진다. |
+| capacity | 버퍼의 최대 데이터 개수(메모리 크기)를 나타낸다. 인덱스 값이 아니라 수량임 |
+| mark     | reset() 메소드를 실행했을 때, 돌아오는 위치를 지정하는 인덱스로서 mark() 메소드로 지정할 수 있다. 주의할 점은 반드시 position 이하의 값으로 지정해주어야 한다. position이나 limit의 값이 mark 값보다 작은 경우, mark는 자동 제거된다. mark가 없는 상태에서 reset() 메소드를 호출하면 InvalidMarkException이 발생한다. |
+
+
+
+position, limit, capacity, mark 속성의 크기 관계는 다음과 같다. mark는 position보다 클 수 없고, position은 limit보다 클 수 없으며, limit은 capacity보다 클 수 없다.
+
+```
+0 <= mark <= position <= limit <= capacity
+```
+
+
+
+### Buffer 메소드
+
+Buffer를 생성한 후 사용할 때에는 Buffer가 제공하는 메소드를 잘 활용해야 한다. Buffer마다 공통적으로 사용하는 메소드들도 있고, 데이터 타입별로 Buffer가 개별적으로 가지고 있는 메소드들도 있다. 
+
+
+
+* **공통 메소드**
+  각 타입별 버퍼 클래스는 Buffer 추상 클래스를 상속하고 있다. Buffer 추상 클래스에는 모든 버퍼가 공통적으로 가져야 할 메소드들이 정의되어 있는데, 위치 속성을 변경하는 flip(), rewind(), clear(), mark(), reset()도 모두 Buffer 추상 클래스에 있다. 다음은 Buffer가 가지는 메소드들을 정리한 표이다.
+
+| 리턴 타입 | 메소드(매개 변수)         | 설명                                                         |
+| --------- | ------------------------- | ------------------------------------------------------------ |
+| Object    | array()                   | 버퍼가 래핑(wrap)한 배열을 리턴                              |
+| int       | arrayOffset()             | 버퍼의 첫 번째 요소가 있는 내부 배열의 인덱스를 리턴         |
+| int       | capacity()                | 버퍼의 전체 크기를 리턴                                      |
+| Buffer    | clear()                   | 버퍼의 위치 속성을 초기화(position = 0, limit = capacity)    |
+| Buffer    | flip()                    | limit을 position으로, position을 0 인덱스로 이동             |
+| boolean   | hasArray()                | 버퍼가 래핑한 배열을 가지고 있는지 여부                      |
+| boolean   | hasRemaining()            | position과 limit 사이에 요소가 있는지 여부(position < limit) |
+| boolean   | isDirect()                | 운영체제의 버퍼를 사용하는지 여부                            |
+| boolean   | isReadOnly()              | 버퍼가 읽기 전용인지 여부                                    |
+| int       | limit()                   | limit 위치를 리턴                                            |
+| Buffer    | limit(int newLimit)       | newLimit으로 limit 위치를 설정                               |
+| Buffer    | mark()                    | 현재 위치를 mark로 표시                                      |
+| int       | position()                | position 위치를 리턴                                         |
+| Buffer    | position(int newPosition) | newPosition으로 position 위치를 설정                         |
+| int       | remaining()               | position과 limit 사이의 요소 개수                            |
+| Buffer    | reset()                   | position을 mark위치로 이동                                   |
+| Buffer    | rewind()                  | position을 0 인덱스로 이동                                   |
+
+
+
+#### **데이터를 읽고 저장하는 메소드**
+
+버퍼에 데이터를 저장하는 메소드는 put()이고 데이터를 읽는 메소드는 get()이다.
+
+이 메소드들은 Buffer 추상 클래스에는 없고, 각 타입별 하위 Buffer 클래스가 가지고 있다. get(), put()은 상대적과 절대적으로 구분된다. **버퍼 내의 현재 위치 속성인 position에서 데이터를 읽고 저장할 경우는 상대적**이고 **position과 관계없이 주어진 인덱스에서 데이터를 읽고, 저장할 경우는 절대적**이다. 상대적 get()과 put() 메소드를 호출하면 position값은 증가하지만, 절대적 get(), put() 메소드를 호출하면 position의 값은 변하지 않는다. 만약 position값이 limit 값 까지 증가했는데도 상대적 get()을 사용하면 **`BufferUnderflowException`**이 발생하고, put()을 사용하면 **`BufferOverflowException`**이 발생한다.
+
+
 
