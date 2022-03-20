@@ -1,0 +1,1 @@
+package buffer;public class CompactExample {}
