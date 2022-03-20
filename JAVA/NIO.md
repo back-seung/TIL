@@ -595,3 +595,354 @@ Buffer를 생성한 후 사용할 때에는 Buffer가 제공하는 메소드를 
 
 
 
+* get() / put() 나열 표
+
+| 구분  |        | ByteBuffer                                                   | CharBuffer                                                   |
+| ----- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| get() | 상대적 | get()<br />get(byte[] dst)<br />get(byte[] dst, int offset, int length)<br />getChar()<br />getDouble()<br />getFloat()<br />getInt()<br />getLong()<br />getShort() | get()<br />get(char[] dst)<br />get(char[] dst, int offset, int length) |
+|       | 절대적 | get(int index)<br />getChar(int index)<br />getDouble(int index)<br />getFloat(int index)<br />getInt(int index)<br />getLong(int index)<br />getShort(int index) | get(int index)                                               |
+| put() | 상대적 | put(byte b)<br />put(byte[] src)<br />put(byte[] src, int offset, int length)<br />put(ByteBuffer src)<br />putChar(char value)<br />putDouble(double value)<br />putFloat(float value)<br />putInt(int value)<br />putLong(long value)<br />putShort(short value) | put(char c)<br />put(char[] src)<br />put(char[] src, int offset, int length)<br />put(CharBuffer src)<br />put(String src)<br />put(String src, int start, int end) |
+|       | 절대적 | put(int index, byte b)<br />putChar(int index, char value)<br />putDouble(int index, double value) <br />putFloat(int index, float value)<br />putInt(int index, int value)<br />putLong(int index, long value)<br />putShort(int index, short value) | put(int index, char c)                                       |
+
+> 상대적 메소드와 절대적 메소드를 쉽게 구분하는 방법은 index 매개 변수가 없으면 상대적이고, index 매개 변수가 있으면 절대적이다.
+
+
+
+* **버퍼 예외의 종류**
+  버퍼 클래스에서 발생하는 예외를 살펴보자. 주로 버퍼가 다 찼을 때 데이터를 저장하려는 경우와 버퍼에서 더 이상 읽어올 데이터가 없을 때 데이터를 읽으려는 경우에 예외가 발생한다. 다음 표는 버퍼와 관련된 예외 클래스이다. 
+  가장 흔한 예외는 **`BufferOverflowException`**,**`BufferUnderflowException`**이다.
+
+| 예외                     | 설명                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| BufferOverflowException  | position이 limit에 도달했을 때 put() 을 호출하면 발생        |
+| BufferUnderflowException | position이 limit에 도달했을 때 get()을 호출하면 발생         |
+| InvalidMarkException     | mark가 없는 상태에서 reset() 메소드를 호출하면 발생          |
+| ReadOnlyBufferException  | 읽기 전용 버퍼에서 put() 또는 compact() 메소드를 호출하면 발생 |
+
+
+
+* 데이터를 버퍼에 쓰고 읽을 때, 위치 속성을 변경하는 메소드를 호출할 때 버퍼의 위치 속성값의 변화를 보여주는 예제
+
+```java
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+
+public class BufferExample {
+    public static void main(String[] args) throws Exception {
+        System.out.println("[7바이트 크기로 버퍼 생성]");
+        ByteBuffer buffer = ByteBuffer.allocateDirect(7);
+        printState(buffer);
+
+        buffer.put((byte) 10);
+        buffer.put((byte) 11);
+        System.out.println("[2바이트 저장 후]");
+        printState(buffer);
+
+        buffer.put((byte) 12);
+        buffer.put((byte) 13);
+        buffer.put((byte) 14);
+        System.out.println("[3바이트 저장 후]");
+        printState(buffer);
+
+        buffer.flip();
+        System.out.println("[flip() 실행 후]");
+        printState(buffer);
+
+        buffer.get(new byte[3]);
+        System.out.println("[3바이트 읽은 후]");
+        printState(buffer);
+
+        buffer.mark();
+        System.out.println("---------[현재 위치를 마크 해놓음]");
+
+        buffer.get(new byte[2]);
+        System.out.println("[2바이트 읽은 후]");
+        printState(buffer);
+
+        buffer.reset();
+        System.out.println("---------[position을 마크 위치로 옮김]");
+        printState(buffer);
+
+        buffer.rewind();
+        System.out.println("[rewind() 실행 후]");
+        printState(buffer);
+
+        buffer.clear();
+        System.out.println("[clear() 실행 후]");
+        printState(buffer);
+    }
+
+    public static void printState(Buffer buffer) {
+        System.out.print("\tposition : " + buffer.position() + ", ");
+        System.out.println("\tlimit : " + buffer.limit() + ", ");
+        System.out.println("\tcapacity : " + buffer.capacity());
+
+    }
+}
+```
+
+> 실행결과 :
+
+![스크린샷 2022-03-19 22.22.54](https://tva1.sinaimg.cn/large/e6c9d24egy1h0ficqw6gaj20iw13m76q.jpg)
+
+* compact() 메소드 호출 후, 변경된 버퍼의 내용과 position, limit의 위치를 보여주는 예제
+
+```java
+import java.nio.ByteBuffer;
+
+public class CompactExample {
+    public static void main(String[] args) {
+        System.out.println("[7바이트 크기로 버퍼 생성]");
+        ByteBuffer buffer = ByteBuffer.allocateDirect(7);
+        buffer.put((byte) 10);
+        buffer.put((byte) 11);
+        buffer.put((byte) 12);
+        buffer.put((byte) 13);
+        buffer.put((byte) 14);
+        // 데이터를 읽기 위해 위치 속성값 변경
+        buffer.flip();
+
+        buffer.get(new byte[3]);
+        System.out.println("[3바이트 읽음]");
+
+        // 읽지 않은 데이터는 0 인덱스부터 복사
+        buffer.compact();
+        System.out.println("[compact 실행 후]");
+        printState(buffer);
+    }
+
+    public static void printState(ByteBuffer buffer) {
+        System.out.print(buffer.get(0) + ", ");
+        System.out.print(buffer.get(1) + ", ");
+        System.out.print(buffer.get(2) + ", ");
+        System.out.print(buffer.get(3) + ", ");
+        System.out.println(buffer.get(4));
+        System.out.print("position : " + buffer.position() + ", ");
+        System.out.print("limit : " + buffer.limit() + ", ");
+        System.out.println("capacity : " + buffer.capacity());
+    }
+}
+```
+
+> 실행 결과 : 
+
+![스크린샷 2022-03-19 22.28.21](https://tva1.sinaimg.cn/large/e6c9d24egy1h0fiiatcocj20qs0bmgmf.jpg)
+
+
+
+### Buffer 변환
+
+채널이 데이터를 일고 쓰는 버퍼는 모두 ByteBuffer이다. 따라서 채널을 통해 읽은 데이터를 복원하려면 ByteBuffer를 문자열 또는 다른 타입 버퍼(CharBuffer, ShortBuffer, IntBuffer, LongBuffer, FloatBuffer, DoubleBuffer)로 변환해야 한다. 반대로 문자열 또는 다른 타입 버퍼의 내용을 채널을 통해 쓰고 싶다면 ByteBuffer로 변환해야 한다.
+
+
+
+* **ByteBuffer <-> String**
+
+  프로그램에서 가장 많이 처리되는 데이터는 String, 문자열이다. 채널을 통해 문자열을 파일이나 네트워크로 전송하려 면 특정 문자셋(UTF-8, EUC-KR)으로 인코딩해서 ByteBuffer로 변환해야 한다. 먼저 문자셋을 표현하는 `java.nio.charset.Charset`객체가 필요한데 다음 두 가지 방법으로 얻을 수 있다.
+
+```java
+Charset charset = Charset.forName("UTF-8"); // 매개값으로 주어진 문자셋
+Charset charset = Charset.defaultCharset(); // 운영체제가 사용하는 디폴트 문자셋
+```
+
+> Charset을 이용해서 문자열을 ByteBuffer로 변환하려면 다음과 같이 encode() 메소드를 호출하면 된다.
+
+```java
+String data = ...;
+ByteBuffer byteBuffer = charset.encode(data);
+```
+
+반대로 파일이나 네트워크로부터 읽은 ByteBuffer가 특정 문자셋(UTF-8, EUC-KR)으로 인코딩되어 있을 경우, 해당 문자셋으로 디코딩해야만 문자열로 복원할 수 있다. Charset은 ByteBuffer를 디코딩해서 CharBuffer로 변환시키는 decode() 메소드를 제공한다.
+
+```java
+ByteBuffer byteBuffre = ...;
+String data = charset.decode(byteBuffer).toString();
+```
+
+
+
+* Encode / Decode 예제
+
+```java
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+
+public class ByteBufferToStringExample {
+    public static void main(String[] args) {
+        Charset charset = Charset.forName("UTF-8");
+
+        // 문자열 -> 인코딩 -> ByteBuffer
+        String data = "안녕하세요";
+        ByteBuffer buffer = charset.encode(data);
+
+        // ByteBuffer -> 디코딩 -> String
+        data = charset.decode(buffer).toString();
+        System.out.println("[문자열 복원] : " + data);
+    }
+}
+```
+
+
+
+* **ByteBUffer <-> IntBuffer**
+  int[] 배열을 생성하고 이것을 파일이나 네트워크로 출력하기 위해서는 int[] 배열 또는 IntBuffer로부터 ByteBuffer를 생성해야 한다. int 타입은 4byte 크기를 가지므로 int[] 배열 크기 또는 IntBuffer의 capacity보다 4배 큰 capacity를 가진 ByteBuffer를 생성하고, ByteBuffer의 putInt()메소드로 정수값을 하나씩 저장하면 된다. 다음은 int[] 배열을 IntBuffer로 래핑하고 4배 큰 ByteBuffer를 생성한 후 정수값을 저장한다.  
+  putInt() 메소드는 position을 이동시키기 때문에 모두 저장한 후에 position을 0으로 되돌려 놓는 flip() 메소드를 호출해야 한다.
+
+```java 
+int[] data = new int[] {10, 20};
+IntBuffer intBuffer = IntBuffer.wrap(data);
+ByteBuffer byteBuffer = ByteBuffer.allocate(intBuffer.capacity()*4);
+for(int i = 0; i < intBuffer.capacity(); i++) {
+	byteBuffer.putInt(intBuffer.get(i));
+}
+byteBuffer.flip();
+```
+
+
+
+반대로 파일이나 네트워크로부터 입력된 ByteBuffer에 4바이트씩 연속된 int 데이터가 저장되어 있을 경우 int[] 배열로 복원이 가능하다. ByteBuffer의 asIntBuffer() 메소드로 IntBuffer를 얻고, IntBuffer의 capacity와 동일한 크기의 int[] 배열을 생성한다. 그리고 IntBuffer의 get() 메소드로 int값들을 배열에 저장하면 된다.
+
+```java
+ByteBuffer byteBuffer = ...;
+IntBuffer = byteBuffer.asIntBuffer();
+
+int[] data = new int[IntBuffer.capacity()];
+intBuffer.get(data);
+```
+
+> ByteBuffer에서 asIntBuffer()로 얻은 IntBuffer에서는 array() 메소드를 사용해서 int[] 배열을 얻을 수 없다. array() 메소드는 래핑한 배열만 리턴하기 때문에, int[] 배열을 wrap()으로 래핑한 IntBuffer에서만 사용할 수 있다.
+
+
+
+## 파일 채널
+
+`java.nio.channels.FileChannel`을 이용하면 파일 읽기와 쓰기를 할 수 있다. FileChannel은 동기화 처리가 되어 있기 때문에 멀티 스레드 환경에서 사용해도 안전하다.
+
+
+
+### FileChannel 생성과 닫기
+
+정적 메소드인 open() 을 호출해서 얻을 수도 있지만, IO의 FileInputStream, FileOutputStream의 getChannel()을 통해서도 얻을 수 있다.
+
+```java
+FileChannel fileChannel = FileChannel.open(Paht path, OpenOption... options);
+```
+
+> path 매개값은 열거나 생성하고자 하는 파일의 경로를 Path 객체로 생성해서 지정하면 되고, 두 번째 options 매개값은 열기 옵션 값인데 StandardOpenOption의 다음 열거 상수를 나열해주면 된다. 
+
+
+
+| 열거 상수         | 설명                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| READ              | 읽기용으로 파일을 연다                                       |
+| WRITE             | 쓰기용으로 파일을 연다                                       |
+| CREATE            | 파일이 없다면 새 파일을 생성한다.                            |
+| CREATE_NEW        | 새 파일을 만든다. 이미 파일이 있으면 예외와 함께 실패한다.   |
+| APPEND            | 파일 끝에 데이터를 추가한다. WRITE나 CREATE와 함께 사용된다. |
+| DELETE_ON_CLOSE   | 채널을 닫을 때 파일을 삭제한다(임시 파일을 삭제할 때 사용)   |
+| TRUNCATE_EXISTING | 파일을 0바이트로 잘라낸다. (WRITE 옵션과 함께 사용됨)        |
+
+```java
+// 파일을 생성하고 내용을 작성
+FIleChannel fileChannel = FileChannel.open(
+	Paths.get("C:/Temp/file.txt"),
+  StandardOpenOption.CREATE_NEW,
+  StandardOpenOption.WRITE
+);
+
+// 파일을 읽고 작성
+FIleChannel fileChannel = FileChannel.open(
+	Paths.get("C:/Temp/file.txt"),
+  StandardOpenOption.READ,
+  StandardOpenOption.WRITE
+);
+
+// 작업 종료
+fileChannel.close();
+```
+
+
+
+### 파일 쓰기와 읽기
+
+파일에 바이트를 쓰려면 다음과 같이 FileChannel의 write() 메소드를 호출하면 된다. 매개값으로 ByteBuffer 객체를 주면 되는데, 파일에 쓰여지는 바이트는 ByteBuffer의 position부터 limit까지이다. position이 0이고 limit이 capacity와 동일하다면 ByteBuffer의 모든 바이트가 파일에 쓰여진다. write() 메소드의 리턴값은 ByteBuffer에서 파일로 쓰여진 바이트 수이다. 
+
+```java
+int bytesCount = fileChannel.write(ByteBuffer src);
+```
+
+* 파일 쓰기 예제
+
+```java
+public class FileChannelWriteExample {
+  public static void main(String[] args) throws IOException {
+    Path path = Paths.get("C:/Temp/file.txt");
+    Files.createDirectories(path.getParent());
+    
+    FileChannel fileChannel = FileChannel.open(
+      path, StandardOpenOptions.CREATE, StandardOpenOption.WRITE);
+    
+    String data = "안녕하세요";
+    Charset charset = Charset.defaultCharset();
+    ByteBuffer byteBuffer = charset.encode(data);
+    
+    int byteCount = fileChannel.write(byteBuffer);
+    System.out.println("file.txt : " + byteCount + "bytes written");
+    
+    fileChannel.close();
+  }
+}
+```
+
+
+
+파일로부터 바이트를 읽기 위해서는 다음과 같이 FileChannel의 read() 메소드를 호출하면 된다. 매개값으로 ByteBuffer 객체를 주면 된든데, 파일에서 읽혀지는 바이트는 ByteBuffer의 position부터 저장된다. position이 0이면 ByteBuffer의 첫 바이트부터 저장된다. read() 메소드의 리턴값은 파일에서 ByteBuffer로 읽혀진 바이트 수이다. 한 번 읽을 수 있는 최대 바이트 수는 ByteBuffer의 capacity까지므로 리턴되는 최대값은 capacity가 된다. 더 이상 읽을 바이트가 없다면 read()는 -1을 리턴한다.
+
+버퍼에 한 바이트를 저장할 때마다 position이 1씩 증가하게 되는데, read() 메소드가 -1을 리턴할 때까지 버퍼에 저장한마지막 바이트의 위치는 position -1 인덱스이다.
+
+
+
+* 파일 읽기 예제
+
+```java
+public class FileChannelReadExample {
+	public static void main(String[] args) {
+    Path path = Paths.get("C:/Temp/file.txt");
+    
+    FileChannel fileChannel = FileChannel.open(
+    path, StandardOpenOption.READ);
+    
+    ByteBuffer byteBuffer = ByteBuffer.allocate(100);
+    
+    Charset charset = Charset.defaultCharset();
+    String data = "";
+    int byteCount;
+    
+    while(true) {
+      // 최대 100바이트를 읽는다.
+      byteCount = fileChannel.read(byteBuffer);
+      if(byteCount == -1) break;
+      // limit을 현재 position으로 설정하고 position을 0으로 설정
+      byteBuffer.flip();
+      // 문자열 변환
+      data += charset.decode(byteBuffer).toString();
+      // position을 0번 인덱스로, limit을 capacity로 설정해서 ByteBuffer를 초기화
+      byteBuffer.clear();
+    }
+    
+    fileChannel.close();
+    
+    System.out.println("file.txt : " + data);
+  }
+}
+```
+
+
+
+### 파일 복사
+
+파일 복사를 구현하기 위해서는 하나의 ByteBuffer를 사이에 두고, 파일 읽기용 FileChannel과 파일 쓰기용 FileChannel이 읽기와 쓰기를 교대로 번갈아 수행하도록 하면 된다.
+
+![스크린샷 2022-03-20 18.03.42](https://tva1.sinaimg.cn/large/e6c9d24egy1h0gghad1o5j21d80kijsp.jpg)
+
+  

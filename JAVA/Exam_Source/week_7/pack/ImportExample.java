@@ -1,1 +1,1 @@
-package week_7.pack;public class ImportExample {}
+package week_7.pack;public class ImportExample {    week_7.com.seung.pack.Import myImport = new week_7.com.seung.pack.Import();}
