@@ -30,6 +30,8 @@
 * [22/02/19 Stream](https://github.com/back-seung/TIL/blob/master/JAVA/Stream.md)
 * [22/02/25 IOPackage](https://github.com/back-seung/TIL/blob/master/JAVA/IOPackage.md)
 * [22/03/06 백기선 자바 스터디 - 6](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-6%EC%A3%BC%EC%B0%A8.md)
+* [22/03/18 NIO](https://github.com/back-seung/TIL/blob/master/JAVA/NIO.md)
+* [22/03/20 백기선 자바 스터디 - 7](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-7%EC%A3%BC%EC%B0%A8.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
@@ -44,6 +46,7 @@
 * [21/01/15 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 10](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200115_CodeDeploy%26Nginx.md)
 * [21/01/16 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 11](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200116_%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0.md)
 * [21/01/17 ~ 18 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 12](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200117_%EB%81%9D.md)
+* [22/03/17 스프링 핵심 원리 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/0317_%EC%8A%A4%ED%94%84%EB%A7%81_%ED%95%B5%EC%8B%AC_%EC%9B%90%EB%A6%AC.md)
 
 ## OOP
 * [22/02/01 객체지향 5원칙](https://github.com/back-seung/TIL/blob/master/OOP/SOLID.md)
