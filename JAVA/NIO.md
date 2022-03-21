@@ -946,3 +946,84 @@ public class FileChannelReadExample {
 ![스크린샷 2022-03-20 18.03.42](https://tva1.sinaimg.cn/large/e6c9d24egy1h0gghad1o5j21d80kijsp.jpg)
 
   
+
+* 예제
+
+```java
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
+public class FileCopyExample {
+    public static void main(String[] args) throws Exception {
+
+        Path from = Paths.get("src/exam02_file_copy/house1.jpg");
+        Path to = Paths.get("src/exam04_file_copy/house2.jpg");
+
+        FileChannel fileChannel_from = FileChannel.open(from, StandardOpenOption.READ);
+        FileChannel fileChannel_to = FileChannel.open(to, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+
+        ByteBuffer buffer = ByteBuffer.allocateDirect(100);
+        int byteCount;
+        while (true) {
+            buffer.clear();
+            byteCount = fileChannel_from.read(buffer);
+            if (byteCount == -1) {
+                break;
+            }
+            buffer.flip();
+            fileChannel_to.write(buffer);
+
+            fileChannel_from.close();
+            fileChannel_to.close();
+            System.out.println("복사 완료");
+            
+        }
+    }
+}
+```
+
+> 복사할 이미지가 존재하는 Path와 이미지를 복사할 Path를 생성하고, 각 Path의 FileChannel을 생성해준다. 그리고 다이렉트 버퍼를 생성하는데 채널에서 읽고 다시 채널로 쓰는 경우 다이렉트 버퍼가 좋은 성능을 내기 때문이다.
+
+
+
+단순히 파일을 복사할 목적이라면 NIO의 FIles 클래스의 copy() 메소드를 사용하는 것이 더 편리하다.
+
+```java
+Path path = Files.copy(Path source, Path target, CopyOption ... options);
+```
+
+> 첫 번째 source 매개값에는 원본 파일의 Path 객체를 지정하고 두 번째 Path값에는 타겟 파일의 Path 객체를 지정하면 된다. 세 번째 매개값은 StandardCopyOption 열거 상수를 목적에 맞게 나열해주면 된다.
+
+
+
+| 열거 상수         | 설명                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| REPLACE_EXISTRING | 타겟 파일이 존재하면 대체한다.                               |
+| COPY_ATTRIBUTES   | 파일의 속성까지도 복사한다.                                  |
+| NOFOLLOW_LINKS    | 링크 파일일 경우 링크 파일만 복사하고 링크된 파일은 복사하지 않는다. |
+
+
+
+* 예제 (Files.copy())
+
+```java
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
+public class FilesCopyExample {
+    public static void main(String[] args) throws Exception {
+        Path from = Paths.get("src/exam02_file_copy/house1.jpg");
+        Path to = Paths.get("src/exam04_file_copy/house2.jpg");
+
+        Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
+        System.out.println("파읿 복사 성공");
+        
+    }
+}
+```
+
