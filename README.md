@@ -7,6 +7,7 @@
 * [22/01/28 WAS란?](https://github.com/back-seung/TIL/blob/master/WEB/WAS.md)
 * [22/01/31 HTTP_통신_이해](https://github.com/back-seung/TIL/blob/master/WEB/HTTP_%ED%86%B5%EC%8B%A0%EC%9D%B4%ED%95%B4.md)
 * [22/02/04 인터넷_네트워크](https://github.com/back-seung/TIL/blob/master/WEB/%EC%9D%B8%ED%84%B0%EB%84%B7_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC.md)
+* [22/03/23 URI와 웹브라우저 요청 흐름](https://github.com/back-seung/TIL/blob/master/WEB/URI%EC%99%80_%EC%9B%B9_%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80_%EC%9A%94%EC%B2%AD_%ED%9D%90%EB%A6%84.md)
 
 ## CLOUD COMPUTING
 * [22/03/09 AWS](https://github.com/back-seung/TIL/blob/master/CLOUD_COMPUTING/AWS.md)
