@@ -25,8 +25,6 @@
 
 IO와 NIO는 데이터를 입출력한다는 목적은 동일하지만, 방식에 있어서 크게 차이가 난다. 아래 표는 IO와 NIO의 차이점을 정리한 것이다.
 
-
-
 | 구분                   | IO                 | NIO                              |
 | ---------------------- | ------------------ | -------------------------------- |
 | 입출력 방식            | 스트림 방식        | 채널 방식                        |
@@ -1090,4 +1088,193 @@ read(ByteBuffer dst, long position, A attachment, CompletionHandler<Integer, A> 
 write(ByteBuffer src, long position, CompletionHandler<Integer, A> handler);
 ```
 
-이 메소드들을 호출하면 즉시 리턴되고 스레드풀의 스레드가 입출력 작업을 진행한다.
+이 메소드들을 호출하면 즉시 리턴되고 스레드풀의 스레드가 입출력 작업을 진행한다. 
+
+* `drt`, `src` : 파일을 읽거나 쓰기 위한 ByteBuffer
+
+* `position` : 파일을 읽거나 쓸 때의 위치
+
+* `attachment` : 콜백 메소드로 전달할 첨부 객체이다. 콜백 메소드에서 결과값 외에 추가적인 정보를 얻기 위해 사용한다. 첨부 객체가 필요없다면 `null`을 리턴해도 된다. 
+
+* `handler` : CompletionHandler<Integer, A>의 구현 객체를 지정한다. `Integer`는 입출력의 결과 타입으로 read(), write() 메소드로 읽거나 쓴 바이트 수를 리턴한다. `A`는 첨부 객체 타입으로 개발자가 CompletionHandler 구현 객체를 작성할 때 임의로 지정이 가능하며 필요없다면 void가 된다.
+
+* `CompletionHandler<Integer, A>` : 정상적 완료와 예외 발생시 호출할 두 가지 콜백 메소드를 가지고 있어야 한다.
+
+  | 리턴 타입 | 메소드명 (매개 변수)                    | 설명                                |
+  | --------- | --------------------------------------- | ----------------------------------- |
+  | void      | completed(Integer result, A attachment) | 작업이 정상적으로 완료된 경우 콜백  |
+  | void      | failed(Throwable exc, A attachment)     | 예외 때문에 작업이 실패된 경우 콜백 |
+
+  * `completed()` : result 매개값은 작업 결과가 대입되는데  read(), write() 메소드의 읽거나 쓴 바이트 수이다. attachment는 read(), write() 호출 시 제공된 첨부 객체이다.
+  * `failed()` : exc 매개값은 작업 처리 도중 발생한 예외이다. 주목할 점은 콜백 메소드를 실행하는 스레드는 read(), write()를 호출한 스레드가 아니고 스레드풀의 작업 스레드인 것이다.
+  * CompletionHandler 구현 클래스 작성 방법
+
+  ```java
+  new CompletionHandler<Integer, A>() {
+    @Override
+    public void completed(Integer result, A attachment) { ... }
+    @Override
+    public void failed(Throwable exc, A attachment) { ... }
+  }
+  ```
+
+  
+
+## TCP 블로킹 채널
+
+> NIO를 이용해서 TCP 서버/클라이언트 애플리케이션을 개발하려면 블로킹, 넌블로킹, 비동기 구현 방식 중에서 하나를 결정해야 한다. 이 결정에 따라 구현이 완전히 달라진다.
+
+
+
+### 서버소켓 채널과 소켓 채널의 용도
+
+> NIO에서 TCP 네트워크 통신을 위해 사용하는 채널은 `java.nio.channels.ServerSocketChannel`과 `java.nio.channels.SocketChannel`이다. 이 두 채널은 IO의 ServerSocket과 Socket에 대응되는 클래스로 IO가 버퍼를 사용하지 않고 블로킹 입출력 방식만 지원한다면 ServerSocketChannel, SocketChannel은 버퍼를 이용하고 블로킹과 넌블로킹 방식을 모두 지원한다. 사용 방법은 IO와 큰 차이점이 없는데, ServerSocket은 클라이언트 SocketChannel의 연결 요청을 수락하고 통신용 SocketChannel을 생성한다.
+
+
+
+### 서버소켓 채널 생성과 연결 수락 
+
+* 서버를 개발하기 위해선 ServerSocketChannel 객체를 얻어야 함
+* ServerSockeChannel은 정적 메소드인 open()으로 생성하고, 블로킹 방식으로 동작시키기 위해 configureBlocking(true) 메소드를 호출함.
+* 기본적으로 블로킹 방식으로 동작, 그러나 명시적으로 설정하는 이유는 넌블로킹과 구분하기 위함임.
+* 포트에 바인딩 하기 위해서는  bind() 메소드가 호출되어야 함 :arrow_right: InetSocketAddress 객체를 매개값으로 주면 된다.
+
+```java
+ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+serverSocketChannel.configureBlocking(true);
+serverSocketChannel.bind(new InetSocketAddress(5001));
+```
+
+포트 바인딩까지 끝났다면 ServerSocketChannel은 클라이언트 연결 수락을 위해 accept() 메소드를 실행해야 한다.
+
+* accept() : 클라이언트가 연결 요청을 하면 accept()는 클라이언트와 통신할 SocketChannel을 만들고 리턴함. 클라이언트가 요청을 하기 전까지 블로킹 됨, UI 및 이벤트를 처리하는 스레드에서  accept() 메소드를 호출하지 않도록 한다.
+
+```java
+SocketChannel socketChannel = serverSocketChannel.accept();
+```
+
+연결된 클라이언트의 IP와 포트 정보를 얻고 싶다면 SocketChannel의 getRemoteAddress()를 통해 얻으면 된다. 실제 리턴되는 것은 InetSocketAddress 인스턴스이므로 다음과 같이 캐스팅이 가능하다.
+
+```java
+InetSocketAddress socketAddress = (InetSocketAddress) serverSocket.getRemoteAddress();
+```
+
+`InetSocketAddress`에는 다음과 같이 IP, 포트 정보를 리턴하는 메소드들이 있다.
+
+| 리턴 타입 | 메소드명 (매개 변수) | 설명                             |
+| --------- | -------------------- | -------------------------------- |
+| String    | getHostName()        | 클라이언트 IP리턴                |
+| int       | getPort()            | PORT 번호 리턴                   |
+| String    | toString()           | "IP 포트번호" 형태의 문자열 리턴 |
+
+
+
+> 더 이상 클라이언트를 위해 연결 수락할 필요가 없다면 ServerSocketChannel의 close() 메소드를 호출시킨다. 이렇게 해야만 해당 포트를 재사용할 수 있다.
+
+
+
+* 예제
+
+```java
+public class ServerExample {
+  public static void main(String[] args) { 
+  	ServerSocketChannel channel = null;
+    try {
+      channel = ServerSocketChannel.open();
+      channel.configureBlocking(true);
+      channel.bind(new InetSocketAddress(5001));
+      
+      while(true) {
+        System.out.println("연결을 기다림");
+        SocketChannel socketChannel = channel.aceept();
+        InetSocketAddress isa = socketChanel.getRemoteAddress();
+        System.out.println("연결을 수락함 : " + isa.getHostName());
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    if(channel.isOpne()) {
+      try {
+        channel.close();
+      } catch (IOException e) {
+        e.printStackTrace(); 
+      }
+    }
+  }
+}
+```
+
+
+
+### 소켓 채널 생성과 연결 요청
+
+* 클라이언트가 서버 연결 요청을 할 때에는 `java.nio.channels.SocketChannel`을 이용함.
+* SocketChannel은 정적 메소드인 open() 으로 생성하고 블로킹 방식으로 동작 시키기 위해 configureBlocking(true) 메소드를 호출함. 기본적으로 블로킹 방식으로 동작하지만, 명시적으로 설정하는 이유는 넌블로킹과 구분을 위해서임.
+* 서버 연결 요청은 connect()를 호출하는데, IP와 Port를 가진  InetSocketAddress를 매개값으로 줌.
+
+```java
+SocketChannel channel = SocketChannel.open();
+channel.configureBlocking(true);
+channel.connect(new InetSocketAddress(5001));
+```
+
+> connect() 메소드는 서버와 연결이 될 때까지 블로킹되므로 UI 및 이벤트를 처리하는 스레드에서는 사용하지 않도록 한다. 블로킹되면 UI 갱신, 이벤트 처리를 할 수 없기 때문이다.  
+>
+> 연결된 후 클라이언트 프로그램을 종료하거나 필요에 따라 연결을 끊고 싶다면 close() 메소드를 호출한다.
+
+```java
+channel.close();
+```
+
+
+
+* 연결 요청 예제
+
+```java
+public class ClientExample {
+  public static void main(String[] args) {
+    SocketChannel channel = null
+    try {
+    	channel = SocketChannel.open();
+    	SocketChannel.configureBlocking(true);
+	    System.out.println("연결 요청");
+      channel.connect(new InetSocketAddress("localhost", 5001));
+      System.out.println("연결 성공");
+    } catch(Exception e) {
+      e.printStackTrace();
+    } 
+	  if(channel.isOpen()) {
+		try{
+  	  channel.close();
+  		} catch(IOException e) {
+	    e.printStackTrace();
+  	}
+  } 
+}
+```
+
+
+
+### 소켓 채널 데이터 통신
+
+클라이언트가 연결 요청(connect())을 하고 서버가 연결 수락(accept())을 하면 양쪽 SocketChannel 객체의 read(), write() 메소드를 호출해서 데이터를 통신할 수 있다. 이 메소드들은 모두 버퍼를 사용하기 때문에 버퍼로 읽고 쓰는 작업을 해야 한다.
+
+
+
+```java
+// write() 메소드 이용 코드
+Charset charset = Charset.forName("UTF-8"); 
+ByteBuffer buffer = charset.encode("Hello world");
+socketChannel.write(buffer);
+
+// 다음은 SOcketChannel의 read() 를 이용하여 문자열을 받는 코드임
+ByteBuffer readBuffer = ByteBuffer.allocate(100);
+int byteCnt = socketChannel.reay(readBuffer);
+readBuffer.flip();
+Charset charset2 = Charset.forName("UTF-8");
+String message = charset2.decode(readBuffer).toString();
+```
+
+
+
