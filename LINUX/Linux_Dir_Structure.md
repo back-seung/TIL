@@ -109,3 +109,4 @@ bin과 sbin이 공통으로 사용하는 라이브러리가 위치한다.
 
 
 
+![스크린샷 2022-03-26 15.44.11](https://tva1.sinaimg.cn/large/e6c9d24egy1h0na5z09n4j21c00u0grk.jpg)
