@@ -21,7 +21,6 @@
 내가 사용하는 API 사용법을 익히기 위한 학습 테스트에서 시작
 
 * 자바 String 클래스의 다양한 메소드 사용법
-* 자바 ArrayList에 데이터를 추가, 수정, 삭제하는 방법
 
 ```java
 import org.junit.Test;
@@ -46,6 +45,31 @@ public class StringTest {
 }
 ```
 
+* 자바 ArrayList에 데이터를 추가, 수정, 삭제하는 방법
+
+```java
+import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class CollectionTest {
+    
+    @Test
+    public void arrayList() {
+        ArrayList<String> values = new ArrayList<>();
+        values.add("first");f
+        values.add("second");
+        assertThat(values.add("third")).isTrue();
+        assertThat(values.size()).isEqualTo(3);
+        assertThat(values.get(0)).isEqualTo("first");
+        assertThat(values.contains("first")).isTrue();
+        assertThat(values.remove(0)).isEqualTo("first");
+        assertThat(values.size()).isEqualTo(2);
+    }
+}
+
+```
+
 
 
 ### 1단계 연습의 효과
@@ -54,10 +78,28 @@ public class StringTest {
 * 단위테스트 도구(xUnit)의 사용법을 익힐 수 있다.
 * 사용하는 API에 대한 학습 효과가 있다.
 
+### 1단계 연습 종류
+
+* 내가 구현하는 메소드 중 Input과 Output이 명확한 클래스 메소드(보통 Util 성격의 메소드)에 대한 단위 테스트를 연습한다.
+
+* 알고리즘을 학습한다면 알고리즘 구현에 대한 검증을 단위테스트로 한다.
+
 
 
 ### 2단계 TDD 연습
 
 어려운 문제를 해결하는 것이 목적이 아니라 TDD 연습이 목적. 난이도가 낮거나 자신에게 익숙한 문제로 시작하는 것을 추천함
+
+웹, 모바일 UI나 DB에 의존관계를 가지지 않는 요구사항으로 연습하는게 좋다(토이 프로젝트)
+
+
+
+### 예시 - 문자열 덧셈 계산기 요구사항
+
+| 입력(input)  | 출력(output) |
+| ------------ | ------------ |
+| null \|\| "" | 0            |
+|              |              |
+|              |              |
 
  
