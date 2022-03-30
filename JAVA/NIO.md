@@ -1258,6 +1258,10 @@ public class ClientExample {
 
 ### 소켓 채널 데이터 통신
 
+![image-20220329000106876](https://tva1.sinaimg.cn/large/e6c9d24egy1h0pzrka3e5j21400jp44g.jpg)
+
+
+
 클라이언트가 연결 요청(connect())을 하고 서버가 연결 수락(accept())을 하면 양쪽 SocketChannel 객체의 read(), write() 메소드를 호출해서 데이터를 통신할 수 있다. 이 메소드들은 모두 버퍼를 사용하기 때문에 버퍼로 읽고 쓰는 작업을 해야 한다.
 
 
@@ -1278,3 +1282,125 @@ String message = charset2.decode(readBuffer).toString();
 
 
 
+* 예제 1 - 데이터 보내고 받기
+
+```java
+public class ClientExmaple {
+  public static void main(String[] args) {
+    SocketChannel socketCHannel = null;
+    try {
+      socketChannel = SocketChannel.open();
+      socketChannel.configureBlocking(true);
+      System.out.println("연결 요청");
+      socketChannel.connect(new InetSocketAddress("localhost", 5001));
+      System.out.println("연결 성공");
+      
+      ByteBuffer buffer = null;
+      Charset charset = Charset.forName("UTF-8");
+      
+      buffer = charset.encode("Hello Server");
+      socketChannel.write(buffer);
+      System.out.println("데이터 전송 성공");
+      
+      buffer = ByteBuffer.allocate(100);
+      int byteCount = socketChannel.read(buffer);
+      buffer.flip();
+      String message = charset.decode(buffer).toString();
+      System.out.println("데이터 받기 성공" + message);
+    } catch(Exception e) {
+      ...
+    }
+    
+    if (socketChannel.isOpen()) {
+      try {
+        socketChannel.close();
+      } catch(Exception e) {
+        ...
+      }
+    }
+  }
+}
+```
+
+> 연결 성공 후에 클라이언트가 먼저 "Hello Server"를 보내고 서버가 이 데이터를 받고 "Hello Client"를 클라이언트로 보내면 클라이언트가 이 데이터를 받는다.
+
+
+
+* 예제 2 - 데이터 받고 보내기
+
+```java
+public class ServerExmaple {
+  public static void main(String[] args) {
+
+    ServerSocketChannel serverSocketChannel = null;
+    try {
+      serverSocketChannel = ServerSocketChannel.open();
+      serverSocketChannel.configureBlocking(true);
+      serverSocketChannel.bind(new InetSocketAddress(5001));
+      while(true) {
+        System.out.println("연결 기다림");
+        SocketChannel socketChannel = ServerSocketChannel.accept();
+        InetSocketAddress isa = (InetSocketAddress) socketChannel.getRemoteAddress();
+        System.out.println("연결 수락함" + isa.getHostName);
+        
+        ByteBuffer buffer = null;
+        Charset charset = Charset.forName("UTF-8");
+        
+        buffer = ByteBuffer.allocate(100);
+        int byteCount = socketChannel.read(buffer);
+        buffer.flip();
+        String message = charset.decode(buffer).toString();
+        System.out.println("데이터 받기 성공" + message);
+        
+        buffer = charset.encode("Hello Client");
+        socketChannel.write(buffer);
+        System.out.println("데이터 보내기 성공");
+			}
+    } catch(Exception e) {
+      ...
+    }
+    
+    if(serverSocketChannel.isOpen()) {
+      try {
+        serverSocketChannel.close();
+      } catch(Exception e) {
+        ...
+      }
+    }
+  }
+}
+```
+
+> 데이터를 받기 위해 read() 메소드를 호출하면 상대방이 데이터를 보내기 전까지는 블로킹 되는데 read() 메소드가 블로킹 해제되고 리턴되는 경우는 다음 세가지이다. 
+
+| 블로킹이 해제되는 경우                           | 리턴값           |
+| ------------------------------------------------ | ---------------- |
+| 상대방이 데이터를 보냄                           | 읽은 바이트 수   |
+| 상대방이 정상적으로 SocketChannel.close()를 호출 | -1               |
+| 상대방이 비정상적으로 종료                       | IOException 발생 |
+
+> 상대방이 정상적으로 close()를 호출하고 연결을 끊었을 경우와 상대방이 비정상적으로 종료된 경우에는 예외 처리를 해서 이쪽도 SocketChannel을 닫기 위해 close() 메소드를 호출해야 한다.
+
+
+
+```java
+try {
+  
+  // 상대방이 비정상적으로 종료했을 경우 IOException 발생
+  int byteCount = socketChannel.read(buffer);
+  
+  // 상대방이 정상적으로 Socket의 close() 호출했을 경우
+  if(readByteCount == -1) {
+		throws new IOException(); // 강제로 IOException을 발생시킴
+  }
+  
+} catch (Exception e) {
+	try { socketChannel.close(); } catch(Exception e2) { ... }
+}
+```
+
+
+
+### 스레드 병렬 처리
+
+TCP 블로킹 방식은 데이터 입출력이 완료되기 전까지 read()와 write() 메소드가 블로킹된다. 만약 애플리케이션을 실행시키는 main 스레드가 직접 입출력을 작업을다망하게 되면 입출력이 완료될 때까지 다른 작업을 할 수 없는 상태가 된다. 예를 들어 서버는 지속적으로 클라이언트의 연결 수락 기능을 수행해야 하는데, 입출력에서 블로킹되면 이 작업을 할 수 없게 된다. 그렇기 때문에 클라이언트 연결 하나에 작업 스레드 하나를 할당해서 병렬 처리해야 한다.
