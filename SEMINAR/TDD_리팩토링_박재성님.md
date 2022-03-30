@@ -226,6 +226,13 @@ public class StringCalculator {
 2.   메소드가 단 한가지의 일만 하게하라.
 
 ```java
+	private static int sum(String[] values) {
+  	int result = 0;
+	  for(String value : values) {
+  	  result += Integer.parseInt(value);
+	  }
+  	return result;
+	}
 ```
 
 >   위 메소드를 보면 현재 **문자열을 숫자로 바꾼뒤 이를 result에 담는 두 가지의 일을 하고 있다.**
@@ -341,4 +348,202 @@ public class StringCalculator {
 
 
 ## 리팩토링 연습 - 클래스 분리
+
+### 다시 문자열 덧셈 계산기 요구사항
+
+>   쉼표(,) 콜론(:)을 구분자로 가지는 문자열을 전달하는 경우 구분자를 기준으로 분리한 각 숫자의 합을 반환.
+>
+>   **숫자 이외의 값 또는 음수를 전달하는 경우 RuntimeException 예외를 Thorw 한다.**
+
+| 입력(input)  | 출력(output)     |
+| ------------ | ---------------- |
+| null \|\| "" | 0                |
+| "1"          | 1                |
+| "1,2"        | 3                |
+| "1, 2:3"     | 6                |
+| "-1, 2:3"    | RuntimeException |
+
+
+
+```java
+public class StringCalculatorTest {
+  @Test
+  public void null_또는_빈값() {
+    assertThat(StringCalculator.splitAndSum(null)).isEqualTo(0);
+    assertThat(StringCalculator.splitAndSum("")).isEqualTo(0);    
+  }
+  
+  @Test
+  public void 값_하나() {
+        assertThat(StringCalculator.splitAndSum("1")).isEqualTo(3);
+  }
+  
+  @Test
+  public void 쉼표_구분자() {
+    assertThat(StringCalculator.splitAndSum("1,2")).isEqualTo(3);    
+  }
+  
+  @Test
+  public void 쉼표_콜론_구분자() {
+    assertThat(StringCalculator.splitAndSum("1,2:3")).isEqualTo(6);    
+  }
+  
+  // +++ 음수값 테스트 추가 +++
+  @Test(expected = RuntimeException.class) {
+    public void 음수값() {
+      StringCalculator.splitAndSum("-1,2:3");
+    }
+  }
+}
+```
+
+*   요구사항(음수값 처리)에 따른 클래스 수정
+
+```java
+public class StringCalculator {
+  public static int splitAndSum(String text) {
+    {...}
+	}
+  
+  private static int[] toInts(String[] values) {
+    int[] numbers = new int[values.length];
+    for (int i =0; i < values.length; i++) {
+      numbers[i] = toInt(values[i]);
+    }
+    return numbers;
+  }
+  
+  private static int[] toInt(String value) {
+    int number = Integer.parseInt(value);
+    if (number < 0) {
+      throw new RuntimeException();
+    }
+    return number;
+  }
+}
+```
+
+
+
+*   모든 원시값과 문자열을 포장하라.
+
+```java
+  private static int[] toInt(String value) {
+    int number = Integer.parseInt(value);
+    if (number < 0) {
+      throw new RuntimeException();
+    }
+    return number;
+  }
+```
+
+>   위 메소드를 클래스로 분리한다.
+
+```java
+public class Positive {
+  private int number;
+  
+  public Positive(String value) {
+    this(Integer.parseInt(value));
+  }
+  
+  public Positive(int number) {
+    if (number > 0) {
+      throw new RuntimeException();
+    }
+    
+    this.number = number;
+  }
+}
+```
+
+>   Positive(양수)라는 클래스로 분리하므로써 string과 int로 생성자를 구현하였다. 이로 인해 Positive 클래스는 양수를 보장받을 수 있게된다. 따라서 다시 StringCalculator를 다음과 같이 수정할 수 있다.
+
+
+
+```java
+public class StringCalculator {
+  {...}
+  
+  private static Positive[] toPositives(String[] values) {
+    Postive[] numbers = new Positive[values.length];
+    for(int i = 0; i < values.length; i++) {
+      numbers[i] = new Positive(values[i]);
+    }
+    return numbers;
+  }
+  
+  private static int sum(Positive[] numbers) {
+    Positive result = new Positive(0);
+    for (Positive number : numbers) {
+      result = result.add(number); // Positive.add(int number) 매소드 추가
+    }
+    return result.getNumber();
+  }
+}
+
+/*
+* Positive add Method
+*/
+
+public class Positive {
+  {...}
+  
+  public Positive add(Positive other) {
+    return new Positive(this.number + other.number);
+  }
+  
+  public int getNumber() {
+    return number;
+  }
+}
+```
+
+
+
+*   일급 컬렉션을 사용한다.
+
+>   클래스를 포장하는 클래스를 만든다.
+
+```java
+import java.util.Set;
+
+public class Lotto {
+  private static final int LOTTO_SIZE = 6;
+  
+  private final Set<LottoNumber> lotto;
+  
+  private Lotto(Set<LottoNumber> lotto) {
+    if(lotto.size() != LOTTO_SIZE) {
+      throw new IllegalException();
+    }
+    this.lotto = lotto;
+  }
+}
+```
+
+
+
+*   3개 이상의 인스턴스 변수를 가진 클래스를 쓰지 않는다.
+
+```java
+public class WinningLotto {
+  private final Lotto lotto;
+  private final LottoNumber no;
+  
+  public WinningLotto(Lotto lotto, LottoNumber no) {
+    if(lotto.contains(no)) {
+      throw new IllegalArgumentException();
+    }
+    this.lotto = lotto;
+    this.no = no;
+  }
+  
+  public Rank match(Lotto userLotto) {
+    int matchCount = lotto.match(userLotto);
+    boolean matchBonus = userLotto.contains(no);
+    return Rank.valueOf(matchCount, matchBonus);
+  }
+}
+```
 
