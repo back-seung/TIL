@@ -33,6 +33,8 @@
 * [22/03/06 백기선 자바 스터디 - 6](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-6%EC%A3%BC%EC%B0%A8.md)
 * [22/03/18 NIO](https://github.com/back-seung/TIL/blob/master/JAVA/NIO.md)
 * [22/03/20 백기선 자바 스터디 - 7](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-7%EC%A3%BC%EC%B0%A8.md)
+* [22/03/24 백기선 자바 스터디 - 8](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-8%EC%A3%BC%EC%B0%A8.md)
+* [22/03/28 JAVA Code Conventions](https://github.com/back-seung/TIL/blob/master/JAVA/Java_Code_Convensions.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
@@ -49,8 +51,15 @@
 * [21/01/17 ~ 18 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 12](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200117_%EB%81%9D.md)
 * [22/03/17 스프링 핵심 원리 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/0317_%EC%8A%A4%ED%94%84%EB%A7%81_%ED%95%B5%EC%8B%AC_%EC%9B%90%EB%A6%AC.md)
 
+## LINUX
+* [22/03/26 리눅스 기초 - 디렉토리 구조](https://github.com/back-seung/TIL/blob/master/LINUX/Linux_Dir_Structure.md)
+
 ## OOP
 * [22/02/01 객체지향 5원칙](https://github.com/back-seung/TIL/blob/master/OOP/SOLID.md)
+
+## SEMINAR
+* [22/03/30 TDD_리팩토링](https://github.com/back-seung/TIL/blob/master/SEMINAR/TDD_%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81_%EB%B0%95%EC%9E%AC%EC%84%B1%EB%8B%98.md)
+
 ## [C#](https://github.com/back-seung/TIL/blob/master/C%23/C%23_INFO.md)
 * [21/12/30 C# 기초](https://github.com/back-seung/TIL/blob/master/C%23/C%23_1230.md)
 * [22/01/02 C# DB](https://github.com/back-seung/TIL/blob/master/C%23/C%23_0102.md)
