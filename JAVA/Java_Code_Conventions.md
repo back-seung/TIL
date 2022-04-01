@@ -435,17 +435,147 @@ argv++; argc--;		// 지양하자
 
 ### 	RETURN문
 
+값을 반환하는 return 문은 특별한 방법으로 더 확실한 return 값을 표현하는 경우를 제외하고는 괄호를 사용하지 않는 것이 좋다.
+
+```java
+return;
+
+return myDisk.size();
+
+return (size ? size : default); 
+```
+
+
+
 ### 	if, if-else, if else-if else문
+
+if-else 문을 사용할 때는 다음과 같이 작성한다.
+
+```java
+if (condition) {
+    statements;
+}
+
+if (condition) {
+    statements;
+} else {
+    statements;
+}
+
+if (condition) {
+    statements;
+} else if (condition) {
+    statements;
+} else {
+    statements;
+}
+```
+
+>   주의 : if 문은 항상 중괄호를 사용한다. 다음과 같은 에러가 발생할 수 있는 상황은 피해야 한다.
+
+```java
+if (condition) // 이렇게 중괄호 {}를 생략해서 사용하지 말자
+    statements;
+```
+
+
 
 ### 	for문
 
+for 문은 다음과 같이 사용하자
+
+```java
+for (initialization; condition; update) {
+    statements;
+}
+```
+
+빈  for문 (모든 작업이 initializationm condition, update에서 완료되는)은 다음과 같은 형태를 가져야 한다.
+
+```java
+for (initialization; condition; update);
+```
+
+for 문의 initialization 또는 update 부분에서 콤마`,` 연산자를 사용할 떄에는, 세 개 이상의 변수들을 사용하는 복잡성은 피해야 한다. 만약 필요하다면, for 문 이전에 문을 분리시켜 사용(initialization절의 경우)하거나 for 문의 마지막에 문을 분리시켜 사용(update절의 경우)한다.
+
+
+
 ### 	while문
+
+while 문은 다음과 같이 사용한다.
+
+```java
+while (condition) {
+    statements;
+}
+```
+
+빈 while 문은 다음과 같이 사용한다.
+
+```java
+while (condition);
+```
+
+
 
 ### 	do-while문
 
+```java
+do {
+    statements; 
+} while (condition);
+```
+
+
+
 ### 	switch문
 
+switch 문은 다음과 같이 사용한다.
+
+```java
+switch (condition) {
+    case ABC:
+        statements;
+        /* 다음줄로 계속 진행한다. */
+    case DEF:
+        statements;
+   		break;
+    case XYZ:
+        statements;
+    	break;
+    default:
+        statements;
+        break;
+}
+```
+
+모든 case를 수행해야 하는 경우에는 break 문을 사용하지 않으면 된다. 이러한 경우는 위의 에제 코드의 첫번째 case에서 볼 수 있다.
+
+모든 switch 문은 default case를 포함해야 한다. 위의 예제와 같이, 어떤 경우에 default case에서 break는 중복적이지만, 이후에 또 다른 case가 추가되어질 경우 에러를 방지할 수 있다.
+
 ### 	try-catch문
+
+`try-catch`문은 다음과 같이 사용한다.
+
+```java
+try {
+    statements;
+} catch (ExceptionClass e) {
+    statements;
+}
+```
+
+`try-catch`문은 try 블록이 성공적으로 완료되든지, 아니면 중간에 에러가 발생하는지에 상관없이 실행되어야 하는 부분을 추가하기 위해서  finally 부분을 사용할 수 있다.
+
+```java
+try {
+    statements;
+} catch (ExceptionClass e) {
+    statements;
+} finally {
+    statements;
+}
+```
 
 
 
@@ -453,11 +583,77 @@ argv++; argc--;		// 지양하자
 
 ### 	한 줄 띄우기(Blank Lines)
 
+한 줄을 띄우고 코드를 작성하면, 논리적으로 관계가 있는 코드들을 쉽게 구분할 수 있기 때문에 코드의 가독성(readAbillity)을 향상시킨다.
+
+**다음과 같은 경우에는 두 줄을 띄어서 코드를 작성한다 :** 
+
+1.   소스 파일의 섹션들 사이에서
+2.   클래스와 인터페이스의 정의 사이에서
+
+**다음과 같은 경우에는 한 줄을 띄어서 코드를 작성한다 : **
+
+1.   메소드들 사이에서
+2.   메소드 안에서의 지역 변수와 그 메소드의 첫 번째 문장 사이에서
+3.   블록(Block) 주석 또는 한 줄 주석 이전에
+4.   가독성을 향상시키기 위한 메소드 내부의 논리적인 섹션들 사이에
+
+
+
 ### 	공백(Blank Spaces)
+
+**공백은 다음과 같은 경우에 사용한다 :**
+
+1.   괄호와 함께 나타나는 키워드는 공백으로 나누어야 한다.
+
+```java
+while (true) {
+    ...
+}
+```
+
+2.   메소드 이름과 메소드의 여는 괄호 사이에 공백이 사용되어서는 안 된다는 것을 명심하라. 이렇게 하는 것은 메소드 호출과 키워드를 구별하는데 도움을 준다.
+3.   공백은 인자(`arguments`) 리스트에서 콤마 이후에 나타나야 한다.
+4.   모든 이항(``binary`) 연산자는 연산수들과는 공백으로 분리되어져야 한다. 공백은 단항(`unary`) 연산자(증가를 의미하는 `++`, 감소를 의미하는 `--`)의 경우에는 사용해서는 안된다.
+
+```java
+a += c + d;
+a = (a + b) / (c * d);
+
+while (d++ = s+=) {
+    n++;
+}
+printSize("SIZE IS : " + foo + "\n");
+```
+
+5.   for 문에서 사용하는 세 개의 식(`Expression`)들은 공백으로 구분해서 나눠야 한다. 
+
+```java
+for(initialization; condition; )
+```
+
+6.   변수의 타입을 변환하는  캐스트(`cast`)의 경우에는 공백으로 구분해야 한다.
+
+```java
+myMethod((byte) aNum, (Object) x);
+myMethod((int) (cp + 5), ((int) (i + 3))
+        						+ 1);
+```
 
 
 
 ## 명명 규칙
+
+이름을 정하는 규칙은 프로그램을 더 읽기 쉽게 만들어 줌으로써 더 이해하기 쉽게 만들어 준다. 또한 식별자(`identifier`)를 통해서 기능에 대한 정보도 쉽게 얻을 수 있다. Ex) 상수인지, 패키지인지, 클래스인지 등을 알 수 있도록 도와준다.
+
+
+
+| 식별자 타입 | 명명 규칙                                                    | 예제                                                         |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Packages    | 패키지 이름의 최상위 레벨은 항상 ASCII 코드에 포함되어 있는 소문자로 쓰고, 가장 높은 레벨의 도메인 이름 중 하나이어야 한다. 현재는  `com`, `edu`, `gov`, `mil`, `net`, `org` 또는 1981년 ISO Standard 316에 명시된 영어 두 문자로 표현되는 나라 구별 코드가 사용된다. 패키지 이름의 나머지 부분은 조작 내부의 명명 규칙을 따르면 된다. 이러한 규칙을 따라 만들어진 이름은 디렉토리 구조에서 디렉토리 이름으로도 사용된다. 예를 들어 부서명, 팀명, 프로젝트명, 컴퓨터 이름, 또는 로그인 이름 등이다. | com.sun,eng<br />com.apple.quicktime.v2<br />edu.cmu.cs.bovik.cheese |
+| Classes     | 클래스 이름은 **명사**여야 하며, 복합 단어일 경우 각 단어의 첫문자를 대문자로 적는다. 클래스 이름은 간단하고 명시적이 되도록 작성하라. 완전한 단어를 사용하고 두 문자어와 약어는 피하도록 하자(만약 약어가 URL이나 HTML과 같이 더 많이, 더 넓게 사용되고 있다면 약어를 사용하는 것도 괜찮다.) | class Raster;<br />class ImageSprite;                        |
+| Interfaces  | 인터페이스 이름도 클래스 이름과 같은 대문자 사용 규칙을 적용해야 한다. | interface RasterDelegate;<br />interface Storing;            |
+| Methods     | 메소드의 이름은 **동사**여야 하며, 복합 단어일 경우 첫 단어는 소문자로 시작하고 그 이후에 나오는 단어의 첫 문자는 대문자로 적는다. | run();<br />runFast();<br />getBackground();                 |
+| Variables   | 변수 이름의 첫 번째 문자는 소문자로 시작하고, 각각의 내부 단어의 첫 번째 문자는 대문자로 시작해야 한다. 변수 이름이 언더바(`_`) 또는 달러표시(`$`)로 시작하는 것이 허용되기는 하지만, 이 문자들로 시작하지 않도록 주의하자. 변수 이름은 짧지만 의미 있어야 한다. 변수 이름의 선택은 그 변수의 사용 의도를 알아낼 수 있도록 의미적이어야 한다. 한 문자로만 이루어진 변수 이름은 임시적으로 사용하고 버릴 변수일 경우를 제외하고는 피해야 한다. 보통의 임시 변수 이름은 Integer의 경우 `i`, `j`, `k`, `m`, `n`을 사용하고 Character의 경우 `c`, `d`, `e`를 사용한다. | int i;<br />char c;<br />float myWidth;                      |
 
 
 
@@ -465,19 +661,208 @@ argv++; argc--;		// 지양하자
 
 ### 	인스턴스 변수와 클래스 변수를 외부에 노출하지 말고 대신 접근을 제공
 
+인스턴스 변수 또는 클래스 변수를 합당한 이유없이 public으로 선언하지 말자. 인스턴스 변수들은 명시적으로 선언될 필요가 없는 경우도 많다.
+
+인스턴스 변수가 public으로 선언되는 것이 적절한 경우는 클래스 자체가 어떤 동작(`behavior`)을 가지지 않는 데이터 구조 (`Data Structure`)일 경우이다. 다시 말해서 만약 class 대신 struct를 사용해야 하는 경우라면 (만약 Java가 struct를 지원한다면), class의 인스턴스 변수들을 public으로 선언하는 것이 적합하다.
+
+
+
 ### 	클래스 변수와 클래스 메서드는 클래스 이름을 사용하여 호출
+
+클래스(static) 변수 또는 클래스 메소드를 호출하기 위해서 객체를 사용하는 것을 피해야 한다. 대신에 클래스 이름을 사용하자.
+
+```java
+classMethod(); 				// 좋은 사용법
+AClass.classMethod();		// 좋은 사용법
+anObject.classMethod(); 	// 나쁜 사용법
+```
+
+
 
 ### 	숫자는 바로 사용하지 말고 선언해서 변수 이름으로 접근
 
+숫자 상수는 카운트 값으로  for 루프에 나타나는 -1, 0, 1을 제외하고는, 숫자 자체를 코드에 사용하지 말아라.
+
 ### 	변수에 값을 할당할 때 주의할 것들
+
+하나의 문(statement)에서 같은 값을 여러 개의 변수들에 할당하지 말아라. 이렇게 하면 읽기가 어렵게 된다.
+
+```java
+fooBar.fChar = barFoo.lchar = 'c'; // 읽기 어렵다. 사용하지 말자.
+```
+
+비교 연산자(`equality operator: ==`)와 혼동되기 쉬운 곳에 할당 연산자(`assignment operator: =`)를 사용하지 말아라.
+
+```java
+if (c++ = d++) {		// 이렇게 사용하지 말자! (애초에 자바가 허용안함ㅋㅋ)
+    ...
+}
+```
+
+다음과 같이 작성하자.
+
+```java
+if ((c++ = d++) != 0) {
+    ...
+}
+```
+
+실행시 성능 향상을 위해서 할당문(``assignment statement`)안에 또 다른 할당문을 사용하지 말아라.
+
+```java
+d = (a = b + c) + r;		// 이렇게 사용하지 말자..
+```
+
+다음과 같이 쓰자.
+
+```java
+a = b + c;
+d = a + r; 
+```
+
+
 
 ### 	그 외 신경써야 할 것들
 
+
+
 #### 		괄호
+
+연산자 우선순위 문제를 피하기 위해서 복합 연산자를 포함하는 경우에는 자유롭게 괄호를 사용하는 것이 좋은 생각이다. 내가 연산자 우선 순위를 확실하게 알고 있다고 할지라도, 다른 개발자에게는 생소할 수도 있다.
+
+```java
+if (a == b && c == d) 		// 이렇게 사용하지 말자
+if ((a == b) && (c == d)) 	//이렇게 사용하자
+```
+
+
 
 #### 		반환 값
 
+프로그램의 구조와 목적이 일치해야 한다.
+
+```java
+if (booleanExpression) {
+    return true;
+} else {
+    return false;
+}
+```
+
+위와 같이 작성하지 말고 다음과 같이 작성하자.
+
+```java
+return booleanExpression;
+```
+
+비슷한 경우로 다음과 같은 경우에는
+
+```java
+if (condition) {
+    return x;
+}
+return y;
+```
+
+이렇게 작성하자.
+
+```java
+return (condition ? x : y);
+```
+
+
+
 #### 		조건 연산자 '?' 이전에 나오는 식 (expression)
+
+삼항 연산자(`ternary Operator - ?:`) 에서 ? 이전에 이항 연산자(`Binary Operator`)를 포함하는 식(`expression`)이 있는 경우에는 꼭 괄호를 사용해야 한다.
+
+```java
+(x >= 0) ? x : -y;
+```
+
+
+
+## 코드 예제
+
+### 자바 소스 파일 예제
+
+>   다음 예제는 하나의 public class를 가지는 자바 소스 파일을 어떻게 구성하는지 보여준다. 자바에서 사용하는 interface도 비슷하게 구성된다.
+
+```java
+/*
+ * @(#)CodeConvention.java        0.82 2000/1/17
+ *
+ * [저작권 및 라이센스 관련 정보를 여기에 작성한다.]
+ * Copyright (c) 2015 Kwangshin Oh.
+ * ComputerScience, ProgrammingLanguage, Java, Seoul, KOREA
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of Kwangshin
+ * Oh ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Kwangshin Oh.
+ */
+  
+  
+package kwangshin.codeconvention;
+  
+import kwangshin.*;
+  
+/**
+ * 클래스에 대한 설명을 여기에 작성한다.
+ *
+ * @version          1.00 2015년 2월 9일
+ * @author           오광신
+ */
+public class CodeConvention extends Convention {
+    /* 클래스의 구현 주석을 여기에 작성한다. */
+  
+    /** 클래스 변수 classVar1에 대한 설명을 여기에 작성한다. (문서 주석) */
+    public static int classVar1;
+  
+    /** 
+     * 클래스 변수 classVar2에 대한 설명이 (문서 주석이)
+     * 한 줄 이상일 경우 이렇게 작성한다.(접근 제어자가 private일 경우 나오지는 않음.)
+     */
+    private static Object classVar2;
+  
+    /** 인스턴스 변수 instanceVar1에 대한 설명을 여기에 작성한다.(문서 주석) */
+    public Object instanceVar1;
+  
+    /** 인스턴스 변수 instanceVar2에 대한 설명을 여기에 작성한다.(문서 주석) */
+    protected int instanceVar2;
+  
+    /** 인스턴스 변수 instanceVar3에 대한 설명을 여기에 작성한다.(문서 주석) 접근 제어자가 private일 경우 나오지는 않음. */
+    private Object[] instanceVar3;
+  
+    /** 
+     * ... 생성자 CodeConvention()에 대한 설명을 여기에 작성한다.(문서 주석) ...
+     */
+    public CodeConvention() {
+        // ... 여기에 실제 코드를 작성한다. ...
+    }
+  
+    /**
+     * ... 메서드 doSomething()에 대한 설명을 여기에 작성한다.(문서 주석) ...
+     */
+    public void doSomething() {
+        // ... 여기에 실제 코드를 작성한다. ... 
+    }
+  
+    /**
+     * ... 메서드 doSomethingElse()에 대한 설명을 여기에 작성한다.(문서 주석) ...
+     * @param someParam 파라미터에 대한 설명
+     * @return String 리턴값에 대한 설명
+     * @exception exception 예외사항에 대한 설명
+     */
+    public String doSomethingElse(Object someParam) {
+        // ... 여기에 실제 코드를 작성한다. ... 
+    }
+}
+```
+
+
 
 
 
