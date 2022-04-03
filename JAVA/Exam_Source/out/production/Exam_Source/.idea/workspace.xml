@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/buffer/PerformanceExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/byteOrder/ComputerByteOrderExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/assertj_core.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csv/test/dto/ItemTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NIO.md" beforeDir="false" afterPath="$PROJECT_DIR$/../NIO.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exam_Source.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Exam_Source.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/CSVParsing.java" beforeDir="false" afterPath="$PROJECT_DIR$/csv/CSVParsing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/dto/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/csv/dto/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/Exam_Source.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/Exam_Source.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +50,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -55,19 +63,23 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="모듈" />
+    <property name="project.structure.proportion" value="0.15429688" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="power.mode.ii" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="generic2" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.ComputerByteOrderExample">
-    <configuration name="ComputerByteOrderExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="byteOrder.ComputerByteOrderExample" />
+  <component name="RunManager" selected="JUnit.ItemTest.파일이_만들어진다 (1)">
+    <configuration name="ByteBufferToStringExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="buffer.ByteBufferToStringExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="byteOrder.*" />
+          <option name="PATTERN" value="buffer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -75,12 +87,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FileSystemExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fileSystem.FileSystemExample" />
+    <configuration name="CompactExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="buffer.CompactExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fileSystem.*" />
+          <option name="PATTERN" value="buffer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -88,52 +100,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HashSetExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="andOrNegate.HashSetExample" />
+    <configuration name="ItemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="andOrNegate.*" />
+          <option name="PATTERN" value="csv.test.dto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="csv.test.dto" />
+      <option name="MAIN_CLASS_NAME" value="csv.test.dto.ItemTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Animal.Main" />
+    <configuration name="ItemTest.파일이_만들어진다 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Animal.*" />
+          <option name="PATTERN" value="csv.test.dto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="csv.test.dto" />
+      <option name="MAIN_CLASS_NAME" value="csv.test.dto.ItemTest" />
+      <option name="METHOD_NAME" value="파일이_만들어진다" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="socket.ServerExample" />
+    <configuration name="ItemTest.파일이_만들어진다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="socket.*" />
+          <option name="PATTERN" value="csv.test.dto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="csv.test.dto" />
+      <option name="MAIN_CLASS_NAME" value="csv.test.dto.ItemTest" />
+      <option name="METHOD_NAME" value="파일이_만들어진다(csv.dto.Item)" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.ComputerByteOrderExample" />
-        <item itemvalue="애플리케이션.FileSystemExample" />
-        <item itemvalue="애플리케이션.ServerExample" />
-        <item itemvalue="애플리케이션.Main (2)" />
-        <item itemvalue="애플리케이션.HashSetExample" />
+        <item itemvalue="JUnit.ItemTest.파일이_만들어진다 (1)" />
+        <item itemvalue="JUnit.ItemTest" />
+        <item itemvalue="JUnit.ItemTest.파일이_만들어진다" />
+        <item itemvalue="애플리케이션.ByteBufferToStringExample" />
+        <item itemvalue="애플리케이션.CompactExample" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +191,10 @@
       <workItem from="1647270340836" duration="457000" />
       <workItem from="1647585771703" duration="895000" />
       <workItem from="1647663452296" duration="1719000" />
-      <workItem from="1647686217988" duration="97000" />
+      <workItem from="1647686217988" duration="3278000" />
+      <workItem from="1647768781585" duration="1438000" />
+      <workItem from="1647869600206" duration="1733000" />
+      <workItem from="1648968432382" duration="1878000" />
     </task>
     <servers />
   </component>
@@ -188,5 +211,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
