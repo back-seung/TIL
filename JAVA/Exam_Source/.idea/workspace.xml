@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/nio/FileCopyExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nio/FilesCopyExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csv/CSVParsing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/csv/dto/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NIO.md" beforeDir="false" afterPath="$PROJECT_DIR$/../NIO.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +54,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="power.mode.ii" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -174,6 +174,7 @@
       <workItem from="1647686217988" duration="3278000" />
       <workItem from="1647768781585" duration="1438000" />
       <workItem from="1647869600206" duration="1733000" />
+      <workItem from="1648968432382" duration="360000" />
     </task>
     <servers />
   </component>
@@ -190,5 +191,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
