@@ -40,5 +40,5 @@
     * `Statement.executeUpdate()` :arrow_right: INSERT / UPDATE / DELETE 문 수행
 5. 연결 해제
 
-    	* `Connection.close`
+    * `Connection.close`
 
