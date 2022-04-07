@@ -35,6 +35,8 @@
 * [22/03/20 백기선 자바 스터디 - 7](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-7%EC%A3%BC%EC%B0%A8.md)
 * [22/03/24 백기선 자바 스터디 - 8](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-8%EC%A3%BC%EC%B0%A8.md)
 * [22/03/28 JAVA Code Conventions](https://github.com/back-seung/TIL/blob/master/JAVA/Java_Code_Convensions.md)
+* [22/04/05 JDBC](https://github.com/back-seung/TIL/blob/master/JAVA/JDBC.md)
+* [22/04/05 What_Is_Java](https://github.com/back-seung/TIL/blob/master/JAVA/What_Is_Java.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
