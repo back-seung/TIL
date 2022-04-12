@@ -37,6 +37,7 @@
 * [22/03/28 JAVA Code Conventions](https://github.com/back-seung/TIL/blob/master/JAVA/Java_Code_Convensions.md)
 * [22/04/05 JDBC](https://github.com/back-seung/TIL/blob/master/JAVA/JDBC.md)
 * [22/04/05 What_Is_Java](https://github.com/back-seung/TIL/blob/master/JAVA/What_Is_Java.md)
+* [22/04/09 객체지향언어](https://github.com/back-seung/TIL/blob/master/JAVA/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
