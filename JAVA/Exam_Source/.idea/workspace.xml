@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/Main/Sample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/caesar/Password.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/caesar/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +184,7 @@
       <workItem from="1650039186713" duration="2418000" />
       <workItem from="1650090216918" duration="4780000" />
       <workItem from="1650291529124" duration="972000" />
-      <workItem from="1650293675977" duration="2496000" />
+      <workItem from="1650293675977" duration="2563000" />
     </task>
     <servers />
   </component>
