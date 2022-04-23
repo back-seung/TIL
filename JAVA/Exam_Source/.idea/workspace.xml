@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/instance/InstanceofExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_10/ExecuteExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_10/RunnableCreateExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_10/RunnableExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_10/ThreadExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_10/ThreadOrderExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../객체지향언어2.md" beforeDir="false" afterPath="$PROJECT_DIR$/../객체지향언어2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../멀티스레드.md" beforeDir="false" afterPath="$PROJECT_DIR$/../멀티스레드.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +69,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="모듈" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -81,20 +86,7 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Execute">
-    <configuration name="DeckTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="oop.inheritance.DeckTest" />
-      <module name="Exam_Source" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="oop.inheritance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.RunnableCreateExample">
     <configuration name="Execute" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="over.Execute" />
       <module name="Exam_Source" />
@@ -108,12 +100,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InitiallizingExmaple" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="oop.variable.InitiallizingExmaple" />
+    <configuration name="ExecuteExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.ExecuteExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="oop.variable.*" />
+          <option name="PATTERN" value="week_10.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,12 +113,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Sample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main.Sample" />
+    <configuration name="RunnableCreateExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.RunnableCreateExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Main.*" />
+          <option name="PATTERN" value="week_10.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ThreadOrderExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.ThreadOrderExample" />
+      <module name="Exam_Source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="week_10.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,11 +154,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RunnableCreateExample" />
+        <item itemvalue="Application.ThreadOrderExample" />
+        <item itemvalue="Application.ExecuteExample" />
         <item itemvalue="Application.Execute" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.Sample" />
-        <item itemvalue="Application.DeckTest" />
-        <item itemvalue="Application.InitiallizingExmaple" />
       </list>
     </recent_temporary>
   </component>
@@ -203,6 +208,7 @@
       <workItem from="1650456548141" duration="1562000" />
       <workItem from="1650459254344" duration="589000" />
       <workItem from="1650551556580" duration="783000" />
+      <workItem from="1650712300234" duration="1990000" />
     </task>
     <servers />
   </component>
