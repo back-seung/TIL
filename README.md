@@ -39,6 +39,8 @@
 * [22/04/05 What_Is_Java](https://github.com/back-seung/TIL/blob/master/JAVA/What_Is_Java.md)
 * [22/04/09 객체지향언어](https://github.com/back-seung/TIL/blob/master/JAVA/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4.md)
 * [22/04/15 백기선 자바 스터디 - 9](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94%209%EC%A3%BC%EC%B0%A8-%EC%98%88%EC%99%B8%20%EC%B2%98%EB%A6%AC.md)
+* [22/04/17 객체지향언어2](https://github.com/back-seung/TIL/blob/master/JAVA/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B42.md)
+* [22/04/23 백기선 자바 스터디 - 10](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-10%EC%A3%BC%EC%B0%A8.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
