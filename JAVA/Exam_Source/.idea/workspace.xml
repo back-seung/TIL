@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/week_10/ExecuteExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_10/RunnableCreateExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_10/RunnableExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_10/ThreadExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week_10/ThreadOrderExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../멀티스레드.md" beforeDir="false" afterPath="$PROJECT_DIR$/../멀티스레드.md" afterDir="false" />
-    </list>
+    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,7 +199,7 @@
       <workItem from="1650456548141" duration="1562000" />
       <workItem from="1650459254344" duration="589000" />
       <workItem from="1650551556580" duration="783000" />
-      <workItem from="1650712300234" duration="1990000" />
+      <workItem from="1650712300234" duration="2170000" />
     </task>
     <servers />
   </component>
