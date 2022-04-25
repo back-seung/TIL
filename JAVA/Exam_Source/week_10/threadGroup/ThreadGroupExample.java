@@ -1,0 +1,1 @@
+package week_10.threadGroup;public class ThreadGroupExample {}
