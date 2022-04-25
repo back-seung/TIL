@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/week_10/priority/ThreadPriorityExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_10/threadGroup/ThreadGroupExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../자바스터디-10주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바스터디-10주차.md" afterDir="false" />
     </list>
@@ -81,7 +81,7 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ThreadPriorityExample">
+  <component name="RunManager" selected="Application.ThreadGroupExample">
     <configuration name="RunnableCreateExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="week_10.RunnableCreateExample" />
       <module name="Exam_Source" />
@@ -121,12 +121,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadOrderExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_10.ThreadOrderExample" />
+    <configuration name="ThreadGroupExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.threadGroup.ThreadGroupExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_10.*" />
+          <option name="PATTERN" value="week_10.threadGroup.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ThreadGroupExample" />
         <item itemvalue="Application.ThreadPriorityExample" />
         <item itemvalue="Application.ThreadEx3" />
         <item itemvalue="Application.ThreadEx2" />
         <item itemvalue="Application.RunnableCreateExample" />
-        <item itemvalue="Application.ThreadOrderExample" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +204,8 @@
       <workItem from="1650459254344" duration="589000" />
       <workItem from="1650551556580" duration="783000" />
       <workItem from="1650712300234" duration="2170000" />
-      <workItem from="1650807046391" duration="2097000" />
+      <workItem from="1650807046391" duration="2694000" />
+      <workItem from="1650901493229" duration="317000" />
     </task>
     <servers />
   </component>
