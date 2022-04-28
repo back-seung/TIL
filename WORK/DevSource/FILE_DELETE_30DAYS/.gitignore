@@ -33,8 +33,3 @@ build/
 
 ### VS Code ###
 .vscode/
-WORK/DevSource/FILE_DELETE_30DAYS/src/main/resources/application.properties
-*.properties
-WORK/DevSource/FILE_DELETE_30DAYS/.mvn/wrapper/maven-wrapper.properties
-WORK/DevSource/FILE_DELETE_30DAYS/src/main/resources/bean.xml
-*.xml
