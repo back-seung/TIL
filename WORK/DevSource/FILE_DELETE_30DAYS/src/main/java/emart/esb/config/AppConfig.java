@@ -17,9 +17,6 @@ public class AppConfig {
 
 	@Autowired
 	List interfaceList;
-	
-	@Autowired
-	JdbcTemplate sourcedb;
 
 	@Bean(name = "interfaceMap")
 	public Map<String, InterfaceInfo> interfaceMap() {
