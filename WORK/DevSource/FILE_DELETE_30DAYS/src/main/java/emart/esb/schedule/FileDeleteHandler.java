@@ -32,13 +32,6 @@ public class FileDeleteHandler {
 	@Autowired
 	Map<String, InterfaceInfo> interfaceMap;
 
-	@SuppressWarnings("rawtypes")
-	@Autowired
-	Map masterUrl;
-
-	@SuppressWarnings("rawtypes")
-	@Autowired
-	Map slaveUrl;
 
 	@SuppressWarnings({ "unchecked", "resource", "rawtypes" })
 	@Transactional
