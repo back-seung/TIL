@@ -1,6 +1,7 @@
 package emart.esb.schedule;
 
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -55,7 +56,8 @@ public class FileDeleteHandler {
 			Path findAllFile = Paths.get(path);
 			List<Path> fileList;
 			Stream<Path> founded = Files.walk(findAllFile);
-			fileList = founded.filter(Files::isRegularFile).collect(Collectors.toList());
+			fileList = founded.filter(path2 -> !Files.isDirectory(path2, LinkOption.NOFOLLOW_LINKS))
+					.collect(Collectors.toList());
 
 			log.info("##[{}]     Delete Scheduler Start   -  {}##", tx_Id, if_Id);
 			if (fileList.size() == 0) {
@@ -69,7 +71,6 @@ public class FileDeleteHandler {
 					Date now = new Date();
 					String date = Files.getAttribute(file, "creationTime").toString();
 					// 수정일
-//					 String date = Files.getAttribute(file, "lastModifiedTime").toString();
 					Date creationDate = format.parse(date);
 
 					// 두 날짜 차이 게산
@@ -88,27 +89,20 @@ public class FileDeleteHandler {
 						log.info(
 								"###[{}]     Now File is : [{}], Current Date is : [{}], Creation Date is [{}], Sub Date is [{}], This File[{}] Will be Remove",
 								tx_Id, fileName, nowDate, createDate, subDate, fileName);
-//						Files.delete(file);
+						Files.delete(file);
 					} else {
 						log.info(
 								"###[{}]     Now File is : [{}], Current Date is : [{}], Creation Date is [{}], Sub Date is [{}], This File[{}] is Not Over {} days after created",
 								tx_Id, fileName, nowDate, createDate, subDate, fileName, deleteCycle);
 					}
 				} catch (NoSuchFileException e) {
-					log.error("###[{}]     File Does not Exist. Please Check your Dir OR File Name      {}###", tx_Id,
-							if_Id);
-					e.printStackTrace();
+					log.error("###[{}]     File Does not Exist. Please Check your Dir OR File Name ", tx_Id, e);
 				} catch (Exception e) {
-					e.printStackTrace();
+					log.error("###[{}]     File Does not Exist. Please Check your Dir OR File Name ", tx_Id, e);
 				}
 			}
-			log.info("##[{}]     Delete Scheduler End.   -  {}##", tx_Id, if_Id);
+			log.info("##[{}]     Delete Scheduler End.   -  ##", tx_Id);
 		}
-	}
-
-	public static void main(String[] args) throws Exception {
-		FileDeleteHandler handler = new FileDeleteHandler();
-		handler.onStart();
 	}
 
 	// 두 날짜 차이 계산하여 결과 리턴
