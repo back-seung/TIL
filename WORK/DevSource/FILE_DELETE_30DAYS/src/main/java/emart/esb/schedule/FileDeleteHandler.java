@@ -8,14 +8,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 
+import emart.esb.info.InterfaceInfo;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -23,10 +26,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FileDeleteHandler {
 
+	@Autowired
+	Map<String, InterfaceInfo> interfaceMap;
+
 	@Scheduled(cron = "${cronExpression}")
 	public void onStart() throws Exception {
-
-		String path = "C:\\Users\\seung\\Desktop\\adaptors\\FILE_DELETE_30DAYS\\src\\main\\resources\\folder\\";
+//		for (String if_id : interfaceMap.keySet()) {
+//			InterfaceInfo info = interfaceMap.get(if_id);
+//			String path = info.getSendDir();
+		String path = "C:\\Users\\seung\\Desktop\\adaptors\\FILE_DELETE_30DAYS\\src\\main\\resources\\folder";
 		String fileName = "test.txt";
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -35,9 +43,11 @@ public class FileDeleteHandler {
 		Stream<Path> found = Files.walk(findAllFile);
 		fileList = found.filter(Files::isRegularFile).collect(Collectors.toList());
 
-		log.info("##     Delete Scheduler Start     ##\n");
+		log.info("##     Delete Scheduler Start     ##");
 		if (fileList.size() == 0) {
-			log.info("##     Any File Does Not Exist in this Directory     ##");
+			log.info("##     Can not Find Any File in this Directory     ##");
+			log.info("##     Delete Scheduler End.     ##");
+			return;
 		}
 		for (Path file : fileList) {
 			try {
@@ -54,32 +64,32 @@ public class FileDeleteHandler {
 				Date test = cal.getTime();
 
 				// 두 날짜 차이 게산
-				long subDate = timeConvert(now, creationDate);
+				long subDate = timeConvert(test, creationDate);
 
-				// 현재일 - 파일생성일 차이가 30일이 넘을시 삭제
+				// 현재일 - 파일생성일 차이가 30일이 넘을 시 삭제
 				if (subDate >= 30 && !(file.equals(null))) {
-					log.info("###     Now File is : [" + file.getFileName() + "]");
-					log.info("###     CURRENT DATE [" + format.format(test) + "]");
-					log.info("###     CREATION DATE [" + format.format(creationDate) + "]");
-					log.info("###     SUB DATE [" + subDate + "] D.");
-					log.info("###     [ " + file.getFileName() + " ] This File Will be Remove\n");
+					log.info(
+							"###     Now File is : [{}], Current Date is : [{}], Creation Date is [{}], Sub Date is [{}], [{}] This File Will be Remove",
+							file.getFileName(), format.format(test), format.format(creationDate), subDate,
+							file.getFileName());
 					Files.delete(file);
 				} else {
-					log.info("###     Now File is : [" + file.getFileName() + "]");
-					log.info("###     CURRENT DATE [" + format.format(test) + "]");
-					log.info("###     CREATION DATE [" + format.format(creationDate) + "]");
-					log.info("###     SUB DATE [" + subDate + "] D.");
-					log.info("###     [ " + file.getFileName() + " ] this file is Not Over 30 days after created\n");
+					log.info(
+							"###     Now File is : [{}], Current Date is : [{}], Creation Date is [{}], Sub Date is [{}], [{}] This File is Not Over 30 days after created",
+							file.getFileName(), format.format(test), format.format(creationDate), subDate,
+							file.getFileName());
 				}
 			} catch (NoSuchFileException e) {
-				log.error("###     File Does not Exist. Please Check your Dir || File Name\"      ###\n");
+				log.error("###     File Does not Exist. Please Check your Dir || File Name      ###");
 				e.printStackTrace();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		log.info("##     Delete Scheduler End.     ##\n\n\n");
+		log.info("##     Delete Scheduler End.     ##");
 	}
+
+//	}
 
 	public static void main(String[] args) throws Exception {
 		FileDeleteHandler handler = new FileDeleteHandler();
