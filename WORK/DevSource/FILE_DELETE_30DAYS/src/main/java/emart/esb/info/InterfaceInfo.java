@@ -19,5 +19,6 @@ public class InterfaceInfo {
 	protected String backupDir;
 	protected String resultDir;
 	protected String targetUrl;
+	protected String delCycle;
 	protected Map<String, List<Map<String, Object>>> type;
 }
