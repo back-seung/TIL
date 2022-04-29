@@ -1,0 +1,1 @@
+package andThenCompose;public class Member {    private String name;    private Address address;    public Member(String name, Address address) {        this.address = address;        this.name = name;    }    public Address getAddress() {        return address;    }    public void setAddress(Address address) {        this.address = address;    }}

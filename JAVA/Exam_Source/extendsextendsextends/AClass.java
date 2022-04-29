@@ -1,0 +1,1 @@
+package extendsextendsextends;// 최상위 부모 클래스public class AClass {    int field;}

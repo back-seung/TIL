@@ -1,0 +1,1 @@
+package thread;public class WaitNotifyExample {    public static void main(String[] args) {        DataBox dataBox = new DataBox();        ProduceThread produceThread = new ProduceThread(dataBox);        ConsumerThread consumerThread = new ConsumerThread(dataBox);        produceThread.start();        consumerThread.start();    }}

@@ -1,0 +1,1 @@
+package extendsextendsextends;// 상위 부모 클래스public class BClass extends AClass {}

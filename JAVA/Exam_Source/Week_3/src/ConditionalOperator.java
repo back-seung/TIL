@@ -1,0 +1,1 @@
+public class ConditionalOperator {    public static void main(String[] args) {        int score = 95;        System.out.println((score > 90) ? "90점 보다 높다!" : "90점 보다 낫다ㅠ");    }}
