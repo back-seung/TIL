@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/stream/ParallelExample.java" afterDir="false" />
+    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
+      <change afterPath="$PROJECT_DIR$/week_10/threadGroup/ThreadGroupExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Stream.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Stream.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../자바스터디-10주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바스터디-10주차.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -42,24 +47,47 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15429688" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="oop.inheritance" />
       <recent name="generic2" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="over" />
+    </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.ParallelExample">
-    <configuration name="BinarySearchTreeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_5.BinarySearchTreeTest" />
+  <component name="RunManager" selected="Application.ThreadGroupExample">
+    <configuration name="RunnableCreateExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.RunnableCreateExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_5.*" />
+          <option name="PATTERN" value="week_10.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -67,12 +95,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LambdaExpressionExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.LambdaExpressionExample" />
+    <configuration name="ThreadEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.main.ThreadEx2" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stream.*" />
+          <option name="PATTERN" value="week_10.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -80,12 +108,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParallelExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stream.ParallelExample" />
+    <configuration name="ThreadEx3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.main.ThreadEx3" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stream.*" />
+          <option name="PATTERN" value="week_10.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,12 +121,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PredicateAndOrNegateExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="andOrNegate.PredicateAndOrNegateExample" />
+    <configuration name="ThreadGroupExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.threadGroup.ThreadGroupExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="andOrNegate.*" />
+          <option name="PATTERN" value="week_10.threadGroup.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,12 +134,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PredicateIsEqualExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="isEqual.PredicateIsEqualExample" />
+    <configuration name="ThreadPriorityExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_10.priority.ThreadPriorityExample" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="isEqual.*" />
+          <option name="PATTERN" value="week_10.priority.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.ParallelExample" />
-        <item itemvalue="애플리케이션.LambdaExpressionExample" />
-        <item itemvalue="애플리케이션.BinarySearchTreeTest" />
-        <item itemvalue="애플리케이션.PredicateIsEqualExample" />
-        <item itemvalue="애플리케이션.PredicateAndOrNegateExample" />
+        <item itemvalue="Application.ThreadGroupExample" />
+        <item itemvalue="Application.ThreadPriorityExample" />
+        <item itemvalue="Application.ThreadEx3" />
+        <item itemvalue="Application.ThreadEx2" />
+        <item itemvalue="Application.RunnableCreateExample" />
       </list>
     </recent_temporary>
   </component>
@@ -151,7 +179,33 @@
       <workItem from="1645101344134" duration="993000" />
       <workItem from="1645256877325" duration="5482000" />
       <workItem from="1645289613617" duration="1310000" />
-      <workItem from="1645321471568" duration="288000" />
+      <workItem from="1645321471568" duration="2213000" />
+      <workItem from="1645451996706" duration="10463000" />
+      <workItem from="1645530820234" duration="6439000" />
+      <workItem from="1646460222543" duration="4624000" />
+      <workItem from="1646545702044" duration="4806000" />
+      <workItem from="1646817219338" duration="210000" />
+      <workItem from="1646822141819" duration="634000" />
+      <workItem from="1646835416935" duration="1945000" />
+      <workItem from="1646919915144" duration="1881000" />
+      <workItem from="1647270340836" duration="457000" />
+      <workItem from="1647585771703" duration="895000" />
+      <workItem from="1647663452296" duration="1719000" />
+      <workItem from="1647686217988" duration="3278000" />
+      <workItem from="1647768781585" duration="1438000" />
+      <workItem from="1647869600206" duration="1733000" />
+      <workItem from="1648968432382" duration="2903000" />
+      <workItem from="1650039080628" duration="67000" />
+      <workItem from="1650039186713" duration="2418000" />
+      <workItem from="1650090216918" duration="4780000" />
+      <workItem from="1650291529124" duration="972000" />
+      <workItem from="1650293675977" duration="2563000" />
+      <workItem from="1650456548141" duration="1562000" />
+      <workItem from="1650459254344" duration="589000" />
+      <workItem from="1650551556580" duration="783000" />
+      <workItem from="1650712300234" duration="2170000" />
+      <workItem from="1650807046391" duration="2694000" />
+      <workItem from="1650901493229" duration="317000" />
     </task>
     <servers />
   </component>
@@ -168,5 +222,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
