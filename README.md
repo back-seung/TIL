@@ -17,49 +17,49 @@
 ## Java
 
 ### 백기선 자바 스터디
-* [22/01/21 백기선 자바 스터디 - 2](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%A3%BC%EC%B0%A8.md)
-* [22/02/01 백기선 자바 스터디 - 3](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-3%EC%A3%BC%EC%B0%A8.md)
-* [22/02/07 백기선 자바 스터디 - 4](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-4%EC%A3%BC%EC%B0%A8.md)
-* [22/02/17 백기선 자바 스터디 - 5](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-5%EC%A3%BC%EC%B0%A8.md)
-* [22/03/06 백기선 자바 스터디 - 6](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-6%EC%A3%BC%EC%B0%A8.md)
-* [22/03/20 백기선 자바 스터디 - 7](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-7%EC%A3%BC%EC%B0%A8.md)
-* [22/03/24 백기선 자바 스터디 - 8](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-8%EC%A3%BC%EC%B0%A8.md)
-* [22/04/15 백기선 자바 스터디 - 9](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94%209%EC%A3%BC%EC%B0%A8-%EC%98%88%EC%99%B8%20%EC%B2%98%EB%A6%AC.md)
-
+* [22/01/21 백기선 자바 스터디 - 2](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-2%EC%A3%BC%EC%B0%A8.md)
+* [22/02/01 백기선 자바 스터디 - 3](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-3%EC%A3%BC%EC%B0%A8.md)
+* [22/02/07 백기선 자바 스터디 - 4](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%E3C%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-4%EC%A3%BC%EC%B0%A8.md)
+* [22/02/17 백기선 자바 스터디 - 5](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-5%EC%A3%BC%EC%B0%A8.md)
+* [22/03/06 백기선 자바 스터디 - 6](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-6%EC%A3%BC%EC%B0%A8.md)
+* [22/03/20 백기선 자바 스터디 - 7](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-7%EC%A3%BC%EC%B0%A8.md)
+* [22/03/24 백기선 자바 스터디 - 8](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-8%EC%A3%BC%EC%B0%A8.md)
+* [22/04/15 백기선 자바 스터디 - 9](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94%209%EC%A3%BC%EC%B0%A8.md)
+* [22/04/23 백기선 자바 스터디 - 10](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-10%EC%A3%BC%EC%B0%A8.md3)
 
 ### 이것이 자바다
-* [21/12/29 인터페이스](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
+* [21/12/29 인터페이스](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md3)
 * [22/01/24 Collection_HashSet(22/2/1 Collection 정리 후 삭제)]
-* [22/01/28 Exception](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%98%88%EC%99%B8.md)
-* [22/01/31 - 22/02/13 MultiThread](https://github.com/back-seung/TIL/blob/master/JAVA/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C.md)
-* [22/02/02 Collection](https://github.com/back-seung/TIL/blob/master/JAVA/Collection.md)
-* [22/02/13 Generic](https://github.com/back-seung/TIL/blob/master/JAVA/Generic.md)
-* [22/02/15 Lambda](https://github.com/back-seung/TIL/blob/master/JAVA/Lambda.md)
-* [22/02/19 Stream](https://github.com/back-seung/TIL/blob/master/JAVA/Stream.md)
-* [22/02/25 IOPackage](https://github.com/back-seung/TIL/blob/master/JAVA/IOPackage.md)
-* [22/03/18 NIO](https://github.com/back-seung/TIL/blob/master/JAVA/NIO.md)
-* [22/04/23 백기선 자바 스터디 - 10](https://github.com/back-seung/TIL/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-10%EC%A3%BC%EC%B0%A8.md)
+* [22/01/28 Exception](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/%EC%98%88%EC%99%B8.md)
+* [22/01/31 - 22/02/13 MultiThread](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C.md)
+* [22/02/02 Collection](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Collection.md)
+* [22/02/13 Generic](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Generic.md)
+* [22/02/15 Lambda](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Lambda.md)
+* [22/02/19 Stream](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Stream.md)
+* [22/02/25 IOPackage](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/IOPackage.md)
+* [22/03/18 NIO](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/NIO.md)
+
 
 
 ### 자바의 정석
-* [22/04/05 What_Is_Java](https://github.com/back-seung/TIL/blob/master/JAVA/What_Is_Java.md)
-* [22/04/09 객체지향언어](https://github.com/back-seung/TIL/blob/master/JAVA/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4.md)
-* [22/04/17 객체지향언어2](https://github.com/back-seung/TIL/blob/master/JAVA/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B42.md)
+* [22/04/05 What_Is_Java](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/What_Is_Java.md)
+* [22/04/09 객체지향언어](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4.md)
+* [22/04/17 객체지향언어2](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B42.md)
 
 
 ### ETC
-* [22/03/28 JAVA Code Conventions](https://github.com/back-seung/TIL/blob/master/JAVA/Java_Code_Convensions.md)
-* [22/04/05 JDBC](https://github.com/back-seung/TIL/blob/master/JAVA/JDBC.md)
+* [22/03/28 JAVA Code Conventions](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Java_Code_Conventions.md)
+* [22/04/05 JDBC](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/JDBC.md)
 
 ## LINUX
-* [22/03/26 리눅스 기초 - 디렉토리 구조](https://github.com/back-seung/TIL/blob/master/LINUX/Linux_Dir_Structure.md)
+* [22/03/26 리눅스 기초 - 디렉토리 구조](https://github.com/back-seung/Today_I_Learning/blob/master/LINUX/Linux_Dir_Structure.md)
 
 ## OOP
 * [22/02/01 SOLID](https://github.com/back-seung/Today_I_Learning/blob/master/OOP/SOLID.md)
 
 
 ## SEMINAR
-* [22/03/30 TDD_리팩토링](https://github.com/back-seung/TIL/blob/master/SEMINAR/TDD_%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81_%EB%B0%95%EC%9E%AC%EC%84%B1%EB%8B%98.md)
+* [22/03/30 TDD_리팩토링](https://github.com/back-seung/Today_I_Learning/blob/master/SEMINAR/TDD_%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81_%EB%B0%95%EC%9E%AC%EC%84%B1%EB%8B%98.md)
 
 ## Spring
 * [21/01/03 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200103.md)
