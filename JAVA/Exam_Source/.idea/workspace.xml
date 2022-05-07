@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week_10/status/ThreadYieldExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/week_10/status/ThreadYieldExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../백기선_자바스터디/자바스터디-10주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../백기선_자바스터디/자바스터디-10주차.md" afterDir="false" />
-    </list>
+    <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,7 +202,7 @@
       <workItem from="1650712300234" duration="2170000" />
       <workItem from="1650807046391" duration="2694000" />
       <workItem from="1650901493229" duration="934000" />
-      <workItem from="1651506634361" duration="9279000" />
+      <workItem from="1651506634361" duration="9924000" />
     </task>
     <servers />
   </component>
