@@ -45,7 +45,7 @@
 * [22/04/05 What_Is_Java](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/What_Is_Java.md)
 * [22/04/09 객체지향언어](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B4.md)
 * [22/04/17 객체지향언어2](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B42.md)
-
+* [22/05/03 예외처리](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC.md)
 
 ### ETC
 * [22/03/28 JAVA Code Conventions](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Java_Code_Conventions.md)
