@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/week_10/status/AwaitConditionExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exception/NewExceptionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../백기선_자바스터디/자바스터디-10주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../백기선_자바스터디/자바스터디-10주차.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../자바의_정석/예외처리.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/예외처리.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,13 +81,13 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TreadWaitEx4">
-    <configuration name="JoinDeeperExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_10.status.JoinDeeperExample" />
+  <component name="RunManager" selected="Application.NewExceptionTest">
+    <configuration name="ExceptionEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exception.ExceptionEx1" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_10.status.*" />
+          <option name="PATTERN" value="exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,12 +95,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadWaitExample_1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_10.waitAndNotify.ThreadWaitExample_1" />
+    <configuration name="ExceptionEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exception.ExceptionEx2" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_10.waitAndNotify.*" />
+          <option name="PATTERN" value="exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -108,12 +108,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadYieldExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_10.status.ThreadYieldExample" />
+    <configuration name="ExceptionEx3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exception.ExceptionEx3" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_10.status.*" />
+          <option name="PATTERN" value="exception.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NewExceptionTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exception.NewExceptionTest" />
+      <module name="Exam_Source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -134,26 +147,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="joinExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_10.status.joinExample" />
-      <module name="Exam_Source" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="week_10.status.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NewExceptionTest" />
+        <item itemvalue="Application.ExceptionEx3" />
+        <item itemvalue="Application.ExceptionEx2" />
+        <item itemvalue="Application.ExceptionEx1" />
         <item itemvalue="Application.TreadWaitEx4" />
-        <item itemvalue="Application.JoinDeeperExample" />
-        <item itemvalue="Application.joinExample" />
-        <item itemvalue="Application.ThreadYieldExample" />
-        <item itemvalue="Application.ThreadWaitExample_1" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +207,8 @@
       <workItem from="1650807046391" duration="2694000" />
       <workItem from="1650901493229" duration="934000" />
       <workItem from="1651506634361" duration="14206000" />
-      <workItem from="1652107450607" duration="1089000" />
+      <workItem from="1652107450607" duration="7789000" />
+      <workItem from="1652711208621" duration="779000" />
     </task>
     <servers />
   </component>
