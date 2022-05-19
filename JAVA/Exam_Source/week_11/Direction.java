@@ -1,1 +1,1 @@
-package week_11;public enum Direction {    EAST, WEST, SOUTH, NORTH}
+package week_11;public enum Direction {    EAST(1), WEST(3), SOUTH(10), NORTH(-10);    private final int value;    Direction(int value) {        this.value = value;    }    public int getValue() {        return value;    }}
