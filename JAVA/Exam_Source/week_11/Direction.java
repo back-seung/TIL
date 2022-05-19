@@ -1,0 +1,1 @@
+package week_11;public enum Direction {    EAST, WEST, SOUTH, NORTH}

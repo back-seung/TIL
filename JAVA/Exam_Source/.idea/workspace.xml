@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/exception/ChainedExceptionEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_11/Direction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/week_11/EnumEx1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../자바의_정석/예외처리.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/예외처리.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../백기선_자바스터디/자바스터디-11주차.md" beforeDir="false" afterPath="$PROJECT_DIR$/../백기선_자바스터디/자바스터디-11주차.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +21,7 @@
         <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -82,7 +83,7 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ChainedExceptionEx">
+  <component name="RunManager" selected="Application.EnumEx1">
     <configuration name="ChainedExceptionEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="exception.ChainedExceptionEx" />
       <module name="Exam_Source" />
@@ -96,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExceptionEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exception.ExceptionEx1" />
+    <configuration name="EnumEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="week_11.EnumEx1" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="exception.*" />
+          <option name="PATTERN" value="week_11.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EnumEx1" />
         <item itemvalue="Application.ChainedExceptionEx" />
         <item itemvalue="Application.NewExceptionTest" />
         <item itemvalue="Application.ExceptionEx3" />
         <item itemvalue="Application.ExceptionEx2" />
-        <item itemvalue="Application.ExceptionEx1" />
       </list>
     </recent_temporary>
   </component>
@@ -211,6 +212,7 @@
       <workItem from="1652107450607" duration="7789000" />
       <workItem from="1652711208621" duration="1583000" />
       <workItem from="1652797649884" duration="1479000" />
+      <workItem from="1652971422334" duration="384000" />
     </task>
     <servers />
   </component>
