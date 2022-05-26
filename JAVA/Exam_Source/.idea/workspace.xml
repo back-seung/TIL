@@ -7,6 +7,7 @@
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
       <change afterPath="$PROJECT_DIR$/hash/HashCodeEx1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../자바의_정석/유용한클래스.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/유용한클래스.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +214,7 @@
       <workItem from="1652797649884" duration="1479000" />
       <workItem from="1652971422334" duration="2267000" />
       <workItem from="1653180050698" duration="5381000" />
-      <workItem from="1653492043810" duration="152000" />
+      <workItem from="1653492043810" duration="548000" />
     </task>
     <servers />
   </component>
