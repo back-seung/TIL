@@ -1,0 +1,1 @@
+package string;import java.io.UnsupportedEncodingException;import java.nio.charset.StandardCharsets;public class StringEx {    public static void main(String[] args) throws UnsupportedEncodingException {        byte[] utf8 = "가".getBytes("UTF-8");        String ut8_2 = new String(utf8, "UTF-8");    }}
