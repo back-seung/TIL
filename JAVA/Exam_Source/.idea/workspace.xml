@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/string/StringEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/arrayList/ArrayListEx1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../자바의_정석/유용한클래스.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/유용한클래스.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,13 +83,13 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HashCodeEx1">
-    <configuration name="ChainedExceptionEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exception.ChainedExceptionEx" />
+  <component name="RunManager" selected="Application.ArrayListEx1">
+    <configuration name="ArrayListEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="arrayList.ArrayListEx1" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="exception.*" />
+          <option name="PATTERN" value="arrayList.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ArrayListEx1" />
         <item itemvalue="Application.HashCodeEx1" />
         <item itemvalue="Application.EnumEx4" />
         <item itemvalue="Application.Enumex3" />
         <item itemvalue="Application.EnumEx1" />
-        <item itemvalue="Application.ChainedExceptionEx" />
       </list>
     </recent_temporary>
   </component>
@@ -216,6 +217,7 @@
       <workItem from="1653492043810" duration="548000" />
       <workItem from="1653570603003" duration="597000" />
       <workItem from="1653920448449" duration="744000" />
+      <workItem from="1654521381780" duration="1032000" />
     </task>
     <servers />
   </component>
