@@ -55,6 +55,7 @@
 
 ## LINUX
 * [22/03/26 리눅스 기초 - 디렉토리 구조](https://github.com/back-seung/Today_I_Learning/blob/master/LINUX/Linux_Dir_Structure.md)
+* [22/06/07 CRON](https://github.com/back-seung/Today_I_Learning/blob/master/LINUX/CRON.md)
 
 ## OOP
 * [22/02/01 SOLID](https://github.com/back-seung/Today_I_Learning/blob/master/OOP/SOLID.md)
