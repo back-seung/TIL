@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/arrayList/ArrayListLinkedListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stackAndQueue/ExpValidCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stackAndQueue/MyVector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stackAndQueue/StackEx1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stackAndQueue/StackQueueEx.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" afterDir="false" />
@@ -66,10 +69,11 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -83,7 +87,7 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ArrayListLinkedListTest">
+  <component name="RunManager" selected="Application.ExpValidCheck">
     <configuration name="ArrayListEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="arrayList.ArrayListEx1" />
       <module name="Exam_Source" />
@@ -110,12 +114,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EnumEx4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_11.EnumEx4" />
+    <configuration name="ExpValidCheck" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stackAndQueue.ExpValidCheck" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_11.*" />
+          <option name="PATTERN" value="stackAndQueue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,12 +127,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Enumex3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_11.Enumex3" />
+    <configuration name="StackEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stackAndQueue.StackEx1" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_11.*" />
+          <option name="PATTERN" value="stackAndQueue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,12 +140,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HashCodeEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hash.HashCodeEx1" />
+    <configuration name="StackQueueEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stackAndQueue.StackQueueEx" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hash.*" />
+          <option name="PATTERN" value="stackAndQueue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ExpValidCheck" />
+        <item itemvalue="Application.StackEx1" />
+        <item itemvalue="Application.StackQueueEx" />
         <item itemvalue="Application.ArrayListLinkedListTest" />
         <item itemvalue="Application.ArrayListEx1" />
-        <item itemvalue="Application.HashCodeEx1" />
-        <item itemvalue="Application.EnumEx4" />
-        <item itemvalue="Application.Enumex3" />
       </list>
     </recent_temporary>
   </component>
@@ -219,6 +223,8 @@
       <workItem from="1653920448449" duration="744000" />
       <workItem from="1654521381780" duration="1646000" />
       <workItem from="1654610506675" duration="2195000" />
+      <workItem from="1654695198025" duration="598000" />
+      <workItem from="1654696737098" duration="4637000" />
     </task>
     <servers />
   </component>
