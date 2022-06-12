@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/stackAndQueue/StackQueueEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/arrayList/ArraysEx.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" afterDir="false" />
     </list>
@@ -65,10 +65,11 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -82,9 +83,9 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StackQueueEx">
-    <configuration name="ArrayListEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="arrayList.ArrayListEx1" />
+  <component name="RunManager" selected="Application.ArraysEx">
+    <configuration name="ArraysEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="arrayList.ArraysEx" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -96,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArrayListLinkedListTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="arrayList.ArrayListLinkedListTest" />
+    <configuration name="ExpValidCheck" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stackAndQueue.ExpValidCheck" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="arrayList.*" />
+          <option name="PATTERN" value="stackAndQueue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,12 +110,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EnumEx4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="week_11.EnumEx4" />
+    <configuration name="IteratorEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="iterator.IteratorEx1" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="week_11.*" />
+          <option name="PATTERN" value="iterator.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -122,12 +123,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HashCodeEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hash.HashCodeEx1" />
+    <configuration name="PriorityQueueEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stackAndQueue.PriorityQueueEx" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hash.*" />
+          <option name="PATTERN" value="stackAndQueue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,8 +136,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StackQueueEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stackAndQueue.StackQueueEx" />
+    <configuration name="QueueEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stackAndQueue.QueueEx1" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
@@ -150,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.StackQueueEx" />
-        <item itemvalue="Application.ArrayListLinkedListTest" />
-        <item itemvalue="Application.ArrayListEx1" />
-        <item itemvalue="Application.HashCodeEx1" />
-        <item itemvalue="Application.EnumEx4" />
+        <item itemvalue="Application.ArraysEx" />
+        <item itemvalue="Application.IteratorEx1" />
+        <item itemvalue="Application.PriorityQueueEx" />
+        <item itemvalue="Application.QueueEx1" />
+        <item itemvalue="Application.ExpValidCheck" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +220,11 @@
       <workItem from="1654521381780" duration="1646000" />
       <workItem from="1654610506675" duration="2195000" />
       <workItem from="1654695198025" duration="598000" />
-      <workItem from="1654696737098" duration="204000" />
+      <workItem from="1654696737098" duration="4637000" />
+      <workItem from="1654779961003" duration="3161000" />
+      <workItem from="1654958225439" duration="610000" />
+      <workItem from="1655015736984" duration="1245000" />
+      <workItem from="1655046815403" duration="539000" />
     </task>
     <servers />
   </component>
