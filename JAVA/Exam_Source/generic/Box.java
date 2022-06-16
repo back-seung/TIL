@@ -1,1 +1,1 @@
-package generic;public class Box<T> {    private T t;    public T getT() {        return t;    }    public void setT(T t) {        this.t = t;    }}
+package generic;public class Box<T> {    private T item;    public T getItem() {        return item;    }    public void setItem(T item) {        this.item = item;    }}
