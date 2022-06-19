@@ -101,3 +101,86 @@
 
 
 
+
+
+## HTTP 메시지
+
+> HTTP 메시지의 구조는
+>
+> 1. start-line (시작라인)
+> 2. header (헤더)
+> 3. empty line (공백라인 - CRLF)
+> 4. message body (바디)
+>
+> 로 구성되어 있다.
+
+공식 스펙은 다음과 같다.
+
+```http
+HTTP-message 	= start-line
+				 *( header-filed CRLF )
+				 CRLF
+				 [ message-body ]
+```
+
+
+
+### 시작 라인
+
+시작라인(start-line)은 request 라인과 status 라인으로 구분될 수 있다.
+
+* request-line (요청 메시지)
+
+  ```http
+  GET/search?q=hello&hl=ko HTTP/1.1
+  Host:www.google.com
+  ```
+
+  *  method(`GET, POST 등`) SP(공백) request-target(`Path`) SP HTTP-Version CRLF(엔터)
+  * HTTP-Method - GET, POST, PUT, DELETE 등이 있고 서버가 수행해야 할 동작을 지정한다.
+  * Path - 요청 대상에는 보통 절대경로로 시작하고 `절대경로[?쿼리]`의 방식으로 이뤄진다.
+  * HTTP 버전
+
+* status-line (응답 메시지)
+
+  ```http
+  HTTP/1.1 200 OK
+  Content-Type: text/html;charset=UTF-8
+  Content-Length:3423
+  
+  <html>
+  	<body>...</body>
+  </html>
+  ```
+
+  * HTTP-Version SP status SP reason-phrase CRLF
+  * HTTP 버전(`HTTP/1.1`)
+  * HTTP 상태코드(`200`) - 요청의 성공, 실패를 나타낸다.
+    * 200 - 성공
+    * 400 - 클라이언트 요청 오류
+    * 500 - 서버 내부 오류
+  * 이유 문구(`OK`) - 사람이 이해할 수 있는 짧은 상태 코드 설명 글
+
+### HTTP 헤더
+
+```
+# request-line
+Host:www.google.com
+
+# status-line
+Content-Type: text/html;charset=UTF-8
+Content-Length: 3423
+```
+
+* header-field = field-name ":" OWS field-value OWS (*`OWS란?` - 띄어쓰기를 허용한다는 뜻)
+* field-name은 대소문자 구분이 없다. value는 대소문자를 구분한다.
+* 헤더의 용도는 HTTP 전송에 필요한 모든 부가정보이다.
+  * 예) 바디의 내용, 바디의 크기, 압축, 인증, 요청 클라이언트의 정보, 서버 Application 정보, 캐시 관리 정보 등, 메시지 바디 빼고 모든 메타데이터가 들어있다고 이해하면 된다.
+* 표준 헤더 필드는 너무 많다.
+* 임의의 헤더를 추가할 수 있다.(단, 클라이언트와 서버가 약속되어야 한다.)
+
+
+
+### HTTP 메시지 바디
+
+* 실제 전송할 데이터가 들어있다. (html, text, JSON, XML등 byte로 표현할 수 있는 모든 데이터를 전송할 수 있다) 
