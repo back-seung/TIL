@@ -25,7 +25,7 @@ GET은 리소스를 조회하는 데 사용된다. 서버에 전달하고 싶은
 1. Request
 
 ```http
-GET/members/100 HTTP/1.1
+GET /members/100 HTTP/1.1
 Host: localhost:8080
 ```
 
@@ -51,7 +51,7 @@ POST는 클라이언트에서 메시지 바디를 통해 서버로 데이터를 
 1. Request
 
 ```http
-POST/members HTTP/1.1
+POST /members HTTP/1.1
 Content-Type: application/json
 
 {
@@ -357,3 +357,52 @@ Content-Type: application/json
   * GET - 조회, 쿼리 파라미터로 데이터 전달
   * Content-Type - application/json을 주로 사용(사실상 표준)
     * TEXT, XML, JSON 등등
+
+### HTTP API 설계 예시
+
+* 회원 목록 조회 `/members` - GET
+* 회원 조회 `members/{id}` - GET
+* 회원 등록 `members/{id}` - POST
+* 회원 수정 `members/{id}` - POST, PATCH, PUT
+* 회원 삭제 `members/{id}` - DELETE
+
+#### 문서
+
+* 단일 개념(파일 하나, 객체 인스턴스, 데이터베이스 Row)
+* 예) `/members/100`, `files/star.jpg`
+
+#### HTTP API - 컬렉션
+
+* POST 기반 등록
+  * 클라이언트는 등록될 리소스의 URI를 모른다.
+  * POST/members
+  * 서버가 새로 등록된 리소스 URI를 생성해준다.`Location: /members/100`
+* 회원 관리 API 제공
+* 컬렉션?
+  * 서버가 관리하는 리소스 디렉토리
+  * 서버가 리소스의 URI를 생성하고 관리한다.
+  * 여기서 컬렉션은 `/members`
+
+#### HTTP API - 스토어
+
+* PUT 기반 등록
+  * 클라이언트가 리소스 URI를 알고 있어야 한다.
+  * 파일 등록 `/files/{filename}` -> PUT
+  * 클라이언트가 직접 리소스의 URI를 지정한다.
+* 정적 컨텐츠 관리, 원격 파일 관리 등
+* 스토어?
+  * 클라이언트가 관리하는 리소스 저장소
+  * 클라이언트가 리소스의 URI를 알고 관리
+  * 여기서 스토어는 `/files`
+
+#### HTML Form 사용 - 컨트롤 URI
+
+* GET, POST만 지원 - AJAX같은 기술을 사용해서 해결 가능
+
+* 컨트롤 URI(컨트롤러)
+
+  * GET, POST만 지원하므로 제약이 있음. 제약을 해결하기 위해 동사로 된 리소스 경로 사용
+  * HTTP 메서드로 해결하기 애매한 경우 사용한다(HTTP API포함).
+  * 컨트롤 URI를 무식하게 쓰면 안된다. HTTP 메서드를 사용하려고 하되, 이게 애매할 때 대체제로 사용
+
+  
