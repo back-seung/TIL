@@ -48,6 +48,9 @@
 * [22/04/17 객체지향언어2](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%96%B8%EC%96%B42.md)
 * [22/05/03 예외처리](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC.md)
 * [22/05/25 유용한클래스](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%9C%A0%EC%9A%A9%ED%95%9C%ED%81%B4%EB%9E%98%EC%8A%A4.md)
+* [22/06/02 형식화](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%ED%98%95%EC%8B%9D%ED%99%94.md)
+* [22/06/04 컬렉션_프레임워크](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%BB%AC%EB%A0%89%EC%85%98_%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.md)
+* [22/06/16 지네릭스](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%A7%80%EB%84%A4%EB%A6%AD%EC%8A%A4.md)
 
 ### ETC
 * [22/03/28 JAVA Code Conventions](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Java_Code_Conventions.md)
@@ -86,6 +89,9 @@
 * [22/01/31 HTTP_통신_이해](https://github.com/back-seung/TIL/blob/master/WEB/HTTP_%ED%86%B5%EC%8B%A0%EC%9D%B4%ED%95%B4.md)
 * [22/02/04 인터넷_네트워크](https://github.com/back-seung/TIL/blob/master/WEB/%EC%9D%B8%ED%84%B0%EB%84%B7_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC.md)
 * [22/03/23 URI와 웹브라우저 요청 흐름](https://github.com/back-seung/TIL/blob/master/WEB/URI%EC%99%80_%EC%9B%B9_%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80_%EC%9A%94%EC%B2%AD_%ED%9D%90%EB%A6%84.md)
+* [22/06/18 HTTP_기본](https://github.com/back-seung/Today_I_Learning/blob/master/WEB/HTTP_%EA%B8%B0%EB%B3%B8.md)
+* [22/06/19 HTTP_메서드](https://github.com/back-seung/Today_I_Learning/blob/master/WEB/HTTP_%EB%A9%94%EC%84%9C%EB%93%9C.md)
+* [22/06/20 HTTP_상태코드](https://github.com/back-seung/Today_I_Learning/blob/master/WEB/HTTP_%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C.md)
 
 ## WORK
 * [FILE_DELETER_ADAPTOR](https://github.com/back-seung/Today_I_Learning/tree/master/WORK/DevSource/FILE_DELETE_30DAYS)
