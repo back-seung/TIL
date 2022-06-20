@@ -1,5 +1,5 @@
 # Today_I_Learning
-> 매일 배우고 내일 응용하자
+> 꾸준히 착실하게
 
 ## C#
 * [21/12/30 C# 기초](https://github.com/back-seung/Today_I_Learning/blob/master/C%23/C%23_1230.md)
