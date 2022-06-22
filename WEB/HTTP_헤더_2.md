@@ -6,7 +6,9 @@
 
 > 클라이언트는 star.jpg를 총 2번 요청한다. 서버에서는 이 요청을 받고 star.jpg를 응답한다. 각 구문은 다음과 같다.
 
-* 첫 번째 요청
+#### 첫 번째 요청
+
+* 요청
 
 ```http
 GET /stat.jpg
@@ -26,7 +28,9 @@ jjk34h1lkj56hk12ljb43nj12b5jl1234hkb1j24b12lkj4b123kjl5b23jkh5bjhk321lb4jkh132b3
 
 
 
-* 두 번째 요청
+#### 두 번째 요청
+
+* 요청
 
 ```http
 GET /stat.jpg
@@ -172,3 +176,121 @@ Content-Length: 34012
 * 클라이언트는 서버가 보낸 응답 헤더 정보롤 캐시의 메타 정보를 갱신한다
 * 클라이언트는 캐시에 저장되어 있는 데이터를 재활용한다.
 * 결과적으로 네트워크 다운로드가 발생하지만 용량이 적은 헤더 정보만 다운로드받으면 된다. 이는 굉장히 실용적인 해결책이다.
+
+
+
+### ETag, If-None-Match
+
+* Etag(Entity Tag)
+* 캐시용 데이터에 임의의 고유한 버전 이름을 달아둠
+  * 예) ETag: "v1.0", ETag: "a2jiodwjekki3"
+* 데이터가 변경되면 이 이름을 바꾸어서 변경한다(Hash를 다시 생성)
+  * 예)ETag: "aaaaa" -> ETag: "bbbbb"
+* 진짜 단순하게 ETag만 보내서 같으면 유지, 다르면 다시 받기
+
+
+
+### 검증헤더 추가
+
+#### 첫 번째 요청 
+
+* 요청
+
+```http
+GET /star.jpg
+
+ETag: "aaaaa"
+```
+
+* 응답
+
+```http
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+cache-control: max-age=60
+ETag: "aaaaa"
+Content-Length: 34012
+
+jjk34h1lkj56hk12ljb43nj12b5jl1234hkb1j24b12lkj4b123kjl5b23jkh5bjhk321lb4jkh132b34jhk12b431jhk23b4j1hk24bjk1h23b4jhk12b456nm423b76nm234brjlkwqehfuiawhf1j23bv4jh1gk23f5
+```
+
+
+
+#### 두 번째 요청 - 캐시 시간 초과
+
+서버의 ETag가 이전과 바뀌지 않은 상태라고 가정한다.
+
+* 요청
+
+```http
+GET /star.jpg
+
+ETag: "aaaaa"
+```
+
+* 응답
+
+```http
+HTTP/1.1 304 Not Modified
+Content-Type: image/jpeg
+cache-control: max-age=60
+ETag: "aaaaa"
+Content-Length: 34012
+```
+
+데이터가 수정되지 않아 `304 Not Modified` 응답을 준다(Body 없이).
+
+
+
+### ETag, If-None-Match 정리
+
+*  진짜 단순하게 ETag만 서버에 보내서 같으면 유지, 다르면 다시 받는다.
+* **캐시 제어 로직을 서버에서 완전히 관리**
+* 클라이언트는 단순히 이 값을 서버에 제공(클라이언트는 캐시 메커니즘을 모른다)
+
+
+
+## 캐시와 조건부 요청 헤더
+
+### 캐시 제어 헤더
+
+#### Cache-Control - 캐시 지시어(directives)
+
+* Cache-Control: max-age - 캐시 유효시간, 초 단위이다.
+* Cache-Control: no-cache - 데이터는 캐시해도 되지만, 항상 원(origin)서버에 검증하고 사용
+* Cache-Control: no-store - 데이터에 민감한 정보가 있으므로 저장하면 안됨.(메모리에서 사용하고 최대한 빨리 삭제)
+
+
+
+#### Pragma - 캐시 제어 (하위 호환)
+
+* Pragma - no-cache
+* HTTP 1.0 하위 호환 - 지금은 잘 사용하지 않는다.
+
+#### Expires - 캐시 유효 기간 (하위 호환)
+
+* expires: Mon, 01 Jan 1990 00:00:00 GWT
+
+
+
+* 캐시 만료일을 정확한 날짜로 지정
+* HTTP 1.0부터 사용
+* 지금은 더 유연한 Cache-Control: max-age 사용을 권장한다.
+* Cache-Control: max-age와 함께 사용시 Expires는 무시된다.
+
+
+
+### 검증 헤더와 조건부 요청 헤더 
+
+#### 검증 헤더 (Validator)
+
+* `ETag`: "v1.0", ETag:  "asid93jkrh2l"
+* `Last-Modified`: Thu, 04 Jun 2020 07:18:24 GMT
+
+#### 조건부 요청 헤더
+
+* `If-Match`, `If-None-Match`: ETag값 사용
+* `If-Modified-Since`, `If-Unmodified-Since`: Last-Modified값 사용
+
+
+
