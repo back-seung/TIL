@@ -256,11 +256,23 @@ Content-Length: 34012
 
 #### Cache-Control - 캐시 지시어(directives)
 
-* Cache-Control: max-age - 캐시 유효시간, 초 단위이다.
-* Cache-Control: no-cache - 데이터는 캐시해도 되지만, 항상 원(origin)서버에 검증하고 사용
-* Cache-Control: no-store - 데이터에 민감한 정보가 있으므로 저장하면 안됨.(메모리에서 사용하고 최대한 빨리 삭제)
+* `Cache-Control: max-age` - 캐시 유효시간, 초 단위이다.
+* `Cache-Control: no-cache` - 데이터는 캐시해도 되지만, 항상 원(origin)서버에 검증하고 사용
+* `Cache-Control: no-store` - 데이터에 민감한 정보가 있으므로 저장하면 안됨.(메모리에서 사용하고 최대한 빨리 삭제)
 
+#### Cache-Control - 캐시 지시어(directives) - 기타
 
+* `Cache-Control: public` - 응답이 public 캐시에 저장되어도 됨
+* `Cache-Control: private` - 응답이 해당 사용자만을 위한 것이다. private 캐시에 저장해야 한다(기본값)
+* `Cache-Control: s-maxage` - 프록시 캐시에만 적용되는 max-age
+* `Age: 60(HTTP 헤더)` - 오리진 서버에서 응답 후 프록시 캐시 내에 머문 시간(초)
+
+#### Cache-Control - 캐시 지시어(directives) - 확실한 캐시 무효화
+
+* `Cache-Control: no-cache` - 데이터는 캐시해도 되지만, 항상 **원 서버에 검증**하고 사용(이름에 주의) 
+* `Cache-Control: no-store` - 데이터에 민감한 정보가 있으므로 저장하면 안됨.(메모리에서 사용하고 최대한 빨리 삭제)
+* `Cache-Control: must-revalidate` - 캐시 만료후 최초 조회시 원 서버에 검증해야한다. 원 서버 접근 실패시 반드시 오류가 발생해야 한다(504 - Gateway Timeout). `must-revalidate`는 캐시 유효시간이라면 캐시를 사용함
+* `Pragma: no-cache` - HTTP 1.0 하위 호환
 
 #### Pragma - 캐시 제어 (하위 호환)
 
@@ -291,6 +303,39 @@ Content-Length: 34012
 
 * `If-Match`, `If-None-Match`: ETag값 사용
 * `If-Modified-Since`, `If-Unmodified-Since`: Last-Modified값 사용
+
+
+
+## 프록시 캐시
+
+### 원서버(Origin Server) 직접 접근
+
+![Screen Shot 2022-06-22 at 23.55.01](https://tva1.sinaimg.cn/large/e6c9d24egy1h3hevtcez2j20d205wt8l.jpg)
+
+한국에 있는 여러 클라이언트가 미국에 있는 서버에 접근한다고 가정할 때 실제로 데이터를 주는 **원소스가 있는 서버를 원서버라고 한다**. 직접 접근할 때, 요청을 받은 미국 서버에서 한국 클라이언트까지 이미지를 응답해주는 시간은 꽤나 길어질 것이다(강의에서는 500ms로 가정).
+
+
+
+### 프록시 캐시 도입
+
+#### 첫 번째 요청
+
+![Screen Shot 2022-06-23 at 00.00.01](https://tva1.sinaimg.cn/large/e6c9d24egy1h3hf0x8nguj20cw06caa1.jpg)
+
+미국의 원서버 입장에서는 응답이 느리니 한국 어딘가에 프록시 캐시 서버를 넣어 놓고 DNS 요청을 할 때 원서버에 직접 접근하는 것이 아니라 프록시 캐시 서버에 접근하게 한다. 웹 브라우저는 프록시 캐시 서버를  요청하여 응답 시간이 빨라지게 한다. 
+
+* 웹브라우저, 로컬에 저장되는 개인 캐시를 `private 캐시`, 프록시 캐시 서버의 공용으로 사용할 수 있는 캐시를 `public 캐시`라고한다.
+
+
+
+## 캐시 무효화
+
+### Cache-Control - 확실한 캐시 무효화 응답
+
+확실하게 캐시를 무효화하려면 다음 헤더들을 입력해야 한다. 보통 그래야 대응이 된다.
+
+* Cache-Control: no-cache, no-store, must-revalidate
+* Pragma: no-cache(HTTP 1.0 호환)
 
 
 
