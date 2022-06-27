@@ -1,0 +1,1 @@
+package annotations;public abstract class Parent {    public void doOverriding() {        System.out.println("오버라이딩 메서드");    }}
