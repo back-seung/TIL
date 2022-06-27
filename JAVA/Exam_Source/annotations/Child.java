@@ -1,0 +1,1 @@
+package annotations;public class Child extends Parent {    @Override    public void doOverriding() {        // ...    }    @Override    public void dooverriding() {        // ...    }}
