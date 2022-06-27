@@ -1,1 +1,1 @@
-package annotations;public class Child extends Parent {    @Override    public void doOverriding() {        // ...    }    @Override    public void dooverriding() {        // ...    }}
+package annotations;import java.lang.annotation.Annotation;public class Child extends Parent, Annotation {    @Override    public void doOverriding() {        // ...    }    @Override    public void dooverriding() {        // ...    }}
