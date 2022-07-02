@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fa0eb74-1976-4eb1-90b3-12b3afc0737e" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/arrayList/ArraysEx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/annotations/Child.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/annotations/Parent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" beforeDir="false" afterPath="$PROJECT_DIR$/../자바의_정석/컬렉션_프레임워크.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exam_Source/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
       <recent name="over" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ArraysEx">
+  <component name="RunManager" selected="Application.Child">
     <configuration name="ArraysEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="arrayList.ArraysEx" />
       <module name="Exam_Source" />
@@ -97,12 +98,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExpValidCheck" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stackAndQueue.ExpValidCheck" />
+    <configuration name="Child" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="annotations.Child" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stackAndQueue.*" />
+          <option name="PATTERN" value="annotations.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,12 +111,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IteratorEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="iterator.IteratorEx1" />
+    <configuration name="CompareToEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="compare.CompareToEx" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="iterator.*" />
+          <option name="PATTERN" value="compare.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -123,12 +124,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PriorityQueueEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stackAndQueue.PriorityQueueEx" />
+    <configuration name="HashSetEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hashSet.HashSetEx1" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stackAndQueue.*" />
+          <option name="PATTERN" value="hashSet.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,12 +137,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QueueEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="stackAndQueue.QueueEx1" />
+    <configuration name="HashSetLotto" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hashSet.HashSetLotto" />
       <module name="Exam_Source" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="stackAndQueue.*" />
+          <option name="PATTERN" value="hashSet.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Child" />
+        <item itemvalue="Application.HashSetLotto" />
+        <item itemvalue="Application.HashSetEx1" />
+        <item itemvalue="Application.CompareToEx" />
         <item itemvalue="Application.ArraysEx" />
-        <item itemvalue="Application.IteratorEx1" />
-        <item itemvalue="Application.PriorityQueueEx" />
-        <item itemvalue="Application.QueueEx1" />
-        <item itemvalue="Application.ExpValidCheck" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +225,10 @@
       <workItem from="1654779961003" duration="3161000" />
       <workItem from="1654958225439" duration="610000" />
       <workItem from="1655015736984" duration="1245000" />
-      <workItem from="1655046815403" duration="539000" />
+      <workItem from="1655046815403" duration="2281000" />
+      <workItem from="1655128184252" duration="2141000" />
+      <workItem from="1655998176779" duration="1236000" />
+      <workItem from="1656332973826" duration="127000" />
     </task>
     <servers />
   </component>
