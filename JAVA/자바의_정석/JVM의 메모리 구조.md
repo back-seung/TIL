@@ -53,24 +53,27 @@
 매개변수뿐만 아니라 반환타입도 참조형이 될 수 있다. 반환타입이 참조형이라는 것은 반환하는 값의 타입이 참조형이라는 얘긴데, 모든 참조형 타입의 값은 `객체의 주소`이므로 그저 정수값이 반환되는 것일 뿐 특별할 것이 없다. 
 
 ```java
-class Data { int x; }
-	class ReferenceReturnEx {
-		public static void main(String[] args) {
-            Data d = new Data();
-            d.x = 10;
+class Data {
+    int x;
+}
+
+class ReferenceReturnEx {
+	public static void main(String[] args) {
+        Data d = new Data();
+        d.x = 10;
+           
+        Data d2 = copy(d);
             
-            Data d2 = copy(d);
-            
-            System.out.println("d.x = " + d.x);
-            System.out.println("d2.x = " + d2.x);
-        }
+        System.out.println("d.x = " + d.x);
+        System.out.println("d2.x = " + d2.x);
+    }
         
-        static Data copy(Data d) {
-            Data temp = new Data();
-            temp.x = d.x;
+    static Data copy(Data d) {
+        Data temp = new Data();
+        temp.x = d.x;
             
-            return temp;
-        }
+        return temp;
+    }
 }
 ```
 
