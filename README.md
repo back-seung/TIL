@@ -1,4 +1,4 @@
-# Today_I_Learning
+# Today_I_Learned
 > 꾸준히 착실하게
 
 ## C#
@@ -52,7 +52,7 @@
 * [22/06/02 형식화](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%ED%98%95%EC%8B%9D%ED%99%94.md)
 * [22/06/04 컬렉션_프레임워크](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%BB%AC%EB%A0%89%EC%85%98_%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.md)
 * [22/06/16 지네릭스](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%A7%80%EB%84%A4%EB%A6%AD%EC%8A%A4.md)
-
+* [22/07/02 람다](https://github.com/back-seung/Today_I_Learned/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EB%9E%8C%EB%8B%A4.md)
 ### ETC
 * [22/03/28 JAVA Code Conventions](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Java_Code_Conventions.md)
 * [22/04/05 JDBC](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/JDBC.md)
@@ -82,7 +82,7 @@
 * [21/01/16 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 11](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200116_%EB%AC%B8%EC%A0%9C%ED%95%B4%EA%B2%B0.md)
 * [21/01/17 ~ 18 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 12](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200117_%EB%81%9D.md)
 * [22/03/17 스프링 핵심 원리 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/0317_%EC%8A%A4%ED%94%84%EB%A7%81_%ED%95%B5%EC%8B%AC_%EC%9B%90%EB%A6%AC.md)
-
+* [22/07/04 Ioc, Di Container](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/IOC_DI_CONTAINER.md)
 
 ## WEB
 * [22/01/27 브라우저의 동작 원리](https://github.com/back-seung/TIL/blob/master/WEB/How_To_Browser_Work.md)
