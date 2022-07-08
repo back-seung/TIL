@@ -23,7 +23,7 @@ public class LambdaEx7 {
         Predicate<Integer> q = i -> i < 200;
         Predicate<Integer> r = i -> i % 2 == 0;
         Predicate<Integer> notP = p.negate();		// i >= 100;
-
+        String[] arr = new String[10];
         Predicate<Integer> all = notP.and(q.or(r));
         System.out.println(all.test(150));		// true
 
