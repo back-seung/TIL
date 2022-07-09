@@ -83,6 +83,7 @@
 * [21/01/17 ~ 18 스프링부트와 AWS로 혼자 구현하는 웹 서비스 - 12](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/Spring_Boot%200117_%EB%81%9D.md)
 * [22/03/17 스프링 핵심 원리 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/0317_%EC%8A%A4%ED%94%84%EB%A7%81_%ED%95%B5%EC%8B%AC_%EC%9B%90%EB%A6%AC.md)
 * [22/07/04 Ioc, Di Container](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/IOC_DI_CONTAINER.md)
+* [22/07/07 BeanFactory&ApplicationContext](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/BeanFactory%EC%99%80_ApplicationContext.md)
 
 ## WEB
 * [22/01/27 브라우저의 동작 원리](https://github.com/back-seung/TIL/blob/master/WEB/How_To_Browser_Work.md)
