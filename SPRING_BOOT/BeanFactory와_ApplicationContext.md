@@ -1,7 +1,9 @@
 # BeanFactory와_ApplicationContext
 
-
-
+> 출처 : 스프링 핵심 원리 - 기본편
+>
+> 
+>
 > BeanFactory와 ApplicationContext에 대해서 알아보자
 
 ![](../IMG/BeanFactory와_ApplicationContext.png)
