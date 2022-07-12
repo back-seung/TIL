@@ -12,7 +12,7 @@
 
 
 
-* 스프링이 없는 순수한 컨테이너
+### 스프링이 없는 순수한 컨테이너
 
 ```java
 public class SingletonTest {
@@ -83,7 +83,7 @@ public class SingletonService {
 
 
 
-* 싱글톤 패턴을 적용한 객체 사용
+### 싱글톤 패턴을 적용한 객체 사용
 
 ```java
 @Test
@@ -138,5 +138,49 @@ singletonService 2 : hello.core.singleton.SingletonService@70325e14
 
 
 
+## 싱글톤 컨테이너
+
+> 스프링 컨테이너는 싱글톤 패턴의 문제점을 해결하면서, 객체 인스턴스를 싱글톤으로 관리한다.
+>
+>   
+>
+> 스프링에서의 Bean이 싱글톤으로 관리되는 대표적인 예이다.
 
 
+
+* 스프링 컨테이너는 싱글턴 패턴을 적용하지 않아도 객체 인스턴스를 싱글톤으로 관리한다.
+* 스프링 컨테이너는 싱글톤 컨테이너 역할을 한다. 이렇게 싱글톤 객체를 생성하고 관리하는 기능을 **싱글톤 레지스트리**라고 하낟.
+* 스프링 컨테이너의 기능 덕분에 싱글턴 패턴의 모든 단점을 해결하면서 객체를 싱글톤으로 유지할 수 있다.
+  * 또한 싱글톤 패턴을 위한 지저분한 코드가 들어가지 않아도 된다.
+  * DIP, OCP, Test, private 생성자로 자식 클래스 만들기 등 자유롭게 싱글톤을 사용할 수 있다.
+
+
+
+### 스프링 컨테이너를 사용하는 테스트코드
+
+  
+
+```java
+@Test
+@DisplayName("스프링 컨테이너와 싱글톤")
+void springContainer() {
+    AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+    MemberService memberService1 = ac.getBean("memberService", MemberService.class);
+    MemberService memberService2 = ac.getBean("memberService", MemberService.class);
+
+    System.out.println("memberService1 : " + memberService1);
+    System.out.println("memberService2 : " + memberService2);
+
+    // memberService1 == memberService2
+    Assertions.assertThat(memberService1).isSameAs(memberService2);
+}
+```
+
+
+
+### 싱글톤 컨테이너 적용 후
+
+![스크린샷 2022-07-12 23.54.18](https://tva1.sinaimg.cn/large/e6c9d24egy1h44j93zvs2j20z60jaabd.jpg)
+
+> 스프링 컨테이너 덕분에 고객의 요청이 올 때마다 인스턴스를 공유해서 효율적으로 재사용 할 수 있다.
