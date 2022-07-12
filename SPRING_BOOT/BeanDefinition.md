@@ -1,5 +1,9 @@
-## 스프링 빈 설정 메타 정보 - BeanDefinition
+# 스프링 빈 설정 메타 정보 - BeanDefinition
 
+> 출처 : 스프링 핵심 원리 - 기본편
+>
+> 
+>
 > 스프링의 다양한 설정 형식을 지원하는데의 중심에는 BeanDefinition이라는 추상화가 있다.
 
 ### BeanDefinition이란

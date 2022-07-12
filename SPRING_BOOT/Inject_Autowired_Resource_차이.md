@@ -1,7 +1,5 @@
 # @Inject, @Autowired, @Resource차이
 
-
-
 ## 차이
 
 각자의 명시된 어노테이션들의 차이는 의존 객체 자동주입(Automatic Dependency Injection) 중 의존 객체를 찾는 방식이 다르다는 것이다.
