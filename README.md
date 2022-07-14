@@ -53,6 +53,8 @@
 * [22/06/04 컬렉션_프레임워크](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%BB%AC%EB%A0%89%EC%85%98_%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.md)
 * [22/06/16 지네릭스](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%A7%80%EB%84%A4%EB%A6%AD%EC%8A%A4.md)
 * [22/07/02 람다](https://github.com/back-seung/Today_I_Learned/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EB%9E%8C%EB%8B%A4.md)
+* [22/07/12 스트림](https://github.com/back-seung/Today_I_Learned/blob/master/JAVA/%EC%9E%90%EB%B0%94%EC%9D%98_%EC%A0%95%EC%84%9D/%EC%8A%A4%ED%8A%B8%EB%A6%BC.md)
+
 ### ETC
 * [22/03/28 JAVA Code Conventions](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/Java_Code_Conventions.md)
 * [22/04/05 JDBC](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/JDBC.md)
@@ -84,6 +86,11 @@
 * [22/03/17 스프링 핵심 원리 - 1](https://github.com/back-seung/TIL/blob/master/SPRING_BOOT/0317_%EC%8A%A4%ED%94%84%EB%A7%81_%ED%95%B5%EC%8B%AC_%EC%9B%90%EB%A6%AC.md)
 * [22/07/04 Ioc, Di Container](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/IOC_DI_CONTAINER.md)
 * [22/07/07 BeanFactory&ApplicationContext](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/BeanFactory%EC%99%80_ApplicationContext.md)
+* [22/07/07 @Inject, @Autowired, @Resource 차이](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/Inject_Autowired_Resource_%EC%B0%A8%EC%9D%B4.md)
+* [22/07/11 다양한 설정 형식 지원](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EB%8B%A4%EC%96%91%ED%95%9C_%EC%84%A4%EC%A0%95_%ED%98%95%EC%8B%9D_%EC%A7%80%EC%9B%90-%EC%9E%90%EB%B0%94%EC%BD%94%EB%93%9C_XML.md)
+* [22/07/12 BeanDefinition](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/BeanDefinition.md)
+* [22/07/13 Singleton](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/Singleton.md)
+* [22/07/14 @Configuration과 싱글톤](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%40Configuration%EA%B3%BC_%EC%8B%B1%EA%B8%80%ED%86%A4.md)
 
 ## WEB
 * [22/01/27 브라우저의 동작 원리](https://github.com/back-seung/TIL/blob/master/WEB/How_To_Browser_Work.md)
