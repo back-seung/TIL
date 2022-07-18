@@ -1,0 +1,1 @@
+package week_6.dispatch;public class StaticDispatch {}

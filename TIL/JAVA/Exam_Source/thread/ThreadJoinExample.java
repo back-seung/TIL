@@ -1,0 +1,1 @@
+package thread;public class ThreadJoinExample {    public static void main(String[] args) {        TargetThread targetThread = new TargetThread();        targetThread.sum();        try {            targetThread.join(); // 연산 결과가 끝날때까지 기다림        } catch (InterruptedException e) {}        System.out.println(targetThread.getSum());    }}

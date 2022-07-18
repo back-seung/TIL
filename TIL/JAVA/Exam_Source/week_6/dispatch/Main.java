@@ -1,0 +1,1 @@
+package week_6.dispatch;public class Main {    public static void main(String[] args) {        B b = new B();        b.run();    }}

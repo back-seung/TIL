@@ -1,0 +1,1 @@
+package serialize_deserialize;import java.io.Serializable;public class ClassC implements Serializable {    // 직렬화가 가능한 클래스    int field1;    // 필드 수정 - serialVersionUID 변경됨    int field2;}

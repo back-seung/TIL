@@ -1,0 +1,1 @@
+package week_10;public class RunnableExample implements Runnable {    @Override    public void run() {        System.out.println("This is Runnable Example run()");    }}
