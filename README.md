@@ -14,6 +14,11 @@
 ## IT/Cloud_Computing
 * [22/03/09 AWS](https://github.com/back-seung/Today_I_Learning/blob/master/IT/CLOUD_COMPUTING/AWS.md)
 
+## JavaScript
+* [22/07/21 자바스크립트_기본](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8_%EA%B8%B0%EB%B3%B8.md) 
+* [22/07/26 코드_품질](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%BD%94%EB%93%9C_%ED%92%88%EC%A7%88.md)
+* [22/07/27 객체_기본](https://github.com/back-seung/Today_I_Learned/tree/master/JS#:~:text=.%E2%80%8A.-,%EA%B0%9D%EC%B2%B4_%EA%B8%B0%EB%B3%B8.md,-%EA%B0%9D%EC%B2%B4_%EA%B8%B0%EB%B3%B8)
+
 ## Java
 
 ### 백기선 자바 스터디
@@ -28,6 +33,7 @@
 * [22/04/23 백기선 자바 스터디 - 10](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-10%EC%A3%BC%EC%B0%A8.md3)
 * [22/05/17 백기선 자바 스터디 - 11](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-11%EC%A3%BC%EC%B0%A8.md)
 * [22/06/23 백기선 자바 스터디 - 12](https://github.com/back-seung/Today_I_Learning/tree/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94#:~:text=last%20month-,%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94%2D12%EC%A3%BC%EC%B0%A8.md,-%EB%82%B4%EC%9A%A9%20%EC%88%98%EC%A0%95)
+* [22/07/21 백기선 자바 스터디 - 13](https://github.com/back-seung/Today_I_Learned/tree/master/JAVA/%EB%B0%B1%EA%B8%B0%EC%84%A0_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94#:~:text=last%20month-,%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94%2D13%EC%A3%BC%EC%B0%A8.md,-%EB%B2%84%ED%8D%BC%20%EA%B0%9C%EB%85%90%20%EC%B6%94%EA%B0%80)
 
 ### 이것이 자바다
 * [21/12/29 인터페이스](https://github.com/back-seung/Today_I_Learning/blob/master/JAVA/%EC%9D%B4%EA%B2%83%EC%9D%B4_%EC%9E%90%EB%B0%94%EB%8B%A4/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md3)
