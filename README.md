@@ -102,6 +102,7 @@
 * [22/07/15 컴포넌트_스캔](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8_%EC%8A%A4%EC%BA%94.md)
 * [22/07/18 의존관계_자동_주입](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84_%EC%9E%90%EB%8F%99_%EC%A3%BC%EC%9E%85.md)
 * [22/08/04 조회 빈이 두개 이상](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EC%A1%B0%ED%9A%8C_%EB%B9%88%EC%9D%B4_%EB%91%90%EA%B0%9C_%EC%9D%B4%EC%83%81.md)
+* [22/08/09 빈 생명주기 콜백](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EB%B9%88_%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0_%EC%BD%9C%EB%B0%B1.md)
 
 ## WEB
 * [22/01/27 브라우저의 동작 원리](https://github.com/back-seung/TIL/blob/master/WEB/How_To_Browser_Work.md)
