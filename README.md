@@ -101,6 +101,7 @@
 * [22/07/14 @Configuration과 싱글톤](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%40Configuration%EA%B3%BC_%EC%8B%B1%EA%B8%80%ED%86%A4.md)
 * [22/07/15 컴포넌트_스캔](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8_%EC%8A%A4%EC%BA%94.md)
 * [22/07/18 의존관계_자동_주입](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84_%EC%9E%90%EB%8F%99_%EC%A3%BC%EC%9E%85.md)
+* [22/08/04 애노테이션 직접 만들기](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EC%95%A0%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98_%EC%A7%81%EC%A0%91_%EB%A7%8C%EB%93%A4%EA%B8%B0.md)
 * [22/08/04 조회 빈이 두개 이상](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EC%A1%B0%ED%9A%8C_%EB%B9%88%EC%9D%B4_%EB%91%90%EA%B0%9C_%EC%9D%B4%EC%83%81.md)
 * [22/08/09 빈 생명주기 콜백](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EB%B9%88_%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0_%EC%BD%9C%EB%B0%B1.md)
 * [22/08/10 빈 스코프](https://github.com/back-seung/Today_I_Learned/blob/master/SPRING_BOOT/%EB%B9%88_%EC%8A%A4%EC%BD%94%ED%94%84.md)
