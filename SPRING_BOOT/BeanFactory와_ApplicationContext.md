@@ -6,7 +6,7 @@
 >
 > BeanFactory와 ApplicationContext에 대해서 알아보자
 
-![](../IMG/BeanFactory와_ApplicationContext.png)
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h533ix0shsj20ct0a50st.jpg)
 
 ## BeanFactory
 
@@ -26,7 +26,7 @@
 
 ### ApplicationContext가 제공하는 부가기능
 
-![](../IMG/ApplicationContext부가기능.png)
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h533ja904yj20eo05vq2y.jpg)
 
 * **메시지 소스를 활용한 국제화 기능**
   * 예를 들어 웹사이트에 접속한 국적이 한국이면 한국어로, 영어권에서 들어오면 영어로 출력
