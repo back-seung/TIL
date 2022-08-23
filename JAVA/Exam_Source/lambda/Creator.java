@@ -1,0 +1,1 @@
+package lambda;public class Creator {    private int boxCount = 0;    public void createOneBox() {        BoxFactory factory = () -> this.boxCount++;        factory.createBox();    }    public static void main(String[] args) {        Creator creator = new Creator();        creator.createOneBox();        System.out.println(creator.boxCount);    }}
