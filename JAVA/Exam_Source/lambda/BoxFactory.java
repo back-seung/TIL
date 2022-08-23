@@ -1,0 +1,1 @@
+package lambda;@FunctionalInterfacepublic interface BoxFactory {    public void createBox();}
