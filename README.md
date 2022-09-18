@@ -19,6 +19,7 @@
 * [22/07/26 코드_품질](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%BD%94%EB%93%9C_%ED%92%88%EC%A7%88.md)
 * [22/07/27 객체_기본](https://github.com/back-seung/Today_I_Learned/tree/master/JS#:~:text=.%E2%80%8A.-,%EA%B0%9D%EC%B2%B4_%EA%B8%B0%EB%B3%B8.md,-%EA%B0%9D%EC%B2%B4_%EA%B8%B0%EB%B3%B8)
 * [22/08/14 자료구조와 자료형](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%99%80_%EC%9E%90%EB%A3%8C%ED%98%95.md)
+* [22/09/15 함수_심화학습](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%95%A8%EC%88%98_%EC%8B%AC%ED%99%94%ED%95%99%EC%8A%B5.md)
 
 ## Java
 
