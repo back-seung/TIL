@@ -25,3 +25,5 @@ hs_err_pid*
 JAVA/Exam_Source/.idea/workspace.xml
 JAVA/Exam_Source/.idea/workspace.xml
 *.xml
+*.iml
+*.xml
