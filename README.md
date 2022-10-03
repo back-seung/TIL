@@ -21,6 +21,7 @@
 * [22/08/14 자료구조와 자료형](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%99%80_%EC%9E%90%EB%A3%8C%ED%98%95.md)
 * [22/09/15 함수_심화학습](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%95%A8%EC%88%98_%EC%8B%AC%ED%99%94%ED%95%99%EC%8A%B5.md)
 * [22/09/27 객체 프로퍼티 설정](https://github.com/back-seung/Today_I_Learned/tree/master/JS#:~:text=.%E2%80%8A.-,%EA%B0%9D%EC%B2%B4%20%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%20%EC%84%A4%EC%A0%95.md,-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%20getter%20%26%20setter)
+* [22/10/02 프로토타입과_프로토타입_상속](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%EA%B3%BC_%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85_%EC%83%81%EC%86%8D.md)
 
 ## Java
 
