@@ -23,6 +23,7 @@
 * [22/09/27 객체 프로퍼티 설정](https://github.com/back-seung/Today_I_Learned/tree/master/JS#:~:text=.%E2%80%8A.-,%EA%B0%9D%EC%B2%B4%20%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%20%EC%84%A4%EC%A0%95.md,-%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%20getter%20%26%20setter)
 * [22/10/02 프로토타입과_프로토타입_상속](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%EA%B3%BC_%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85_%EC%83%81%EC%86%8D.md)
 * [22/10/10 클래스](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%81%B4%EB%9E%98%EC%8A%A4.md)
+* [22/10/20 에러핸들링](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%97%90%EB%9F%AC%ED%95%B8%EB%93%A4%EB%A7%81.md)
 
 ## Java
 
