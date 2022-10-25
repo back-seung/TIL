@@ -24,6 +24,7 @@
 * [22/10/02 프로토타입과_프로토타입_상속](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%EA%B3%BC_%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85_%EC%83%81%EC%86%8D.md)
 * [22/10/10 클래스](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%81%B4%EB%9E%98%EC%8A%A4.md)
 * [22/10/20 에러핸들링](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%97%90%EB%9F%AC%ED%95%B8%EB%93%A4%EB%A7%81.md)
+* [22/10/25 프라미스와 await, async](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%94%84%EB%9D%BC%EB%AF%B8%EC%8A%A4%EC%99%80_async_await.md)
 
 ## Java
 
