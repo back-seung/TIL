@@ -1427,7 +1427,7 @@ let promise = new Promise((resolve, reject) => reject(error));
 
 
 
-## 프라미스화 -
+## 프라미스화 - ⭐️
 
 콜백을 받는 함수를 프라미스를 반환하는 함수로 바꾸는 것을 '프라미스화(promisification)'라고 한다.
 
@@ -1542,7 +1542,7 @@ f(...).then(arrayOfResults => ..., err => ...)
 
 
 
-## 마이크로태스크
+## 마이크로태스크 - ⭐️⭐️
 
 프라미스 핸들러 `.then/catch/finally`는 항상 *비동기적*으로 실행된다.
 
@@ -1631,7 +1631,7 @@ window.addEventListener('unhandledrejection', event => alert(event.reason));
 
 `unhandledrejection`은 마이크로태스크 큐에 있는 작업 모두가 완료되었을 때 생성된다. 엔진은 프라미스들을 검사하고 이 중 하나라도 ‘거부(rejected)’ 상태이면 `unhandledrejection` 핸들러를 트리거 한다. 이로써 앞선 의문이 자연스레 해결되었다.
 
-위 예시를 실행하면 `setTimeout`을 사용해 추가한 `.catch` 역시 트리거 된다. 다만 `.catch`는 `unhandledrejection`이 발생한 이후에 트리거 되므로 `프라미스 실패!`가 출력니다.
+위 예시를 실행하면 `setTimeout`을 사용해 추가한 `.catch` 역시 트리거 된다. 다만 `.catch`는 `unhandledrejection`이 발생한 이후에 트리거 되므로 `프라미스 실패!`가 출력된다.
 
 ### 요약
 
@@ -1645,7 +1645,7 @@ window.addEventListener('unhandledrejection', event => alert(event.reason));
 
 
 
-## async와 await - 
+## async와 await - ⭐️⭐️
 
 async와 await라는 특별한 문법을 사용하면 프라미스를 좀 더 편하게 사용할 수 있다. async, await는 놀라울 정도로 이해하기 쉽고 어렵지 않다.
 
