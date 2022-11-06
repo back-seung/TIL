@@ -25,7 +25,7 @@
 * [22/10/10 클래스](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%81%B4%EB%9E%98%EC%8A%A4.md)
 * [22/10/20 에러핸들링](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%97%90%EB%9F%AC%ED%95%B8%EB%93%A4%EB%A7%81.md)
 * [22/10/25 프라미스와 await, async](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%ED%94%84%EB%9D%BC%EB%AF%B8%EC%8A%A4%EC%99%80_async_await.md)
-
+* [22/11/06 제너레이터와 비동기 이터레이션](https://github.com/back-seung/Today_I_Learned/blob/master/JS/%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%EC%85%98.md)
 ## Java
 
 ### 백기선 자바 스터디
