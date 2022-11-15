@@ -1,6 +1,9 @@
 # Today_I_Learned
 > 꾸준히 착실하게
 
+## [Algorithm](https://github.com/back-seung/TIL/tree/master/Algorithm)
+* [22/11/13 정렬](https://github.com/back-seung/TIL/blob/master/Algorithm/%EC%A0%95%EB%A0%AC.md)
+
 ## C#
 * [21/12/30 C# 기초](https://github.com/back-seung/Today_I_Learning/blob/master/C%23/C%23_1230.md)
 * [22/01/02 C# DB](https://github.com/back-seung/Today_I_Learning/blob/master/C%23/C%23_0102.md)
