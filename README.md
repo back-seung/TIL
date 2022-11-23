@@ -1,8 +1,9 @@
 # Today_I_Learned
 > 꾸준히 착실하게
 
-## [Algorithm](https://github.com/back-seung/TIL/tree/master/Algorithm)
+## [DataStructure&Algorithm](https://github.com/back-seung/TIL/tree/master/Algorithm)
 * [22/11/13 정렬](https://github.com/back-seung/TIL/blob/master/Algorithm/%EC%A0%95%EB%A0%AC.md)
+* [22/11/24 해시테이블](https://github.com/back-seung/TIL/blob/master/DataStructure%26Algorithm/%ED%95%B4%EC%8B%9C%ED%85%8C%EC%9D%B4%EB%B8%94.md)
 
 ## C#
 * [21/12/30 C# 기초](https://github.com/back-seung/Today_I_Learning/blob/master/C%23/C%23_1230.md)
