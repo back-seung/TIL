@@ -1,1 +1,0 @@
-package generic;public class ProductExample {    public static void main(String[] args) {        Product<Box, String> product = new Product<>();        product.setKind(new Box());        product.setModel("myBox");        Box box = product.getKind();        String boxModel = product.getModel();    }}

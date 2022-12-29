@@ -1,1 +1,0 @@
-package lamdas;public interface MyLamda {    int calcSum(int a);}

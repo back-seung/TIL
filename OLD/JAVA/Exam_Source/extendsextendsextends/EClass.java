@@ -1,1 +1,0 @@
-package extendsextendsextends;// 최상위 클래스를 상속받는 부모 클래스를 상속받는 클래스를 상속받는 하위 클래스를 상속받는 최하위 클래스public class EClass extends DClass{}

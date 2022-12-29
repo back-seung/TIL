@@ -1,1 +1,0 @@
-package generic;public class ChildProduct<T, M, C> extends Product {    private C company;    public C getCompany() {        return company;    }    public void setCompany(C company) {        this.company = company;    }}

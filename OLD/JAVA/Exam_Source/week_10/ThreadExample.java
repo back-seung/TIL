@@ -1,1 +1,0 @@
-package week_10;public class ThreadExample extends Thread {    public ThreadExample(String valueOf) {    }    @Override    public void run() {        System.out.println("This is Thread Example run() \t And My Name is \t" + this.getName());    }}

@@ -1,1 +1,0 @@
-package week_6.dispatch;public class B extends Dispatch {    void run() {        System.out.println("B 실행");    }}
