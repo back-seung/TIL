@@ -16,8 +16,8 @@
 
 ## IT
 * [22/03/10 On_Premise](https://github.com/back-seung/Today_I_Learning/blob/master/IT/On_Premise.md)
-* [22/03/10 Privisioning](hhttps://github.com/back-seung/Today_I_Learning/blob/master/IT/Provisioning.md)
- 
+* [22/03/10 Provisioning](https://github.com/back-seung/Today_I_Learning/blob/master/IT/Provisioning.md)
+
 ## IT/Cloud_Computing
 * [22/03/09 AWS](https://github.com/back-seung/Today_I_Learning/blob/master/IT/CLOUD_COMPUTING/AWS.md)
 
@@ -131,8 +131,4 @@
 * [22/06/18 HTTP_기본](https://github.com/back-seung/Today_I_Learning/blob/master/WEB/HTTP_%EA%B8%B0%EB%B3%B8.md)
 * [22/06/19 HTTP_메서드](https://github.com/back-seung/Today_I_Learning/blob/master/WEB/HTTP_%EB%A9%94%EC%84%9C%EB%93%9C.md)
 * [22/06/20 HTTP_상태코드](https://github.com/back-seung/Today_I_Learning/blob/master/WEB/HTTP_%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C.md)
-
-## WORK
-* [FILE_DELETER_ADAPTOR](https://github.com/back-seung/Today_I_Learning/tree/master/WORK/DevSource/FILE_DELETE_30DAYS)
-
 
