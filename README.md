@@ -2,7 +2,7 @@
 > 꾸준히 착실하게
 
 ## [NETWORK]
-* [22/12/26 성공과_실패를_결정하는_1%의_네트워크_원리](https://github.com/back-seung/TIL/blob/master/NETWORK/%EC%84%B1%EA%B3%B5%EA%B3%BC_%EC%8B%A4%ED%8C%A8%EB%A5%BC_%EA%B2%B0%EC%A0%95%ED%95%98%EB%8A%94_1%25%EC%9D%98_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%EC%9B%90%EB%A6%AC.md)
+* [22/12/26 성공과_실패를_결정하는_1%의_네트워크_원리](https://github.com/back-seung/TIL/blob/master/NETWORK/2022-12-26-%EC%84%B1%EA%B3%B5%EA%B3%BC_%EC%8B%A4%ED%8C%A8%EB%A5%BC_%EA%B2%B0%EC%A0%95%ED%95%98%EB%8A%94_1%25%EC%9D%98_%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%EC%9B%90%EB%A6%AC.md)
 ## DataStructure&Algorithm
 * [22/11/13 정렬](https://github.com/back-seung/TIL/blob/master/Algorithm/%EC%A0%95%EB%A0%AC.md)
 * [22/11/24 해시테이블](https://github.com/back-seung/TIL/blob/master/DataStructure%26Algorithm/%ED%95%B4%EC%8B%9C%ED%85%8C%EC%9D%B4%EB%B8%94.md)
